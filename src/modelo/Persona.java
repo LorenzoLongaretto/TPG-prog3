@@ -1,5 +1,5 @@
 package modelo;
 
 public class Persona {
-protected String DNI;
+protected String DNI,matricula;
 }
