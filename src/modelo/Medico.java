@@ -4,38 +4,36 @@ public class Medico extends Persona implements IMedico{
 private String matricula,especialidad;	
 private double honorarioBasico=1000;
 
-public Medico(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio) {
+	//Constructores
+	public Medico(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio, String matricula, String especialidad) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio);
-		// TODO Auto-generated constructor stub
+		this.matricula = matricula;
+		this.especialidad = especialidad;
 	}
-
-@Override
-public double getHonorario() {
-	if(this.getEspacialidad().equals("Clinica"))
-		return this.honorarioBasico*1.05;
-	else {
-		if(this.getEspacialidad().equals("Cirugia"))
-			return this.honorarioBasico*1.1;
-		else 
-			if(this.getEspacialidad().equals("Pediatria"))
-				return this.honorarioBasico*1.07;
-			else
-				return 30.21;//AGREGAR EXCEPCION
+	
+	//Metodos
+	@Override
+	public double getHonorario() {
+		if(this.getEspecialidad().equals("Clinica"))
+			return this.honorarioBasico*1.05;
+		else {
+			if(this.getEspecialidad().equals("Cirugia"))
+				return this.honorarioBasico*1.1;
+			else 
+				if(this.getEspecialidad().equals("Pediatria"))
+					return this.honorarioBasico*1.07;
+				else
+					return 30.21;//AGREGAR EXCEPCION
+		}
+				
 	}
-			
-}
-
-@Override
-public String getMatricula() {
-	return this.matricula;
-}
-
-@Override
-public String getEspacialidad() {
-	return this.especialidad;
-}
-
-
-
+	@Override
+	public String getMatricula() {
+		return this.matricula;
+	}
+	@Override
+	public String getEspecialidad() {
+		return this.especialidad;
+	}
 
 }
