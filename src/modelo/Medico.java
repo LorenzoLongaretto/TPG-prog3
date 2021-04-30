@@ -16,8 +16,11 @@ public double getHonorario() {
 	else {
 		if(this.getEspacialidad().equals("Cirugia"))
 			return this.honorarioBasico*1.1;
-		else
-			return this.honorarioBasico*1.07;
+		else 
+			if(this.getEspacialidad().equals("Pediatria"))
+				return this.honorarioBasico*1.07;
+			else
+				return 30.21;//AGREGAR EXCEPCION
 	}
 			
 }

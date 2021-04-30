@@ -13,10 +13,11 @@ public Persona(String dNI, String nombre, String apellido, String ciudad, String
 }
 
 
-
-
-
-
+/**
+ * preguntar por el sueldo base
+ * 
+ * 
+ */
 
 
 

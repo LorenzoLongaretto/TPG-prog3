@@ -12,6 +12,10 @@ public Paciente(String dNI, String nombre, String apellido, String ciudad, Strin
 public boolean ocuparSala() {
 	return false;
 }
+
+public String getRangoEtario() {
+	return rangoEtario;
+}
 	
 
 
