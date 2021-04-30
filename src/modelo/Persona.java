@@ -1,5 +1,5 @@
 package modelo;
 
-public class Persona {
-protected String DNI,matricula;
+public abstract class Persona {
+protected String DNI,nombre,apellido,ciudad,telefono,domicilio;
 }
