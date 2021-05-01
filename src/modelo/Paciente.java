@@ -1,6 +1,6 @@
 package modelo;
 
-public class Paciente extends Persona {
+public abstract class Paciente extends Persona {
 private String numeroHistoria,rangoEtario;	
 
 	//Constructores
@@ -18,5 +18,9 @@ private String numeroHistoria,rangoEtario;
 	public String getRangoEtario() {
 		return rangoEtario;
 	}
+	public abstract boolean prioridad(Paciente paciente);
+	public abstract boolean prioridadNino();	
+	public abstract boolean prioridadJoven();	
+	public abstract boolean prioridadMayor();
 
 }
