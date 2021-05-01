@@ -20,6 +20,8 @@ public class MedicoFactory {
 				encapsulado = new DecoratorDoctorado(encapsulado);
 			//else
 				//Agregar excepcion
+		
+		
 		if (encapsulado != null)
 		{
 			
