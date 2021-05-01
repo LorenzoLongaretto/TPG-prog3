@@ -12,7 +12,7 @@ public class Mayor extends Paciente implements IRangoEtario{
 		return i.prioridadMayor();
 	}
 	@Override
-	public boolean prioridadNiño() {
+	public boolean prioridadNino() {
 		return true;
 	}
     @Override

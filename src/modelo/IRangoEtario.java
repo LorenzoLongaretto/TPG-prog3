@@ -4,7 +4,7 @@ public interface IRangoEtario {
 
 	
 	boolean prioridad(IRangoEtario i);
-	boolean prioridadNiño();
+	boolean prioridadNino();
 	boolean prioridadJoven();
 	boolean prioridadMayor();
 	

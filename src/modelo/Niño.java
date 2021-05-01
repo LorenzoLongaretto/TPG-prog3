@@ -10,11 +10,11 @@ public class Niño extends Paciente implements IRangoEtario {
 
 	@Override
 	public boolean prioridad(IRangoEtario i) {
-		return i.prioridadNiño();
+		return i.prioridadNino();
 	}
 
 	@Override
-	public boolean prioridadNiño() {
+	public boolean prioridadNino() {
 		return false;
 	}
 

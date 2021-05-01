@@ -15,7 +15,7 @@ public class Joven extends Paciente implements IRangoEtario{
 	}
 
 	@Override
-	public boolean prioridadNiño() {
+	public boolean prioridadNino() {
 		
 		return false;
 	}
