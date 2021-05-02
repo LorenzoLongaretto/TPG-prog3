@@ -2,6 +2,8 @@ package modelo;
 
 import java.util.ArrayList;
 
+import personas.Paciente;
+
 public class Clinica {
 
 	//Atributos

@@ -1,5 +1,7 @@
 package modelo;
 
+import personas.Medico;
+
 public class MedicoFactory {
 	
 	public static IMedico getMedico(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio, String matricula, String especialidad, String contratacion, String posgrado){

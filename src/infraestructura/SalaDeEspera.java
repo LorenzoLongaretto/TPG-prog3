@@ -1,4 +1,6 @@
-package modelo;
+package infraestructura;
+
+import personas.Paciente;
 
 public class SalaDeEspera {
 

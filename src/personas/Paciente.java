@@ -1,4 +1,4 @@
-package modelo;
+package personas;
 
 public abstract class Paciente extends Persona {
 private String numeroHistoria,rangoEtario;	

@@ -1,6 +1,8 @@
-package modelo;
+package infraestructura;
 
 import java.util.ArrayList;
+
+import personas.Paciente;
 
 public class Patio {
 	

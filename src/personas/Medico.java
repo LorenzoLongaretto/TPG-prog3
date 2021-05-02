@@ -1,4 +1,6 @@
-package modelo;
+package personas;
+
+import modelo.IMedico;
 
 public class Medico extends Persona implements IMedico{
 private String matricula,especialidad;	

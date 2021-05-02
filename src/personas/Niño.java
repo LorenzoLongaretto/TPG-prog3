@@ -1,30 +1,30 @@
-package modelo;
+package personas;
 
-public class Joven extends Paciente{
+public class Niño extends Paciente{
 
 	//Constructores
-	public Joven(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,
+	public Niño(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,
 			String numerohistoria, String rangoEtario) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio, numerohistoria, rangoEtario);
 		
 	}
-	
+
 	//Metodos
 	@Override
 	public boolean prioridad(Paciente paciente) {
-		return paciente.prioridadJoven();
+		return paciente.prioridadNino();
 	}
 	@Override
-	public boolean prioridadNino() {	
+	public boolean prioridadNino() {
 		return false;
 	}
 	@Override
 	public boolean prioridadJoven() {	
-		return false;
+		return true;
 	}
 	@Override
 	public boolean prioridadMayor() {
-		return true;
+		return false;
 	}
 
 }
