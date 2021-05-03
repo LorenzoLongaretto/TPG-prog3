@@ -11,30 +11,26 @@ public class SalaDeEspera {
 	//Constructores
 	public SalaDeEspera() {
 		this.ocupada = false;
+		this.paciente=null;
 	}
 	
 	//Metodos
 	public boolean isOcupada() {
 		return ocupada;
 	}
-	public void setOcupada(boolean ocupada) {
-		this.ocupada = ocupada;
-	}
+	
 	public Paciente getPaciente() {
 		return paciente;
 	}
 	public void ocupaSalaDeEspera(Paciente paciente) {
-		if(isOcupada()) {
-			if(this.paciente.prioridad(paciente)) {//si cumple, entonces entra
-				//agregar patio
-				this.paciente = paciente;
-			}
-		}
-		else {
-			setOcupada(true);
-			this.paciente = paciente;
-		}
+		this.paciente=paciente;
+		this.ocupada=true;
 		
+	}
+	
+	public void desocupar() {
+		this.ocupada = false;
+		this.paciente=null;		
 	}
 	
 }

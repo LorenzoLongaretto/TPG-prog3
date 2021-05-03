@@ -1,41 +1,55 @@
 package modelo;
 
 import java.util.ArrayList;
-
 import personas.Paciente;
+import infraestructura.SalaDeEspera;
+import infraestructura.ListadeAtencion;
+import infraestructura.ListaDeEspera;
+import infraestructura.Patio;
+
 
 public class Clinica {
 
 	//Atributos
 	private static Clinica instance = null;  // aplico patron singleton
-	private Paciente salaEspera;       // prueba, hay q ver si esta bien
-	private ArrayList<Paciente> patio = new ArrayList<Paciente>();  // prueba, hay q ver si esta bien
-
+	private SalaDeEspera salaEspera = new SalaDeEspera();       
+	private Patio patio = new Patio(new ArrayList<Paciente>());
+	private ListaDeEspera listaEspera = new ListaDeEspera(new ArrayList<Paciente>());
+	private ListadeAtencion listaAtencion = new ListadeAtencion(new ArrayList<Paciente>());
+    
 	//Constructores
 	private Clinica() {}
 	public static Clinica getInstance() {
 		if(Clinica.instance==null) {
-			Clinica.instance=new Clinica();
-			//SalaDeEspera salaDeEspera = new SalaDeEspera();
+			Clinica.instance=new Clinica();		
 		}
 		return instance;
 	}
-
 	//Metodos
-	public Paciente getSalaEspera() {
-		return salaEspera;
+	public void buscarHistoria(Paciente paciente) {
+		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega o elimina objeto
+	
+	
+	// se lo deriva al paciente de acuerdo a su prioridad
 	}
-	/*public ArrayList<Paciente> getPatio() {
-		return patio;
-	}*/
-	public void agregarSalaEspera(Paciente paciente) {
-		//Metodo que compara prioridades y determina quien va a la sala y quien se lo agrega al patio
+	public void derivarPaciente(Paciente paciente) {
+		
+		this.listaEspera.addPaciente(paciente);
+		
+		if(this.salaEspera.isOcupada()) {
+			if(this.salaEspera.paciente.prioridad(paciente)==false) {//si cumple, entonces entra
+				this.patio.addPaciente(this.salaEspera.paciente);
+				this.salaEspera.ocupaSalaDeEspera(paciente);
+			}
+			else
+				this.patio.addPaciente(paciente);
+		}
+		else 
+			this.salaEspera.ocupaSalaDeEspera(paciente);	
 	}
-	public void agregarPatio(Paciente paciente) {
-		this.patio.add(paciente);	
+	
+	public void atenderPaciente(Paciente paciente){
+		// saca de lista de espera, sala y patio
+		// agrega a lista de atencion
 	}
-	/*public void setSalaEspera(Paciente salaEspera) { 
-		this.salaEspera = salaEspera;
-	}*/
-
 }
