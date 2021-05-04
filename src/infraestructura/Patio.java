@@ -9,7 +9,7 @@ public class Patio {
 	//Atributos
 	private ArrayList <Paciente> pacientesEsperaPatio = new ArrayList <Paciente>();
 	
-	
+	//Constructores
 	public Patio(ArrayList<Paciente> pacientesEsperaPatio) {
 		this.pacientesEsperaPatio = pacientesEsperaPatio;
 	}
@@ -18,7 +18,6 @@ public class Patio {
 	public void addPaciente(Paciente paciente) {
 		pacientesEsperaPatio.add(paciente);
 	}
-	
 	public void removePaciente(Paciente paciente) {
 		pacientesEsperaPatio.remove(paciente);
 	}

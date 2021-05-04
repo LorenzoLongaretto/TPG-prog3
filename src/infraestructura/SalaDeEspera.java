@@ -16,9 +16,8 @@ public class SalaDeEspera {
 	
 	//Metodos
 	public boolean isOcupada() {
-		return ocupada;
+		return this.ocupada;
 	}
-	
 	public Paciente getPaciente() {
 		return paciente;
 	}
@@ -27,7 +26,6 @@ public class SalaDeEspera {
 		this.ocupada=true;
 		
 	}
-	
 	public void desocupar() {
 		this.ocupada = false;
 		this.paciente=null;		

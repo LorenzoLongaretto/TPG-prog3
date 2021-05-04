@@ -6,12 +6,12 @@ private int nroOrden;
 
 	//Constructores
 	public Paciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String numerohistoria,String rangoEtario,int nroOrden) {
-			super(dNI, nombre, apellido, ciudad, telefono, domicilio);
-			// TODO Auto-generated constructor stub
-			this.numeroHistoria=numerohistoria;
-			this.rangoEtario=rangoEtario;
-			this.nroOrden = nroOrden;
-		}
+		super(dNI, nombre, apellido, ciudad, telefono, domicilio);
+		// TODO Auto-generated constructor stub
+		this.numeroHistoria=numerohistoria;
+		this.rangoEtario=rangoEtario;
+		this.nroOrden = nroOrden;
+	}
 	
 	//Metodos
 	public boolean ocuparSala() {
@@ -24,6 +24,5 @@ private int nroOrden;
 	public abstract boolean prioridadNino();	
 	public abstract boolean prioridadJoven();	
 	public abstract boolean prioridadMayor();
-	
 
 }

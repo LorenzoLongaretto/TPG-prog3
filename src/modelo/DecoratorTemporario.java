@@ -13,5 +13,13 @@ public class DecoratorTemporario extends DecoratorContratacion{
 	public double getHonorario() {
 		return this.encapsulado.getHonorario()*1.05;
 	}
+	@Override
+	public String getMatricula() {
+		return this.encapsulado.getMatricula();
+	}
+	@Override
+	public String getEspecialidad() {
+		return this.encapsulado.getEspecialidad();
+	}
 	
 }
