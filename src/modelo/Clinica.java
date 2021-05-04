@@ -49,7 +49,7 @@ public class Clinica {
 	}
 	
 	public void atenderPaciente(Paciente paciente){
-		// saca de lista de espera, sala y patio
-		// agrega a lista de atencion
+		
+				
 	}
 }
