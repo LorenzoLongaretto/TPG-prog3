@@ -2,7 +2,6 @@ package modelo;
 
 import java.util.ArrayList;
 import personas.Paciente;
-import personas.Medico;
 import infraestructura.SalaDeEspera;
 import infraestructura.ListadeAtencion;
 import infraestructura.ListaDeEspera;
@@ -17,7 +16,6 @@ public class Clinica {
 	private Patio patio = new Patio(new ArrayList<Paciente>());
 	private ListaDeEspera listaEspera = new ListaDeEspera(new ArrayList<Paciente>());
 	private ListadeAtencion listaAtencion = new ListadeAtencion(new ArrayList<Paciente>());
-	private ArrayList<Medico> listaMedicos = new ArrayList<Medico>();
     
 	//Constructores
 	private Clinica() {}
@@ -28,19 +26,12 @@ public class Clinica {
 		return instance;
 	}
 	//Metodos
-	
-	public void agregarMedico(Medico medico) {
-		if(this.listaMedicos.contains(medico)==false)
-			this.listaMedicos.add(medico);	
-	}
-	
 	public void buscarHistoria(Paciente paciente) {
 		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega o elimina objeto
 	
 	
 	// se lo deriva al paciente de acuerdo a su prioridad
 	}
-	
 	public void derivarPaciente(Paciente paciente) {
 		
 		this.listaEspera.addPaciente(paciente);
@@ -58,19 +49,7 @@ public class Clinica {
 	}
 	
 	public void atenderPaciente(Paciente paciente){
-		this.listaEspera.removePaciente(paciente);
 		
-		if(this.patio.getPacientesEsperaPatio().contains(paciente)) // si esta en el patio lo elimino
-			this.patio.removePaciente(paciente);
-		else                                   // esta en la sala privada
-			this.salaEspera.desocupar();
-		
-		this.listaAtencion.addPaciente(paciente);				
-	}
-	
-	public void egresoPaciente() {
-		
-		
-		
+				
 	}
 }

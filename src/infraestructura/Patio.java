@@ -14,11 +14,6 @@ public class Patio {
 		this.pacientesEsperaPatio = pacientesEsperaPatio;
 	}
 	
-	public ArrayList<Paciente> getPacientesEsperaPatio() {
-		return pacientesEsperaPatio;
-	}
-
-
 	//Metodos
 	public void addPaciente(Paciente paciente) {
 		pacientesEsperaPatio.add(paciente);
