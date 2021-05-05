@@ -9,5 +9,7 @@ public interface IMedico {
 	String getEspecialidad();
 	
 	String getNombre();
+	
+	//String toString();
 	//void derivarHabitacion();
 }

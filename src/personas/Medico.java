@@ -16,19 +16,9 @@ private double honorarioBasico=1000;
 	//Metodos
 	@Override
 	public double getHonorario() {
-		if(this.getEspecialidad().equals("Clinica"))
-			return this.honorarioBasico*1.05;
-		else {
-			if(this.getEspecialidad().equals("Cirugia"))
-				return this.honorarioBasico*1.1;
-			else 
-				if(this.getEspecialidad().equals("Pediatria"))
-					return this.honorarioBasico*1.07;
-				else
-					return 30.21;//AGREGAR EXCEPCION
+		return this.honorarioBasico;
 		}
 				
-	}
 	@Override
 	public String getMatricula() {
 		return this.matricula;

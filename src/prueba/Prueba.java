@@ -13,12 +13,12 @@ public class Prueba {
 		
 		
 		
-		IMedico medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirugia","Permanente","Magister");
+		IMedico medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirujia","Permanente","Magister");
 		
-        Paciente paciente  = PacienteFactory.getPaciente(null, null, null, null, null, null, null, null, 0);
+        //Paciente paciente  = PacienteFactory.getPaciente(null, null, null, null, null, null, null, null, 0);
 	
-        Clinica.getInstance().derivarPaciente(paciente);
-        
+        //Clinica.getInstance().derivarPaciente(paciente);
+        System.out.println(medico.getHonorario());
 	}
  
 }
