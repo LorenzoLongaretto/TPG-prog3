@@ -6,6 +6,7 @@ import java.util.LinkedList;
 import personas.Paciente;
 import infraestructura.SalaDeEspera;
 import infraestructura.ListadeAtencion;
+import infraestructura.Factura;
 import infraestructura.ListaDeEspera;
 import infraestructura.Patio;
 
@@ -27,6 +28,7 @@ public class Clinica {
 		}
 		return instance;
 	}
+	
 	//Metodos
 	public void buscarHistoria(Paciente paciente) {
 		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega o elimina objeto
@@ -61,18 +63,6 @@ public class Clinica {
         
         this.listaAtencion.addPaciente(paciente);                
     }
-	
-	
+		
 				
 	}
-
-
-
-
-
-
-
-
-
-
-

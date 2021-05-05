@@ -38,4 +38,12 @@ private double honorarioBasico=1000;
 		return this.especialidad;
 	}
 
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return this.nombre;
+	}
+
+	
+
 }

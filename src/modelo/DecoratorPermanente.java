@@ -21,5 +21,11 @@ public class DecoratorPermanente extends DecoratorContratacion {
 	public String getEspecialidad() {
 		return this.encapsulado.getEspecialidad();
 	}
+
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

@@ -1,6 +1,6 @@
 package personas;
 
-public abstract class Paciente extends Persona implements Comparable<Object>{
+public abstract class Paciente extends Persona /*implements Comparable<Object>*/{
 private String numeroHistoria,rangoEtario;
 private int nroOrden;
 

@@ -36,6 +36,11 @@ public abstract class Habitacion {
 	public double getCostoAsignacion() {
 		return costoAsignacion;
 	}
+
+	@Override
+	public String toString() {
+		return "Habitacion nroHabitaci=" + nroHabitacion;
+	}
 	
 	
 }

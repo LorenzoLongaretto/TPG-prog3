@@ -6,11 +6,35 @@ private double valor,subtotal;
 private int cantidad;
 
 
-public Prestacion(String prestacion, double valor, double subtotal, int cantidad) {
+public Prestacion(String prestacion, double valor,int cantidad) {
 	this.prestacion = prestacion;
 	this.valor = valor;
-	this.subtotal = subtotal;
 	this.cantidad = cantidad;
+}
+
+
+public double getValor() {
+	return valor;
+}
+
+
+public void setValor(double valor) {
+	this.valor = valor;
+}
+
+
+public int getCantidad() {
+	return cantidad;
+}
+
+
+public void setCantidad(int cantidad) {
+	this.cantidad = cantidad;
+}
+
+
+public String getPrestacion() {
+	return prestacion;
 }
 
 
