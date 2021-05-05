@@ -5,9 +5,9 @@ public class HabitacionCompartida extends Habitacion {
 	private static double costoExtra=200;//PREGUNTAR
 	
 	//Constructores
-	public HabitacionCompartida(int nroHabitacion, double costoAsignacion) {
-		super(nroHabitacion);
-		this.costoAsignacion = costoAsignacion;
+	public HabitacionCompartida(int nroHabitacion,int cantDias,double costoAsignacion) {
+		super(nroHabitacion,cantDias,costoAsignacion);
+		
 	}
 
 	//Metodos

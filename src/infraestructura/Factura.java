@@ -7,6 +7,7 @@ import java.util.Iterator;
 import personas.Medico;
 import personas.Paciente;
 import infraestructura.Habitacion;
+import modelo.IMedico;
 
 public class Factura {
 	
@@ -23,7 +24,7 @@ public class Factura {
 		this.paciente = paciente;
 	}
 
-	public void asignarMedico(Medico medico) {
+	public void asignarMedico(IMedico medico) {
 		Iterator<Prestacion> it = this.prestaciones.iterator();
 		int existe=0;
 		while(it.hasNext()) {
@@ -37,6 +38,7 @@ public class Factura {
 		}
 		if(existe==0) {
 			Prestacion nueva = new Prestacion(medico.getNombre(),medico.getHonorario()*1.2,1);
+			
 			nueva.setSubtotal(nueva.getCantidad()*nueva.getValor());
 			this.prestaciones.add(nueva);
 			
@@ -44,9 +46,17 @@ public class Factura {
 	}
 	 
 	 public void asignarHabitacion(Habitacion habitacion) {
-		 Prestacion nueva = new Prestacion(habitacion.toString(),habitacion.costoDeHabitacion(habitacion.getCantDias()),habitacion.getCantDias());
-			this.prestaciones.add(nueva);
+		 Prestacion nueva = new Prestacion("Habitacion",habitacion.getCostoAsignacion(),habitacion.getCantDias());
+		 nueva.setSubtotal(habitacion.costoDeHabitacion(habitacion.getCantDias()));	
+		 this.prestaciones.add(nueva);
 			
 		}
+
+	@Override
+	public String toString() {
+		return "Factura [nroFactura=" + nroFactura + ", fecha=" + fecha + ", paciente=" + paciente + ", importeTotal="
+				+ importeTotal + ", prestaciones=" + this.prestaciones.toString() + "]";
+	}
+	 
 	 
 }

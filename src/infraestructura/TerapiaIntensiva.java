@@ -6,8 +6,8 @@ public class TerapiaIntensiva extends Habitacion {
 	private static double costoExtra=600;
 	
 	//Constructores
-	public TerapiaIntensiva(int nroHabitacion) {
-		super(nroHabitacion);
+	public TerapiaIntensiva(int nroHabitacion,int cantDias,double costoAsignacion) {
+		super(nroHabitacion, cantDias,costoAsignacion);
 	}
 
 	//Metodos

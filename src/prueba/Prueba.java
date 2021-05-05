@@ -7,6 +7,10 @@ import modelo.IMedico;
 import modelo.MedicoFactory;
 import modelo.PacienteFactory;
 
+import java.util.GregorianCalendar;
+
+import infraestructura.Factura;
+import infraestructura.HabitacionCompartida;
 public class Prueba {
 
 	public static void main(String[] args) {
@@ -21,7 +25,7 @@ public class Prueba {
         Paciente paciente4  = PacienteFactory.getPaciente("321", "negro", "blanco", "fds","fsdf", "fsdfs", "", "Joven", 0);
        
         System.out.println(medico.getHonorario());
-        System.out.println(medico);
+        System.out.println(medico.toString());
         Clinica.getInstance().derivarPaciente(paciente);
         Clinica.getInstance().derivarPaciente(paciente2);
         Clinica.getInstance().derivarPaciente(paciente3);
@@ -30,7 +34,17 @@ public class Prueba {
         System.out.println("LOS PACIENTES QUE ESTAN EN EL PATIO   "+Clinica.getInstance().getPatio());
         Clinica.getInstance().atenderPaciente(paciente);
         
+        // Prueba Factura
+        
         System.out.println(paciente);
+        Factura factura = new Factura(1,null,paciente);
+        factura.asignarMedico(medico);
+        System.out.println("FACTURA:");
+        factura.asignarMedico(medico);
+        factura.asignarHabitacion(new HabitacionCompartida(32,21,200));
+        System.out.println(factura.toString());
+       
+        
         /*
          * falta 
          * hacer las historias clinicas

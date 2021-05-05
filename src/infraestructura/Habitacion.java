@@ -5,18 +5,20 @@ public abstract class Habitacion {
 //aplicar Factory para las habitaciones
 	
 	//Atributos
-	protected int nroHabitacion, cantDias;//VERIFICAR nroHabitacion
-	protected boolean ocupada;
-	protected Paciente paciente;
-	protected double costoAsignacion;//El de cada habitacion particular
-	
+	private int nroHabitacion, cantDias;//VERIFICAR nroHabitacion
+	private boolean ocupada;
+	private Paciente paciente;
+	private double costoAsignacion;//El de cada habitacion particular
+
 	
 	//Constructores
-	public Habitacion(int nroHabitacion) {
+	public Habitacion(int nroHabitacion,int cantdias,double costoAsignacion) {
 		super();
 		this.nroHabitacion = nroHabitacion;
 		this.ocupada = false;
 		this.paciente = null;
+		this.cantDias=cantdias;
+		this.costoAsignacion=costoAsignacion;
 	}
 
 	//Metodos

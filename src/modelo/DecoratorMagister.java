@@ -21,7 +21,7 @@ public class DecoratorMagister extends DecoratorPosgrado {
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.encapsulado.getNombre();
 	}
 
 	@Override

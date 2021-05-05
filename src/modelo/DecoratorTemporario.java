@@ -25,7 +25,7 @@ public class DecoratorTemporario extends DecoratorContratacion{
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.encapsulado.getNombre();
 	}
 
 	@Override
