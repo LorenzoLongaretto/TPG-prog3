@@ -34,6 +34,16 @@ private double honorarioBasico=1000;
 		return this.nombre;
 	}
 
+	@Override
+	public String toString() {
+		return " nombre=" + nombre+", apellido=" + apellido+"matricula=" + matricula + ", especialidad=" + especialidad ;
+				
+	}
+
 	
 
 }
+
+
+
+

@@ -31,4 +31,6 @@ public class SalaDeEspera {
 		this.paciente=null;		
 	}
 	
+	
+	
 }

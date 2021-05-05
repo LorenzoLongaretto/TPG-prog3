@@ -28,4 +28,8 @@ public class DecoratorPermanente extends DecoratorContratacion {
 		return null;
 	}
 	
+	@Override
+	public String toString() {
+		return this.encapsulado.toString()+" Contratacion Permanente";
+	}
 }

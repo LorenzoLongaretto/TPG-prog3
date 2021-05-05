@@ -24,4 +24,11 @@ public class DecoratorDoctorado extends DecoratorPosgrado {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return this.encapsulado.toString()+" Doctorado";
+	}
+
+	
+	
 }

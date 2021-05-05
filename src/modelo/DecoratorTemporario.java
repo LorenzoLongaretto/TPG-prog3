@@ -27,5 +27,9 @@ public class DecoratorTemporario extends DecoratorContratacion{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
+
+	@Override
+	public String toString() {
+		return this.encapsulado.toString()+" Contratacion Temporario";
+	}
 }

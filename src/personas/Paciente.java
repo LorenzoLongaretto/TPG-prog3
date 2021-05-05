@@ -4,6 +4,7 @@ public abstract class Paciente extends Persona /*implements Comparable<Object>*/
 private String numeroHistoria,rangoEtario;
 private int nroOrden;
 
+
 	//Constructores
 	public Paciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String numerohistoria,String rangoEtario,int nroOrden) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio);
@@ -44,5 +45,11 @@ private int nroOrden;
 	}
 	
 	*/
-
+	@Override
+	public String toString() {
+		return " nombre=" + nombre+", apellido=" + apellido+ ", rangoEtario=" + rangoEtario ;
+		
 }
+}
+
+

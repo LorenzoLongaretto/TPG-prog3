@@ -24,4 +24,8 @@ public class DecoratorMagister extends DecoratorPosgrado {
 		return null;
 	}
 
+	@Override
+	public String toString() {
+		return this.encapsulado.toString()+" Magister";
+	}
 }

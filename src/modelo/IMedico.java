@@ -10,6 +10,5 @@ public interface IMedico {
 	
 	String getNombre();
 	
-	//String toString();
 	//void derivarHabitacion();
 }

@@ -2,13 +2,11 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
-
+import java.util.Queue;
 import personas.Paciente;
 import infraestructura.SalaDeEspera;
-import infraestructura.ListadeAtencion;
 import infraestructura.Factura;
-import infraestructura.ListaDeEspera;
-import infraestructura.Patio;
+
 
 
 public class Clinica {
@@ -16,9 +14,9 @@ public class Clinica {
 	//Atributos
 	private static Clinica instance = null;  // aplico patron singleton
 	private SalaDeEspera salaEspera = new SalaDeEspera();       
-	private Patio patio = new Patio(new ArrayList<Paciente>());
-	private ListaDeEspera listaEspera = new ListaDeEspera(new LinkedList<Paciente>());
-	private ListadeAtencion listaAtencion = new ListadeAtencion(new LinkedList<Paciente>());
+	private ArrayList<Paciente> patio= new ArrayList<Paciente>();
+	private Queue<Paciente> listaEspera= new LinkedList<Paciente>();
+	private Queue<Paciente> listaAtencion= new LinkedList<Paciente>();
 	
 	//Constructores
 	private Clinica() {}
@@ -38,15 +36,15 @@ public class Clinica {
 	}
 	public void derivarPaciente(Paciente paciente) {
 		
-		this.listaEspera.addPaciente(paciente);
+		this.listaEspera.add(paciente);
 		
 		if(this.salaEspera.isOcupada()) {
 			if(this.salaEspera.paciente.prioridad(paciente)==false) {//si cumple, entonces entra
-				this.patio.addPaciente(this.salaEspera.paciente);
+				this.patio.add(this.salaEspera.paciente);
 				this.salaEspera.ocupaSalaDeEspera(paciente);
 			}
 			else
-				this.patio.addPaciente(paciente);
+				this.patio.add(paciente);
 		}
 		else 
 			this.salaEspera.ocupaSalaDeEspera(paciente);	
@@ -54,15 +52,20 @@ public class Clinica {
 	
 	public void atenderPaciente(Paciente paciente){
 		
-		this.listaEspera.removePaciente(paciente);
+		this.listaEspera.remove(paciente);
         
-        if(this.patio.getPacientesEsperaPatio().contains(paciente)) // si esta en el patio lo elimino
-            this.patio.removePaciente(paciente);
+        if(this.patio.contains(paciente)) // si esta en el patio lo elimino
+            this.patio.remove(paciente);
         else                                   // esta en la sala privada
             this.salaEspera.desocupar();
         
-        this.listaAtencion.addPaciente(paciente);                
+        this.listaAtencion.add(paciente);                
     }
+	
+	
+	public SalaDeEspera getSalaEspera() {
+		return salaEspera;
+	}
 		
 				
 	}
