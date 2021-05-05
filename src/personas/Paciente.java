@@ -1,6 +1,6 @@
 package personas;
 
-public abstract class Paciente extends Persona {
+public abstract class Paciente extends Persona implements Comparable<Object>{
 private String numeroHistoria,rangoEtario;
 private int nroOrden;
 
@@ -24,5 +24,25 @@ private int nroOrden;
 	public abstract boolean prioridadNino();	
 	public abstract boolean prioridadJoven();	
 	public abstract boolean prioridadMayor();
+	
+	public void asignarMedico(Medico medico) {
+		
+		
+	}
+
+/*	@Override
+	public int compareTo(Object o) {
+		Paciente paciente=(Paciente)o;
+		if(this.numeroHistoria>paciente.numeroHistoria)
+			
+			return 1;
+		else
+			if(this.numeroHistoria<paciente.numeroHistoria)
+				return -1;
+			else
+				return 0;
+	}
+	
+	*/
 
 }

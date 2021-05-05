@@ -8,4 +8,5 @@ public interface IMedico {
 	
 	String getEspecialidad();
 	
+	void derivarHabitacion();
 }

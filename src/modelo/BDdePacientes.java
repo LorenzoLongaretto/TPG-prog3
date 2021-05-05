@@ -1,5 +1,9 @@
 package modelo;
 
+import java.util.TreeSet;
+
+import personas.Paciente;
+
 public class BDdePacientes {
 	//Alguna estructura que almacene todos los pacientes y a la hora de que un nuevo paciente se cree consulte si ya tiene historia clinica sino lo crea
 	//Averiguar implementacion de base de datos
@@ -8,4 +12,20 @@ public class BDdePacientes {
 	//tabla Consultas con orden cronologico en la que se busca listar las consultas que ocurran en toda la clinica, cada una asignandole fecha/medico/paciente/factura
 	//tabla Facturas ordenada por nro de factura CP autoincremental Fijarse campos en el TP
 	//Mostrar factura segun lo pedido en el TP
+	
+	TreeSet<Paciente> treeset= new TreeSet<>();
+
+	public BDdePacientes() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void altaDePaciente() {
+		
+		
+		
+	}
+	
+	
+	
 }

@@ -21,5 +21,10 @@ public class Patio {
 	public void removePaciente(Paciente paciente) {
 		pacientesEsperaPatio.remove(paciente);
 	}
+
+	public ArrayList<Paciente> getPacientesEsperaPatio() {
+		
+		return this.pacientesEsperaPatio;
+	}
 	
 }

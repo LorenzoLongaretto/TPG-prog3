@@ -1,6 +1,8 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+
 import personas.Paciente;
 import infraestructura.SalaDeEspera;
 import infraestructura.ListadeAtencion;
@@ -14,9 +16,9 @@ public class Clinica {
 	private static Clinica instance = null;  // aplico patron singleton
 	private SalaDeEspera salaEspera = new SalaDeEspera();       
 	private Patio patio = new Patio(new ArrayList<Paciente>());
-	private ListaDeEspera listaEspera = new ListaDeEspera(new ArrayList<Paciente>());
-	private ListadeAtencion listaAtencion = new ListadeAtencion(new ArrayList<Paciente>());
-    
+	private ListaDeEspera listaEspera = new ListaDeEspera(new LinkedList<Paciente>());
+	private ListadeAtencion listaAtencion = new ListadeAtencion(new LinkedList<Paciente>());
+	
 	//Constructores
 	private Clinica() {}
 	public static Clinica getInstance() {
@@ -50,6 +52,27 @@ public class Clinica {
 	
 	public void atenderPaciente(Paciente paciente){
 		
+		this.listaEspera.removePaciente(paciente);
+        
+        if(this.patio.getPacientesEsperaPatio().contains(paciente)) // si esta en el patio lo elimino
+            this.patio.removePaciente(paciente);
+        else                                   // esta en la sala privada
+            this.salaEspera.desocupar();
+        
+        this.listaAtencion.addPaciente(paciente);                
+    }
+	
+	
 				
 	}
-}
+
+
+
+
+
+
+
+
+
+
+
