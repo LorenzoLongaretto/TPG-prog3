@@ -66,6 +66,10 @@ public class Clinica {
 	public SalaDeEspera getSalaEspera() {
 		return salaEspera;
 	}
+	public ArrayList<Paciente> getPatio() {
+		return patio;
+	}
+	
 		
 				
 	}
