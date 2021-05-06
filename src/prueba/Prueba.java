@@ -9,6 +9,9 @@ import modelo.PacienteFactory;
 
 import java.util.GregorianCalendar;
 
+import excepciones.NoExisteContratacionException;
+import excepciones.NoExisteEspecialidadException;
+import excepciones.NoExisteRangoEtarioException;
 import infraestructura.Factura;
 import infraestructura.HabitacionCompartida;
 public class Prueba {
@@ -17,15 +20,31 @@ public class Prueba {
 		
 		
 		
-		IMedico medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirujia","Permanente","Magister");
+		IMedico medico;
+		try {
+			medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirugia","Permanente","Magister");
+	        System.out.println("Honorario: "+medico.getHonorario());
+	        System.out.println(medico.toString());   	
+		} catch (NoExisteEspecialidadException e) {
+			System.out.println(e.getMessage()+e.getEspecialidad());
+		} catch (NoExisteContratacionException e) {
+			System.out.println(e.getMessage()+e.getContratacion());
+		}
 		
-        Paciente paciente  = PacienteFactory.getPaciente("321", "fa", "lop", "fds","fsdf", "fsdfs", "", "Nino", 0);
-        Paciente paciente2  = PacienteFactory.getPaciente("321", "lop", "fa", "fds","fsdf", "fsdfs", "", "Mayor", 0);
-        Paciente paciente3  = PacienteFactory.getPaciente("321", "32", "lop", "fds","fsdf", "fsdfs", "", "Nino", 0);
-        Paciente paciente4  = PacienteFactory.getPaciente("321", "negro", "blanco", "fds","fsdf", "fsdfs", "", "Joven", 0);
+		
+		
+        try {
+			Paciente paciente  = PacienteFactory.getPaciente("321", "fa", "lop", "fds","fsdf", "fsdfs", "", "Nino", 0);
+		} catch (NoExisteRangoEtarioException e) {
+			System.out.println(e.getMessage() + e.getRango());
+		}
+        //Paciente paciente2  = PacienteFactory.getPaciente("321", "lop", "fa", "fds","fsdf", "fsdfs", "", "Mayor", 0);
+        //Paciente paciente3  = PacienteFactory.getPaciente("321", "32", "lop", "fds","fsdf", "fsdfs", "", "Nino", 0);
+        //Paciente paciente4  = PacienteFactory.getPaciente("321", "negro", "blanco", "fds","fsdf", "fsdfs", "", "Joven", 0);
        
-        System.out.println(medico.getHonorario());
-        System.out.println(medico.toString());
+        
+        
+        /*
         Clinica.getInstance().derivarPaciente(paciente);
         Clinica.getInstance().derivarPaciente(paciente2);
         Clinica.getInstance().derivarPaciente(paciente3);
@@ -35,7 +54,7 @@ public class Prueba {
         Clinica.getInstance().atenderPaciente(paciente);
         
         // Prueba Factura
-        
+      
         System.out.println(paciente);
         Factura factura = new Factura(1,null,paciente);
         factura.asignarMedico(medico);
@@ -43,7 +62,8 @@ public class Prueba {
         factura.asignarMedico(medico);
         factura.asignarHabitacion(new HabitacionCompartida(32,21,200));
         System.out.println(factura.toString());
-       
+       */
+        
         
         /*
          * falta 

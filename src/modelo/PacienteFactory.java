@@ -1,13 +1,14 @@
 package modelo;
 import personas.Paciente;
 import personas.Niño;
+import excepciones.NoExisteRangoEtarioException;
 import personas.Joven;
 import personas.Mayor;
 
 
 public class PacienteFactory {
 
-	public static Paciente getPaciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String numerohistoria,String rangoEtario,int nroOrden) {
+	public static Paciente getPaciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String numerohistoria,String rangoEtario,int nroOrden) throws NoExisteRangoEtarioException {
 		Paciente encapsulado=null;
 		
 		if(rangoEtario.equals("Nino")) 
@@ -18,8 +19,8 @@ public class PacienteFactory {
 				else
 					if(rangoEtario.equals("Mayor"))
 							encapsulado = new Mayor(dNI,nombre,apellido,ciudad,telefono,domicilio,numerohistoria,nroOrden);
-		                 //else
-		                       // throw NoExisteRangoEtarioException()		               
+		                 else
+		                    throw new NoExisteRangoEtarioException("No existe rango Etario",rangoEtario);		               
 		
 		
 		return encapsulado;
