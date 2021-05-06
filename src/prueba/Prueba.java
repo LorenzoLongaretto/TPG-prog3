@@ -22,7 +22,7 @@ public class Prueba {
 		
 		IMedico medico;
 		try {
-			medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirugia","Permanente","Magister");
+			medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirujia","Permanente","Magister");
 	        System.out.println("Honorario: "+medico.getHonorario());
 	        System.out.println(medico.toString());   	
 		} catch (NoExisteEspecialidadException e) {
@@ -34,7 +34,8 @@ public class Prueba {
 		
 		
         try {
-			Paciente paciente  = PacienteFactory.getPaciente("321", "fa", "lop", "fds","fsdf", "fsdfs", "", "Nino", 0);
+			Paciente paciente  = PacienteFactory.getPaciente("321", "fa", "lop", "fds","fsdf", "",123,"Nino", 0);
+			Clinica.getInstance().buscarHistoria(paciente);
 		} catch (NoExisteRangoEtarioException e) {
 			System.out.println(e.getMessage() + e.getRango());
 		}

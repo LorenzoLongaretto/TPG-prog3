@@ -1,31 +1,26 @@
 package modelo;
 
+import java.util.Iterator;
 import java.util.TreeSet;
-
 import personas.Paciente;
 
-public class BDdePacientes {
-	//Alguna estructura que almacene todos los pacientes y a la hora de que un nuevo paciente se cree consulte si ya tiene historia clinica sino lo crea
-	//Averiguar implementacion de base de datos
-	//utilizar tabla Personas con dni como CP y nroo de matricula mas nro de hsitoria clinica como claves foraneas
-	//luego tabla medicos y tabla pacientes
-	//tabla Consultas con orden cronologico en la que se busca listar las consultas que ocurran en toda la clinica, cada una asignandole fecha/medico/paciente/factura
-	//tabla Facturas ordenada por nro de factura CP autoincremental Fijarse campos en el TP
-	//Mostrar factura segun lo pedido en el TP
-	
-	TreeSet<Paciente> treeset= new TreeSet<>();
+public class BDdePacientes {	
+	TreeSet<Paciente> pacientesBD= new TreeSet<>();
 
 	public BDdePacientes() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
-	
-	public void altaDePaciente() {
-		
-		
-		
+	public boolean buscarPaciente(Paciente paciente) {
+		Iterator<Paciente> it = this.pacientesBD.iterator();
+		boolean existe=false;
+		while(it.hasNext() && existe==false) {
+			Paciente pacienteActual = it.next();
+			if(pacienteActual.getNumeroHistoria() == paciente.getNumeroHistoria()) 
+				existe=true;		
+		}
+		return existe;
 	}
-	
-	
-	
+	public void altaDePaciente(Paciente nuevo) {
+		this.pacientesBD.add(nuevo);		
+	}	
 }

@@ -1,12 +1,12 @@
 package personas;
 
-public abstract class Paciente extends Persona /*implements Comparable<Object>*/{
-private String numeroHistoria,rangoEtario;
-private int nroOrden;
+public abstract class Paciente extends Persona implements Comparable<Object>{
+private String rangoEtario;
+private int numeroHistoria,nroOrden;
 
 
 	//Constructores
-	public Paciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String numerohistoria,String rangoEtario,int nroOrden) {
+	public Paciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,int numerohistoria,String rangoEtario,int nroOrden) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio);
 		// TODO Auto-generated constructor stub
 		this.numeroHistoria=numerohistoria;
@@ -31,7 +31,15 @@ private int nroOrden;
 		
 	}
 
-/*	@Override
+	public int getNumeroHistoria() {
+		return numeroHistoria;
+	}
+
+	public void setNumeroHistoria(int numeroHistoria) {
+		this.numeroHistoria = numeroHistoria;
+	}
+
+	@Override
 	public int compareTo(Object o) {
 		Paciente paciente=(Paciente)o;
 		if(this.numeroHistoria>paciente.numeroHistoria)
@@ -44,7 +52,6 @@ private int nroOrden;
 				return 0;
 	}
 	
-	*/
 	@Override
 	public String toString() {
 		return " nombre=" + nombre+", apellido=" + apellido+ ", rangoEtario=" + rangoEtario ;

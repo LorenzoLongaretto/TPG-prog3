@@ -4,7 +4,7 @@ public class Mayor extends Paciente{
 
 	//Constructores
 	public Mayor(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,
-		String numerohistoria,int nroOrden) {
+		int numerohistoria,int nroOrden) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio, numerohistoria,"Mayor",nroOrden);
 	}
 	

@@ -8,7 +8,7 @@ import personas.Mayor;
 
 public class PacienteFactory {
 
-	public static Paciente getPaciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String numerohistoria,String rangoEtario,int nroOrden) throws NoExisteRangoEtarioException {
+	public static Paciente getPaciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,int numerohistoria,String rangoEtario,int nroOrden) throws NoExisteRangoEtarioException {
 		Paciente encapsulado=null;
 		
 		if(rangoEtario.equals("Nino")) 

@@ -17,6 +17,8 @@ public class Clinica {
 	private ArrayList<Paciente> patio= new ArrayList<Paciente>();
 	private Queue<Paciente> listaEspera= new LinkedList<Paciente>();
 	private Queue<Paciente> listaAtencion= new LinkedList<Paciente>();
+	private BDdePacientes pacientes = new BDdePacientes();
+	
 	
 	//Constructores
 	private Clinica() {}
@@ -28,12 +30,13 @@ public class Clinica {
 	}
 	
 	//Metodos
+	
 	public void buscarHistoria(Paciente paciente) {
-		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega o elimina objeto
-	
-	
-	// se lo deriva al paciente de acuerdo a su prioridad
+		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega 
+	       if(this.pacientes.buscarPaciente(paciente)!=true)
+	    	   this.pacientes.altaDePaciente(paciente);	
 	}
+	
 	public void derivarPaciente(Paciente paciente) {
 		
 		this.listaEspera.add(paciente);
@@ -70,6 +73,5 @@ public class Clinica {
 		return patio;
 	}
 	
-		
-				
+					
 	}

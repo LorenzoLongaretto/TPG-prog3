@@ -4,7 +4,7 @@ public class Joven extends Paciente{
 
 	//Constructores
 	public Joven(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,
-			String numerohistoria,int nroOrden) {
+			int  numerohistoria,int nroOrden) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio, numerohistoria,"Joven",nroOrden);
 		
 	}
