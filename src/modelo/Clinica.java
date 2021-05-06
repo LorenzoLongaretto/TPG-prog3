@@ -18,6 +18,7 @@ public class Clinica {
 	private Queue<Paciente> listaEspera= new LinkedList<Paciente>();
 	private Queue<Paciente> listaAtencion= new LinkedList<Paciente>();
 	private BDdePacientes pacientes = new BDdePacientes();
+	private int nroOrden=0;
 	
 	
 	//Constructores
@@ -31,14 +32,17 @@ public class Clinica {
 	
 	//Metodos
 	
-	public void buscarHistoria(Paciente paciente) {
+	public void ingresoPaciente(Paciente paciente) {
 		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega 
+		
 	       if(this.pacientes.buscarPaciente(paciente)!=true)
 	    	   this.pacientes.altaDePaciente(paciente);	
+	       this.derivarPaciente(paciente);
 	}
 	
 	public void derivarPaciente(Paciente paciente) {
-		
+		nroOrden++;
+		paciente.setNroOrden(nroOrden);
 		this.listaEspera.add(paciente);
 		
 		if(this.salaEspera.isOcupada()) {

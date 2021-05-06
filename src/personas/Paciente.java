@@ -6,11 +6,10 @@ private int numeroHistoria,nroOrden;
 
 
 	//Constructores
-	public Paciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String rangoEtario,int nroOrden) {
+	public Paciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String rangoEtario) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio);
 		// TODO Auto-generated constructor stub
 		this.rangoEtario=rangoEtario;
-		this.nroOrden = nroOrden;
 	}
 	
 	//Metodos
@@ -28,6 +27,14 @@ private int numeroHistoria,nroOrden;
 	public void asignarMedico(Medico medico) {
 		
 		
+	}
+
+	public int getNroOrden() {
+		return nroOrden;
+	}
+
+	public void setNroOrden(int nroOrden) {
+		this.nroOrden = nroOrden;
 	}
 
 	public int getNumeroHistoria() {
@@ -54,7 +61,7 @@ private int numeroHistoria,nroOrden;
 	
 	@Override
 	public String toString() {
-		return " nombre=" + nombre+", apellido=" + apellido+" nro historia " + numeroHistoria +" es " + rangoEtario;
+		return " nombre=" + nombre+", apellido=" + apellido+" nro historia " + numeroHistoria +" es " + rangoEtario+" nro de orden "+nroOrden;
 		
 }
 	

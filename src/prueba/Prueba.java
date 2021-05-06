@@ -41,30 +41,24 @@ public class Prueba {
 		}
         */
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
-		Paciente paciente  = PacienteFactory.getPaciente("111", "fa", "lop", "fds","fsdf", "","Nino", 0);
-        Paciente paciente2  = PacienteFactory.getPaciente("222", "lop", "fa", "fds","fsdf", "fsdfs", "Mayor", 0);
-        Paciente paciente3  = PacienteFactory.getPaciente("333", "32", "lop", "fds","fsdf", "fsdfs","Nino", 0);
-        Paciente paciente4  = PacienteFactory.getPaciente("444", "negro", "blanco", "fds","fsdf", "fsdfs","Joven", 0);
+		Paciente paciente  = PacienteFactory.getPaciente("111", "fa", "lop", "fds","fsdf", "","Nino");
+        Paciente paciente2  = PacienteFactory.getPaciente("222", "lop", "fa", "fds","fsdf", "fsdfs", "Mayor");
+        Paciente paciente3  = PacienteFactory.getPaciente("333", "32", "lop", "fds","fsdf", "fsdfs","Nino");
+        Paciente paciente4  = PacienteFactory.getPaciente("444", "negro", "blanco", "fds","fsdf", "fsdfs","Joven");
        
         
-        Clinica.getInstance().buscarHistoria(paciente4); //busca o genera la historia
-        Clinica.getInstance().buscarHistoria(paciente3);
-        Clinica.getInstance().buscarHistoria(paciente2);
-        Clinica.getInstance().buscarHistoria(paciente3);
+        Clinica.getInstance().ingresoPaciente(paciente); //busca o genera la historia
+        Clinica.getInstance().ingresoPaciente(paciente4);
+        Clinica.getInstance().ingresoPaciente(paciente2);
+        Clinica.getInstance().ingresoPaciente(paciente3);
+        System.out.println(paciente);
         System.out.println(paciente4);
-        Clinica.getInstance().buscarHistoria(paciente4);
-        Clinica.getInstance().buscarHistoria(paciente3);
-        Clinica.getInstance().buscarHistoria(paciente2);
-        System.out.println(paciente4);
-        System.out.println(paciente3);
         System.out.println(paciente2);
+        System.out.println(paciente3);
         
-        /*
-        Clinica.getInstance().derivarPaciente(paciente);
-        Clinica.getInstance().derivarPaciente(paciente2);
-        Clinica.getInstance().derivarPaciente(paciente3);
-        Clinica.getInstance().derivarPaciente(paciente4);//double dispach 10/10
-        System.out.println(Clinica.getInstance().getSalaEspera().getPaciente());
+        
+ 
+        System.out.println("esta en la sala de espera "+ Clinica.getInstance().getSalaEspera().getPaciente());
         System.out.println("LOS PACIENTES QUE ESTAN EN EL PATIO   "+Clinica.getInstance().getPatio());
         Clinica.getInstance().atenderPaciente(paciente);
         

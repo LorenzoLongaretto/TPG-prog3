@@ -3,9 +3,8 @@ package personas;
 public class Mayor extends Paciente{
 
 	//Constructores
-	public Mayor(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,
-		int nroOrden) {
-		super(dNI, nombre, apellido, ciudad, telefono, domicilio, "Mayor",nroOrden);
+	public Mayor(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio) {
+		super(dNI, nombre, apellido, ciudad, telefono, domicilio, "Mayor");
 	}
 	
 	//Metodos
