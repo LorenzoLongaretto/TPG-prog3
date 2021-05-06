@@ -3,9 +3,8 @@ package personas;
 public class Joven extends Paciente{
 
 	//Constructores
-	public Joven(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,
-			int  numerohistoria,int nroOrden) {
-		super(dNI, nombre, apellido, ciudad, telefono, domicilio, numerohistoria,"Joven",nroOrden);
+	public Joven(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,int nroOrden) {
+		super(dNI, nombre, apellido, ciudad, telefono, domicilio,"Joven",nroOrden);
 		
 	}
 	

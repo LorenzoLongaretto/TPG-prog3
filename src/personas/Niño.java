@@ -4,8 +4,8 @@ public class Niño extends Paciente{
 
 	//Constructores
 	public Niño(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,
-			int numerohistoria,int nroOrden) {
-		super(dNI, nombre, apellido, ciudad, telefono, domicilio, numerohistoria,"Nino",nroOrden);
+			int nroOrden) {
+		super(dNI, nombre, apellido, ciudad, telefono, domicilio, "Nino",nroOrden);
 		
 	}
 

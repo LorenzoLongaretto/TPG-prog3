@@ -18,4 +18,12 @@ protected String DNI,nombre,apellido,ciudad,telefono,domicilio;
  * 
  */
 
+	public String getDNI() {
+		return DNI;
+	}
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
+	}
+
 }
