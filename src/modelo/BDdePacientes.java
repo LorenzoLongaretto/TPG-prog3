@@ -27,6 +27,6 @@ public class BDdePacientes {
 	public void altaDePaciente(Paciente nuevo) {
 		generaNumHist++;
 		nuevo.setNumeroHistoria(generaNumHist);
-		this.pacientesBD.add(nuevo);	
-	}	
+		this.pacientesBD.add(nuevo);
+	}
 }

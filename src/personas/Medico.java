@@ -23,18 +23,16 @@ private TreeSet<PacienteAtendido> pacientesAtendidos= new TreeSet<>();
 		boolean existe=false;
 		while(it.hasNext() && existe==false) {
 			PacienteAtendido pacienteActual = it.next();
-			if(fecha.equals(pacienteActual.getFecha()) &&  pacienteActual.getNombre().equals(paciente.getNombre()) && pacienteActual.getApellido().equals(paciente.getApellido())) {//haces la busqueda por dni y si no encontras generas un nro de historia
-				existe=true;						
+			if(fecha.equals(pacienteActual.getFecha()) && pacienteActual.getDNI().equals(paciente.getDNI())) {
+				existe=true;	
+				pacienteActual.setCantConsultas(pacienteActual.getCantConsultas()+1);
+				pacienteActual.setSubtotal(pacienteActual.getCantConsultas()*this.getHonorario());					
+			}
+			if(!existe) {
+				PacienteAtendido nuevo = new PacienteAtendido(paciente.getNombre(),paciente.getApellido(),1,this.getHonorario(),fecha,paciente.getDNI());
+				this.pacientesAtendidos.add(nuevo);
 			}
 			
-			if(existe) {
-				pacienteActual.setCantConsultas(pacienteActual.getCantConsultas()+1);
-				pacienteActual.setSubtotal(pacienteActual.getCantConsultas()*this.getHonorario());
-			}
-			else {
-				PacienteAtendido nuevo = new PacienteAtendido(paciente.getNombre(),paciente.getApellido(),1,this.getHonorario(),fecha);
-				this.pacientesAtendidos.add(nuevo);
-			}		
 		}
 	}
 	//Metodos

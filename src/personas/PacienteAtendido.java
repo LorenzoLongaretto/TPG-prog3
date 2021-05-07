@@ -4,18 +4,29 @@ import java.util.GregorianCalendar;
 
 public class PacienteAtendido implements Comparable{
   // Para el TreeSet de pacientes Atendidos que tiene el medico
-	private String nombre,apellido;
+	private String nombre,apellido,DNI;
 	private int cantConsultas;
 	private double subtotal;
 	private GregorianCalendar fecha;
 
 	
-	public PacienteAtendido(String nombre, String apellido, int cantConsultas, double subtotal, GregorianCalendar fecha) {
+	public PacienteAtendido(String nombre, String apellido, int cantConsultas, double subtotal, GregorianCalendar fecha, String DNI) {
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.cantConsultas = cantConsultas;
 		this.subtotal = subtotal;
 		this.fecha = fecha;
+		this.DNI=DNI;
+	}
+
+	 
+	public String getDNI() {
+		return DNI;
+	}
+
+
+	public void setDNI(String dNI) {
+		DNI = dNI;
 	}
 
 
@@ -54,11 +65,10 @@ public class PacienteAtendido implements Comparable{
 	}
 
 
-	// Esta ordenado por fecha
 	@Override
-	public int compareTo(Object o) {
+	public int compareTo(Object o) {// Esta ordenado por fecha
 		PacienteAtendido paciente = (PacienteAtendido) o; 
-		return this.fecha.compareTo(fecha);
+		return this.fecha.compareTo(paciente.fecha);
 	}
 	
 	
