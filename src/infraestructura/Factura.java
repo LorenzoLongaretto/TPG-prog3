@@ -52,6 +52,12 @@ public class Factura {
 			
 		}
 
+	 
+	 
+	public GregorianCalendar getFecha() {
+		return fecha;
+	}
+
 	@Override
 	public String toString() {
 		return "Factura [nroFactura=" + nroFactura + ", fecha=" + fecha + ", paciente=" + paciente + ", importeTotal="

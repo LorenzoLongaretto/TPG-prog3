@@ -1,10 +1,15 @@
 package personas;
 
+import java.util.GregorianCalendar;
+import java.util.Iterator;
+import java.util.TreeSet;
+
 import modelo.IMedico;
 
 public class Medico extends Persona implements IMedico{
 private String matricula,especialidad;	
 private double honorarioBasico=1000;
+private TreeSet<PacienteAtendido> pacientesAtendidos= new TreeSet<>();
 
 	//Constructores
 	public Medico(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio, String matricula, String especialidad) {
@@ -13,6 +18,25 @@ private double honorarioBasico=1000;
 		this.especialidad = especialidad;
 	}
 	
+	public void asignarPaciente(Paciente paciente,GregorianCalendar fecha) {
+		Iterator<PacienteAtendido> it = this.pacientesAtendidos.iterator();
+		boolean existe=false;
+		while(it.hasNext() && existe==false) {
+			PacienteAtendido pacienteActual = it.next();
+			if(fecha.equals(pacienteActual.getFecha()) &&  pacienteActual.getNombre().equals(paciente.getNombre()) && pacienteActual.getApellido().equals(paciente.getApellido())) {//haces la busqueda por dni y si no encontras generas un nro de historia
+				existe=true;						
+			}
+			
+			if(existe) {
+				pacienteActual.setCantConsultas(pacienteActual.getCantConsultas()+1);
+				pacienteActual.setSubtotal(pacienteActual.getCantConsultas()*this.getHonorario());
+			}
+			else {
+				PacienteAtendido nuevo = new PacienteAtendido(paciente.getNombre(),paciente.getApellido(),1,this.getHonorario(),fecha);
+				this.pacientesAtendidos.add(nuevo);
+			}		
+		}
+	}
 	//Metodos
 	@Override
 	public double getHonorario() {

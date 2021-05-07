@@ -22,6 +22,12 @@ protected String DNI,nombre,apellido,ciudad,telefono,domicilio;
 		return DNI;
 	}
 
+	public String getNombre() {
+	return nombre;
+}
+public String getApellido() {
+	return apellido;
+}
 	public void setDNI(String dNI) {
 		DNI = dNI;
 	}

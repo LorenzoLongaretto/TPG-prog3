@@ -1,8 +1,11 @@
 package personas;
+import infraestructura.Factura;
+import infraestructura.Habitacion;
 
 public abstract class Paciente extends Persona implements Comparable<Object>{
 private String rangoEtario;
 private int numeroHistoria,nroOrden;
+private Factura factura;
 
 
 	//Constructores
@@ -23,11 +26,7 @@ private int numeroHistoria,nroOrden;
 	public abstract boolean prioridadNino();	
 	public abstract boolean prioridadJoven();	
 	public abstract boolean prioridadMayor();
-	
-	public void asignarMedico(Medico medico) {
-		
-		
-	}
+
 
 	public int getNroOrden() {
 		return nroOrden;
@@ -46,7 +45,7 @@ private int numeroHistoria,nroOrden;
 	}
 
 	@Override
-	public int compareTo(Object o) {
+	public int compareTo(Object o) {     // Para que la lista de pacientes este ordenada por Nro Historia
 		Paciente paciente=(Paciente)o;
 		if(this.numeroHistoria>paciente.numeroHistoria)
 			
@@ -57,7 +56,23 @@ private int numeroHistoria,nroOrden;
 			else
 				return 0;
 	}
+	public void asignarMedico(Medico medico) {
+		this.factura.asignarMedico(medico);
+		medico.asignarPaciente(this,this.factura.getFecha());
+	}
+	public void asignarHabitacion(Habitacion habitacion) {
+		this.factura.asignarHabitacion(habitacion);
+	}
 	
+	public Factura getFactura() {
+		return factura;
+	}
+	
+
+	public void setFactura(Factura factura) {
+		this.factura = factura;
+	}
+
 	
 	@Override
 	public String toString() {
