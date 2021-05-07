@@ -17,8 +17,10 @@ public class BDdePacientes {
 		boolean existe=false;
 		while(it.hasNext() && existe==false) {
 			Paciente pacienteActual = it.next();
-			if(pacienteActual.getDNI() == paciente.getDNI()) //haces la busqueda por dni y si no encontras generas un nro de historia
+			if(pacienteActual.getDNI() == paciente.getDNI()) {//haces la busqueda por dni y si no encontras generas un nro de historia
 				existe=true;
+				paciente.setNumeroHistoria(pacienteActual.getNumeroHistoria());			
+			}
 		}
 		return existe;
 	}
