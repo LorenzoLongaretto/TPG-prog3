@@ -69,7 +69,12 @@ public class Clinica {
         this.listaAtencion.add(paciente);                
     }
 	
-	
+	public void egreso(Paciente paciente) {
+		if(this.listaAtencion.contains(paciente)) {
+			this.listaAtencion.remove(paciente);
+			System.out.println(paciente.getFactura().toString());
+		}
+	}
 	public SalaDeEspera getSalaEspera() {
 		return salaEspera;
 	}
