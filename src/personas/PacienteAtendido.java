@@ -70,6 +70,13 @@ public class PacienteAtendido implements Comparable{
 		PacienteAtendido paciente = (PacienteAtendido) o; 
 		return this.fecha.compareTo(paciente.fecha);
 	}
+
+
+	@Override
+	public String toString() {
+		return " [nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", cantConsultas="
+				+ cantConsultas + ", subtotal=" + subtotal + ", fecha=" + fecha.getFirstDayOfWeek() + "]";
+	}
 	
 	
 }

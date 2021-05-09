@@ -1,6 +1,7 @@
 package personas;
 import infraestructura.Factura;
 import infraestructura.Habitacion;
+import modelo.IMedico;
 
 public abstract class Paciente extends Persona implements Comparable<Object>{
 private String rangoEtario;
@@ -56,7 +57,7 @@ private Factura factura;
 			else
 				return 0;
 	}
-	public void asignarMedico(Medico medico) {
+	public void asignarMedico(IMedico medico) {
 		this.factura.asignarMedico(medico);
 		medico.asignarPaciente(this,this.factura.getFecha());
 	}

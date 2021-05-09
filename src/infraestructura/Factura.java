@@ -18,10 +18,9 @@ public class Factura {
 	private ArrayList <Prestacion> prestaciones = new ArrayList <Prestacion>();
 	
 	
-	 public Factura(int nroFactura, GregorianCalendar fecha, Paciente paciente) {
+	 public Factura(int nroFactura, GregorianCalendar fecha) {
 		this.nroFactura = nroFactura;
 		this.fecha = fecha;
-		this.paciente = paciente;
 	}
 
 	public void asignarMedico(IMedico medico) {
@@ -29,7 +28,7 @@ public class Factura {
 		int existe=0;
 		while(it.hasNext()) {
 			Prestacion prestacionActual = it.next();
-			if(medico.getNombre().equals(prestacionActual.getPrestacion())) {
+			if((medico.getNombre()+" "+medico.getMatricula()).equals(prestacionActual.getPrestacion())) {
 				existe=1;
 				prestacionActual.setCantidad(prestacionActual.getCantidad() + 1);
 				prestacionActual.setSubtotal(prestacionActual.getValor()*prestacionActual.getCantidad());
@@ -37,7 +36,7 @@ public class Factura {
 				
 		}
 		if(existe==0) {
-			Prestacion nueva = new Prestacion(medico.getNombre(),medico.getHonorario()*1.2,1);
+			Prestacion nueva = new Prestacion(medico.getNombre()+" "+medico.getMatricula(),medico.getHonorario()*1.2,1);
 			
 			nueva.setSubtotal(nueva.getCantidad()*nueva.getValor());
 			this.prestaciones.add(nueva);
@@ -60,7 +59,7 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [nroFactura=" + nroFactura + ", fecha=" + fecha + ", paciente=" + paciente + ", importeTotal="
+		return "Factura [nroFactura=" + nroFactura + ", fecha=" + fecha.getFirstDayOfWeek()+    " importeTotal="
 				+ importeTotal + ", prestaciones=" + this.prestaciones.toString() + "]";
 	}
 	 

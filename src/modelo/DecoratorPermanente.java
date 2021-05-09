@@ -1,5 +1,9 @@
 package modelo;
 
+import java.util.GregorianCalendar;
+
+import personas.Paciente;
+
 public class DecoratorPermanente extends DecoratorContratacion {
 
 	//Constructores
@@ -31,5 +35,15 @@ public class DecoratorPermanente extends DecoratorContratacion {
 	@Override
 	public String toString() {
 		return this.encapsulado.toString()+" Contratacion Permanente";
+	}
+
+	public void asignarPaciente(Paciente paciente,GregorianCalendar fecha) {
+		this.encapsulado.asignarPaciente(paciente,fecha);
+		}
+
+	@Override
+	public void reporte(GregorianCalendar fecha1, GregorianCalendar fecha2) {
+		this.encapsulado.reporte(fecha1, fecha2);
+		
 	}
 }

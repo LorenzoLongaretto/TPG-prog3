@@ -1,5 +1,9 @@
 package modelo;
 
+import java.util.GregorianCalendar;
+
+import personas.Paciente;
+
 public interface IMedico {
 	
 	double getHonorario();
@@ -9,6 +13,8 @@ public interface IMedico {
 	String getEspecialidad();
 	
 	String getNombre();
+
+    void asignarPaciente(Paciente paciente,GregorianCalendar fecha);
 	
-	//void derivarHabitacion();
+    void reporte(GregorianCalendar fecha1,GregorianCalendar fecha2);
 }

@@ -1,11 +1,15 @@
 package modelo;
 
+import java.util.GregorianCalendar;
+
+import personas.Paciente;
+
 public class DecoratorTemporario extends DecoratorContratacion{
 
 	//Construcores
 	public DecoratorTemporario(IMedico encapsulado) {
 		super(encapsulado);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	//Metodos
@@ -31,5 +35,16 @@ public class DecoratorTemporario extends DecoratorContratacion{
 	@Override
 	public String toString() {
 		return this.encapsulado.toString()+" Contratacion Temporario";
+	}
+
+	@Override
+	public void asignarPaciente(Paciente paciente,GregorianCalendar fecha) {
+		this.encapsulado.asignarPaciente(paciente,fecha);
+}
+
+	@Override
+	public void reporte(GregorianCalendar fecha1, GregorianCalendar fecha2) {
+		this.encapsulado.reporte(fecha1, fecha2);
+		
 	}
 }
