@@ -1,6 +1,6 @@
 package modelo;
 import personas.Paciente;
-import personas.Niño;
+import personas.Nino;
 import excepciones.NoExisteRangoEtarioException;
 import personas.Joven;
 import personas.Mayor;
@@ -12,7 +12,7 @@ public class PacienteFactory {
 		Paciente encapsulado=null;
 		
 		if(rangoEtario.equals("Nino")) 
-			encapsulado = new Niño(dNI,nombre,apellido,ciudad,telefono,domicilio);
+			encapsulado = new Nino(dNI,nombre,apellido,ciudad,telefono,domicilio);
 			else
 				if(rangoEtario.equals("Joven"))
 					encapsulado = new Joven(dNI,nombre,apellido,ciudad,telefono,domicilio);
