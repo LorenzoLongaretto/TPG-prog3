@@ -65,8 +65,8 @@ public class Prueba {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        GregorianCalendar fecha1 = new GregorianCalendar(2020,01,01);
-        GregorianCalendar fecha2 = new GregorianCalendar(2020,02,01);
+        GregorianCalendar fecha1 = new GregorianCalendar(2020,1,1);
+        GregorianCalendar fecha2 = new GregorianCalendar(2020,2,1);
         paciente.setFactura(new Factura(12,fecha1));
         paciente.asignarMedico(medico);
         paciente.asignarMedico(medico);

@@ -1,9 +1,9 @@
 package personas;
 
-public class Niño extends Paciente{
+public class Nino extends Paciente{
 
 	//Constructores
-	public Niño(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio) {
+	public Nino(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio) {
 		super(dNI, nombre, apellido, ciudad, telefono, domicilio, "Nino");
 		
 	}
