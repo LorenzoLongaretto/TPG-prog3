@@ -1,3 +1,2 @@
 module tpg {
-    requires rt;
 }
