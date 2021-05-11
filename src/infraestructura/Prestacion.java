@@ -50,8 +50,8 @@ public void setSubtotal(double subtotal) {
 
 @Override
 public String toString() {
-	return prestacion + ", valor=" + valor + ", subtotal=" + subtotal + ", cantidad="
-			+ cantidad + "]";
+	return prestacion + "      " + valor + "        " + cantidad + "      "
+			+ subtotal;
 }
 
 

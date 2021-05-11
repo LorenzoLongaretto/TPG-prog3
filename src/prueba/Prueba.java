@@ -72,7 +72,10 @@ public class Prueba {
         paciente.asignarMedico(medico);
         paciente.asignarHabitacion(new HabitacionCompartida(10,2,1200));
         medico.reporte(fecha1,fecha2);
-        
+        System.out.println("------------------------");
+        Clinica.getInstance().derivarPaciente(paciente);
+        Clinica.getInstance().atenderPaciente(paciente);
+        Clinica.getInstance().egreso(paciente);
         
  
         //System.out.println("esta en la sala de espera "+ Clinica.getInstance().getSalaEspera().getPaciente());

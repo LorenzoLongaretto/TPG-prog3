@@ -44,7 +44,7 @@ public TreeSet<PacienteAtendido> pacientesAtendidos= new TreeSet<>();
 				
 	}
 	@Override
-	public void asignarPaciente(Paciente paciente, GregorianCalendar fecha) {
+	public void asignarPaciente(Paciente paciente, GregorianCalendar fecha) {   // asignar a los pacientes atendidos
 		Iterator<PacienteAtendido> it = this.pacientesAtendidos.iterator();
 		boolean existe=false;
 		while(it.hasNext() && existe==false) {
@@ -64,7 +64,7 @@ public TreeSet<PacienteAtendido> pacientesAtendidos= new TreeSet<>();
 		
 	}
 	@Override
-	public void reporte(GregorianCalendar fecha1, GregorianCalendar fecha2) {
+	public void reporte(GregorianCalendar fecha1, GregorianCalendar fecha2) {  // reporte de los pacientes atendidos
         Iterator<PacienteAtendido> it = this.pacientesAtendidos.iterator();
 		
 		while(it.hasNext()) {

@@ -45,7 +45,7 @@ public class Factura {
 	}
 	 
 	 public void asignarHabitacion(Habitacion habitacion) {
-		 Prestacion nueva = new Prestacion("Habitacion",habitacion.getCostoAsignacion(),habitacion.getCantDias());
+		 Prestacion nueva = new Prestacion(habitacion.toString(),habitacion.getCostoAsignacion(),habitacion.getCantDias());
 		 nueva.setSubtotal(habitacion.costoDeHabitacion(habitacion.getCantDias()));	
 		 this.prestaciones.add(nueva);
 			
@@ -59,9 +59,14 @@ public class Factura {
 
 	@Override
 	public String toString() {
-		return "Factura [nroFactura=" + nroFactura + ", fecha=" + fecha.getFirstDayOfWeek()+    " importeTotal="
-				+ importeTotal + ", prestaciones=" + this.prestaciones.toString() + "]";
+		return "Factura Nro: "+nroFactura +" Fecha: "+fecha.getTime();   // Hay que cambiar esto para que muestre bien la fecha
+	 
 	}
-	 
-	 
+	
+	public void muestraFactura() {
+		for(int i=0;i<this.prestaciones.size();i++) {
+			System.out.println(this.prestaciones.get(i).toString());
+	}
+	
+	}
 }

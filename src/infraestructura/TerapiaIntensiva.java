@@ -16,4 +16,9 @@ public class TerapiaIntensiva extends Habitacion {
 		return Math.pow(TerapiaIntensiva.costoExtra, cantDias) +this.getCostoAsignacion();
 	}
 
+	@Override
+	public String toString() {
+		return "Terapia Intensiva";
+	}
+
 }

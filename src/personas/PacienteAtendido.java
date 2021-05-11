@@ -74,8 +74,8 @@ public class PacienteAtendido implements Comparable{
 
 	@Override
 	public String toString() {
-		return " [nombre=" + nombre + ", apellido=" + apellido + ", DNI=" + DNI + ", cantConsultas="
-				+ cantConsultas + ", subtotal=" + subtotal + ", fecha=" + fecha.getFirstDayOfWeek() + "]";
+		return "Nombre=" + nombre + "   Apellido=" + apellido + "  DNI=" + DNI + " CantConsultas="
+				+ cantConsultas + "  Subtotal=" + subtotal + "  Fecha=" + fecha.getTime();
 	}
 	
 	

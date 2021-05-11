@@ -73,6 +73,8 @@ public class Clinica {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
 			System.out.println(paciente.getFactura().toString());
+			System.out.println("Nombre        Valor       Cantidad      Subtotal");
+			paciente.getFactura().muestraFactura();
 		}
 	}
 	public SalaDeEspera getSalaEspera() {

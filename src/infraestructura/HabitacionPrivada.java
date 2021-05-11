@@ -26,4 +26,9 @@ public class HabitacionPrivada extends Habitacion {
 		return auxiliar + this.getCostoAsignacion();
 	}
 
+	@Override
+	public String toString() {
+		return "Habitacion Privada";
+	}
+
 }

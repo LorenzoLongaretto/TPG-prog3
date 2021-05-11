@@ -16,4 +16,9 @@ public class HabitacionCompartida extends Habitacion {
 		return (this.getCantDias() * HabitacionCompartida.costoExtra)+this.getCostoAsignacion();
 	}
 
+	@Override
+	public String toString() {
+		return "Habitacion Compartida";
+	}
+
 }
