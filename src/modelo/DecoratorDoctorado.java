@@ -33,17 +33,7 @@ public class DecoratorDoctorado extends DecoratorPosgrado {
 		return this.encapsulado.toString()+" Doctorado";
 	}
 
-	@Override
-	public void asignarPaciente(Paciente paciente,GregorianCalendar fecha) {
-		this.encapsulado.asignarPaciente(paciente,fecha);
-		
-	}
-
-	@Override
-	public void reporte(GregorianCalendar fecha1, GregorianCalendar fecha2) {
-		this.encapsulado.reporte(fecha1, fecha2);
-	}
-
+	
 	
 	
 }

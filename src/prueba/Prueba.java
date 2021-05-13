@@ -64,15 +64,11 @@ public class Prueba {
         }
         GregorianCalendar fecha1 = new GregorianCalendar(2020,1,1);
         GregorianCalendar fecha2 = new GregorianCalendar(2020,2,1);
-        paciente.setFactura(new Factura(12,fecha1));
-        paciente.asignarMedico(medico);
-        paciente.asignarMedico(medico);
-        paciente.asignarHabitacion(new HabitacionCompartida(10,2,1200));
-        medico.reporte(fecha1,fecha2);
+        
         System.out.println("------------------------");
         Clinica.getInstance().derivarPaciente(paciente);
         Clinica.getInstance().atenderPaciente(paciente);
-        Clinica.getInstance().egreso(paciente);
+        //Clinica.getInstance().egreso(paciente);
         
  
         //System.out.println("esta en la sala de espera "+ Clinica.getInstance().getSalaEspera().getPaciente());
@@ -80,25 +76,20 @@ public class Prueba {
         Clinica.getInstance().atenderPaciente(paciente);
         
         // Prueba Factura
-      
-   /*     System.out.println(paciente);
-        Factura factura = new Factura(1,null,paciente);
+       
+        //System.out.println(paciente);
+        Factura factura = new Factura(1,fecha1,paciente);
         factura.asignarMedico(medico);
         System.out.println("FACTURA:");
         factura.asignarMedico(medico);
         factura.asignarHabitacion(new HabitacionCompartida(32,21,200));
-        System.out.println(factura.toString());
-       */
+      
+       
+        Clinica.getInstance().egreso(paciente,factura);
+        System.out.println("REPORTE:");
+        Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);
         
-        
-        /*
-         * falta 
-         * hacer las historias clinicas
-         * implementar la facturacion
-         * excepciones
-         * arrancar la segunda parte de la mv
-         * 
-         */
+       
 	}
  
 }

@@ -37,14 +37,5 @@ public class DecoratorTemporario extends DecoratorContratacion{
 		return this.encapsulado.toString()+" Contratacion Temporario";
 	}
 
-	@Override
-	public void asignarPaciente(Paciente paciente,GregorianCalendar fecha) {
-		this.encapsulado.asignarPaciente(paciente,fecha);
-}
-
-	@Override
-	public void reporte(GregorianCalendar fecha1, GregorianCalendar fecha2) {
-		this.encapsulado.reporte(fecha1, fecha2);
-		
-	}
+	
 }

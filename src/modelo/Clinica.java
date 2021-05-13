@@ -1,6 +1,8 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.TreeSet;
@@ -8,7 +10,8 @@ import java.util.TreeSet;
 import personas.Paciente;
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
-import personas.PacienteAtendido;
+import infraestructura.Prestacion;
+
 
 
 public class Clinica {
@@ -72,13 +75,35 @@ public class Clinica {
         this.listaAtencion.add(paciente);                
     }
 	
-	public void egreso(Paciente paciente) {
+	public void egreso(Paciente paciente,Factura factura) {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
-			System.out.println(paciente.getFactura().toString());
+			System.out.println(factura.toString());
 			System.out.println("Nombre        Valor       Cantidad      Subtotal");
-			paciente.getFactura().muestraFactura();
+			factura.muestraFactura();
+			this.facturas.add(factura);
 		}
+	}
+	
+	public void reporteMedico(IMedico medico, GregorianCalendar fecha1,GregorianCalendar fecha2) {
+		
+          Iterator<Factura> it = this.facturas.iterator();
+		  
+		   while(it.hasNext()) {
+			Factura actual = it.next(); // nodo de la lista
+		    Iterator<Prestacion> prestaciones = actual.getPrestaciones().iterator();  // sublista
+		    while(prestaciones.hasNext()) {
+		    	Prestacion prestacionActual = prestaciones.next(); 
+		    	if(actual.getFecha().compareTo(fecha1)>=0 && actual.getFecha().compareTo(fecha2)<=0 && prestacionActual.getPrestacion().equals(medico.getNombre()+" "+medico.getMatricula())) {
+		    		System.out.println(actual.getPaciente().getNombre()+" "+prestacionActual.getCantidad()+" "+prestacionActual.getSubtotal());
+		    	}
+		    		//prestacionActual.toString()
+		    }
+			
+				
+				
+		   }
+		
 	}
 	public SalaDeEspera getSalaEspera() {
 		return salaEspera;

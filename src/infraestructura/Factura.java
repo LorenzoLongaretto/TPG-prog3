@@ -3,13 +3,11 @@ package infraestructura;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
-
-import personas.Medico;
 import personas.Paciente;
-import infraestructura.Habitacion;
+
 import modelo.IMedico;
 
-public class Factura {
+public class Factura implements Comparable{
 	
 	private int nroFactura;
 	private GregorianCalendar fecha;
@@ -18,7 +16,8 @@ public class Factura {
 	private ArrayList <Prestacion> prestaciones = new ArrayList <Prestacion>();
 	
 	
-	 public Factura(int nroFactura, GregorianCalendar fecha) {
+	 public Factura(int nroFactura, GregorianCalendar fecha,Paciente paciente) {
+		 this.paciente=paciente;
 		this.nroFactura = nroFactura;
 		this.fecha = fecha;
 	}
@@ -53,13 +52,17 @@ public class Factura {
 
 	 
 	 
+	public Paciente getPaciente() {
+		return paciente;
+	}
+
 	public GregorianCalendar getFecha() {
 		return fecha;
 	}
 
 	@Override
 	public String toString() {
-		return "Factura Nro: "+nroFactura +" Fecha: "+fecha.getTime();   // Hay que cambiar esto para que muestre bien la fecha
+		return "Factura Nro: "+nroFactura +" Fecha: "+fecha.getTime() +" Paciente: "+this.paciente.getNombre() +" "+this.paciente.getApellido();   // Hay que cambiar esto para que muestre bien la fecha
 	 
 	}
 	
@@ -68,5 +71,20 @@ public class Factura {
 			System.out.println(prestaciones.toString());
 		}
 	
+	}
+
+	public ArrayList<Prestacion> getPrestaciones() {
+		return prestaciones;
+	}
+
+	public void setPrestaciones(ArrayList<Prestacion> prestaciones) {
+		this.prestaciones = prestaciones;
+	}
+
+	@Override
+	public int compareTo(Object o) {
+		
+		Factura factura = (Factura) o; 
+		return this.fecha.compareTo(factura.fecha);
 	}
 }
