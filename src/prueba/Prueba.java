@@ -58,13 +58,10 @@ public class Prueba {
         IMedico medico =null;
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirujia","Permanente","Magister");
-		} catch (NoExisteEspecialidadException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (NoExisteContratacionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} catch (NoExisteEspecialidadException | NoExisteContratacionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
         GregorianCalendar fecha1 = new GregorianCalendar(2020,1,1);
         GregorianCalendar fecha2 = new GregorianCalendar(2020,2,1);
         paciente.setFactura(new Factura(12,fecha1));

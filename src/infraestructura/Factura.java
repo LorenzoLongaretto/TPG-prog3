@@ -64,9 +64,9 @@ public class Factura {
 	}
 	
 	public void muestraFactura() {
-		for(int i=0;i<this.prestaciones.size();i++) {
-			System.out.println(this.prestaciones.get(i).toString());
-	}
+		for (Prestacion prestaciones : this.prestaciones) {
+			System.out.println(prestaciones.toString());
+		}
 	
 	}
 }

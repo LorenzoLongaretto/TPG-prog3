@@ -6,8 +6,6 @@ import modelo.IMedico;
 public abstract class Paciente extends Persona implements Comparable<Object>{
 private String rangoEtario;
 private int numeroHistoria,nroOrden;
-private Factura factura;
-
 
 	//Constructores
 	public Paciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String rangoEtario) {
@@ -15,6 +13,15 @@ private Factura factura;
 		// TODO Auto-generated constructor stub
 		this.rangoEtario=rangoEtario;
 	}
+	/*
+	coleccion
+
+	factura ord fecha
+
+	paciente nro hist o dni
+	medico matricula
+
+	 */
 	
 	//Metodos
 	public boolean ocuparSala() {
@@ -57,24 +64,8 @@ private Factura factura;
 			else
 				return 0;
 	}
-	public void asignarMedico(IMedico medico) {
-		this.factura.asignarMedico(medico);
-		medico.asignarPaciente(this,this.factura.getFecha());
-	}
-	public void asignarHabitacion(Habitacion habitacion) {
-		this.factura.asignarHabitacion(habitacion);
-	}
-	
-	public Factura getFactura() {
-		return factura;
-	}
-	
 
-	public void setFactura(Factura factura) {
-		this.factura = factura;
-	}
 
-	
 	@Override
 	public String toString() {
 		return " nombre=" + nombre+", apellido=" + apellido+" nro historia " + numeroHistoria +" es " + rangoEtario+" nro de orden "+nroOrden;

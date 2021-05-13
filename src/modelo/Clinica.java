@@ -3,10 +3,12 @@ package modelo;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.TreeSet;
+
 import personas.Paciente;
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
-
+import personas.PacienteAtendido;
 
 
 public class Clinica {
@@ -17,6 +19,7 @@ public class Clinica {
 	private ArrayList<Paciente> patio= new ArrayList<Paciente>();
 	private Queue<Paciente> listaEspera= new LinkedList<Paciente>();
 	private Queue<Paciente> listaAtencion= new LinkedList<Paciente>();
+	private TreeSet<Factura> facturas= new TreeSet<>();
 	private BDdePacientes pacientes = new BDdePacientes();
 	private int nroOrden=0;
 	
@@ -35,7 +38,7 @@ public class Clinica {
 	public void ingresoPaciente(Paciente paciente) {
 		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega 
 		
-	       if(this.pacientes.buscarPaciente(paciente)!=true)
+	       if(!this.pacientes.buscarPaciente(paciente)) //this.pacientes.buscarPaciente(paciente)!=true
 	    	   this.pacientes.altaDePaciente(paciente);	
 	       this.derivarPaciente(paciente);
 	}
@@ -46,7 +49,7 @@ public class Clinica {
 		this.listaEspera.add(paciente);
 		
 		if(this.salaEspera.isOcupada()) {
-			if(this.salaEspera.paciente.prioridad(paciente)==false) {//si cumple, entonces entra
+			if(!this.salaEspera.paciente.prioridad(paciente)) {//si cumple, entonces entra this.salaEspera.paciente.prioridad(paciente)==false
 				this.patio.add(this.salaEspera.paciente);
 				this.salaEspera.ocupaSalaDeEspera(paciente);
 			}
