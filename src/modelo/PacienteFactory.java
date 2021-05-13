@@ -8,7 +8,7 @@ import personas.Mayor;
 
 public class PacienteFactory {
 
-	public static Paciente getPaciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String rangoEtario) /*throws NoExisteRangoEtarioException*/ {
+	public static Paciente getPaciente(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,String rangoEtario) throws NoExisteRangoEtarioException /*throws NoExisteRangoEtarioException*/ {
 		Paciente encapsulado=null;
 		
 		if(rangoEtario.equals("Nino")) 
@@ -19,8 +19,8 @@ public class PacienteFactory {
 				else
 					if(rangoEtario.equals("Mayor"))
 							encapsulado = new Mayor(dNI,nombre,apellido,ciudad,telefono,domicilio);
-		               /*  else
-		                    throw new NoExisteRangoEtarioException("No existe rango Etario",rangoEtario);	*/	               
+		                else
+		                    throw new NoExisteRangoEtarioException("No existe rango Etario",rangoEtario);	               
 		
 		
 		return encapsulado;
