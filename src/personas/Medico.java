@@ -1,8 +1,6 @@
 package personas;
 
-import java.util.GregorianCalendar;
-import java.util.Iterator;
-import java.util.TreeSet;
+
 
 import modelo.IMedico;
 

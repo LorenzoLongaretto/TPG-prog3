@@ -1,5 +1,6 @@
 package infraestructura;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
@@ -35,8 +36,7 @@ public class Factura implements Comparable{
 				
 		}
 		if(existe==0) {
-			Prestacion nueva = new Prestacion(medico.getNombre()+" "+medico.getMatricula(),medico.getHonorario()*1.2,1);
-			
+			Prestacion nueva = new Prestacion(medico.getNombre()+" "+medico.getMatricula(),medico.getHonorario()*1.2,1);  // Ponemos nombre y matricula por si hay dos medicos con el mismo nombre
 			nueva.setSubtotal(nueva.getCantidad()*nueva.getValor());
 			this.prestaciones.add(nueva);
 			
@@ -59,10 +59,12 @@ public class Factura implements Comparable{
 	public GregorianCalendar getFecha() {
 		return fecha;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Factura Nro: "+nroFactura +" Fecha: "+fecha.getTime() +" Paciente: "+this.paciente.getNombre() +" "+this.paciente.getApellido();   // Hay que cambiar esto para que muestre bien la fecha
+		SimpleDateFormat sdf =
+				new SimpleDateFormat("EEEEE dd 'de' MMMMMMMMM 'de' yyyy");
+		return "--Factura Nro: "+nroFactura +"--Fecha: "+sdf.format(fecha.getTime()) +"--Paciente: "+this.paciente.getNombre() +" "+this.paciente.getApellido();   // Hay que cambiar esto para que muestre bien la fecha
 	 
 	}
 	
@@ -85,6 +87,14 @@ public class Factura implements Comparable{
 	public int compareTo(Object o) {
 		
 		Factura factura = (Factura) o; 
-		return this.fecha.compareTo(factura.fecha);
+		int respuesta;
+		
+		if(this.fecha.compareTo(factura.fecha)!=0)
+			respuesta = this.fecha.compareTo(factura.fecha);
+		else {
+			respuesta = this.paciente.getNumeroHistoria() - factura.paciente.getNumeroHistoria();
+		}
+			
+		return respuesta;
 	}
 }

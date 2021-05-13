@@ -1,7 +1,5 @@
 package prueba;
-import personas.Persona;
 import personas.Paciente;
-import personas.Medico;
 import modelo.Clinica;
 import modelo.IMedico;
 import modelo.MedicoFactory;
@@ -20,12 +18,13 @@ public class Prueba {
 		
 		
    
-		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
+		
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
+		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
 		try {
-			paciente = PacienteFactory.getPaciente("111", "fa", "lop", "fds","fsdf", "","Nino");
-			paciente2  = PacienteFactory.getPaciente("222", "lop", "fa", "fds","fsdf", "fsdfs", "Mayor");
-		     paciente3  = PacienteFactory.getPaciente("333", "32", "lop", "fds","fsdf", "fsdfs","Nino");
+			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose", "Java", "MDP","2235673421", "San Juan 2140","Nino");
+			paciente2 = PacienteFactory.getPaciente("41822123", "Guillermo", "Lazurri", "MDP","2235673421", "San Juan 2140","Mayor");
+		    paciente3  = PacienteFactory.getPaciente("333", "32", "lop", "fds","fsdf", "fsdfs","Nino");
 		    paciente4  = PacienteFactory.getPaciente("444", "negro", "blanco", "fds","fsdf", "fsdfs","Joven");
 		       
 		} catch (NoExisteRangoEtarioException e1) {
@@ -50,26 +49,25 @@ public class Prueba {
         System.out.println("------------------------");
         Clinica.getInstance().derivarPaciente(paciente);
         Clinica.getInstance().atenderPaciente(paciente);
-       
-        //System.out.println("esta en la sala de espera "+ Clinica.getInstance().getSalaEspera().getPaciente());
-        //System.out.println("LOS PACIENTES QUE ESTAN EN EL PATIO   "+Clinica.getInstance().getPatio());
-        Clinica.getInstance().atenderPaciente(paciente);
         
-        // Prueba Factura
-       
-        //System.out.println(paciente);
+        Clinica.getInstance().derivarPaciente(paciente2);
+        Clinica.getInstance().atenderPaciente(paciente2);
+        
         Factura factura = new Factura(1,fecha1,paciente);
         factura.asignarMedico(medico);
         System.out.println("FACTURA:");
         factura.asignarMedico(medico);
         factura.asignarHabitacion(new HabitacionCompartida(32,21,200));
       
-       
-        Clinica.getInstance().egreso(paciente,factura);
-        System.out.println("REPORTE:");
-        Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);
+        Factura factura2 = new Factura(2,fecha1,paciente2);
+        factura2.asignarMedico(medico);
         
-       
+        Clinica.getInstance().egreso(paciente,factura);
+        Clinica.getInstance().egreso(paciente2,factura2);
+        
+        System.out.println("--------------------");
+        System.out.println("REPORTE:");
+        Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);    
 	}
  
 }

@@ -93,17 +93,12 @@ public class Clinica {
 			Factura actual = it.next(); // nodo de la lista
 		    Iterator<Prestacion> prestaciones = actual.getPrestaciones().iterator();  // sublista
 		    while(prestaciones.hasNext()) {
-		    	Prestacion prestacionActual = prestaciones.next(); 
+		    	Prestacion prestacionActual = prestaciones.next(); // nodo de sublista
 		    	if(actual.getFecha().compareTo(fecha1)>=0 && actual.getFecha().compareTo(fecha2)<=0 && prestacionActual.getPrestacion().equals(medico.getNombre()+" "+medico.getMatricula())) {
-		    		System.out.println("Nombre Paciente: "+actual.getPaciente().getNombre()+" "+ actual.getPaciente().getApellido()+" -Cantidad: "+prestacionActual.getCantidad()+" -Subtotal: "+prestacionActual.getSubtotal());
-		    	}
-		    		
-		    }
-			
-				
-				
-		   }
-		
+		    		System.out.println("Paciente: "+actual.getPaciente().getNombre()+" "+ actual.getPaciente().getApellido()+" -Cantidad: "+prestacionActual.getCantidad()+" -Subtotal: "+prestacionActual.getSubtotal());
+		    	}	
+		    }			
+		   }		
 	}
 	public SalaDeEspera getSalaEspera() {
 		return salaEspera;
