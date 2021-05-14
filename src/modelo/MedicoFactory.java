@@ -1,14 +1,15 @@
 package modelo;
 
-
 import personas.MedicoCirujano;
 import personas.MedicoClinico;
 import personas.MedicoPediatra;
 import excepciones.NoExisteContratacionException;
 import excepciones.NoExisteEspecialidadException;
+import excepciones.NoExistePosgradoException;
+
 public class MedicoFactory {
 	
-	public static IMedico getMedico(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio, String matricula, String especialidad, String contratacion,String posgrado) throws NoExisteEspecialidadException, NoExisteContratacionException{
+	public static IMedico getMedico(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio, String matricula, String especialidad, String contratacion,String posgrado) throws NoExisteEspecialidadException, NoExisteContratacionException, NoExistePosgradoException {
 		IMedico encapsulado = null;
 		IMedico respuesta = null;
 		
@@ -22,7 +23,7 @@ public class MedicoFactory {
 					encapsulado = new MedicoClinico(dNI,nombre,apellido,ciudad,telefono,domicilio,matricula);
 		        else
 		            throw new NoExisteEspecialidadException("No existe especialidad",especialidad);
-		
+
 		
 		if (encapsulado != null)
 		{
@@ -38,8 +39,8 @@ public class MedicoFactory {
 			else
 				if(posgrado.equals("Doctor"))
 					respuesta = new DecoratorDoctorado(respuesta);
-				//else
-					//throw NoExistePosgradoException  ver si va o no
+				else
+					throw new NoExistePosgradoException("No Existe Posgrado ",posgrado);
 			
 			
 		}
