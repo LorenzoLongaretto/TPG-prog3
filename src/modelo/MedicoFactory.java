@@ -40,7 +40,7 @@ public class MedicoFactory {
 				respuesta = new DecoratorPermanente(encapsulado);
 			else
 				if(contratacion.equals("Residente") || contratacion.equals("Temporario"))
-					respuesta = new DecoratorPermanente(encapsulado);
+					respuesta = new DecoratorTemporario(encapsulado);
 				else
 				    throw new NoExisteContratacionException("No existe Contratacion ",contratacion);
 		}
