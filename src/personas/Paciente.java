@@ -3,6 +3,10 @@ import infraestructura.Factura;
 import infraestructura.Habitacion;
 import modelo.IMedico;
 
+/**
+ * @author Lisandro DAlu
+ *Clase que corresponde a los pacientes atendidos dentro de una Clinica.
+ */
 public abstract class Paciente extends Persona implements Comparable<Object>{
 private String rangoEtario;
 private int numeroHistoria,nroOrden;
@@ -30,6 +34,12 @@ private int numeroHistoria,nroOrden;
 	public String getRangoEtario() {
 		return rangoEtario;
 	}
+	/**Devuelve la prioridad que tiene este paciente con respecto al que puede haber dentro de la sala de espera.
+	 * <b> Pre: El paciente debe ser distinto de null.</b>
+	 * <b> Post: Se devuelve la prioridad del paciente con respecto al ingreso a la sala de espera.</b>
+	 * @param paciente: Parametro de tipo paciente.
+	 * @return Devuelve true o false dependiendo la prioridad de los pacientes que se estan comparando para entrar a la sala de espera.
+	 */
 	public abstract boolean prioridad(Paciente paciente);
 	public abstract boolean prioridadNino();	
 	public abstract boolean prioridadJoven();	

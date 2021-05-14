@@ -60,8 +60,12 @@ public class Clinica {
 	       this.derivarPaciente(paciente);
 	}
 	
-	/**
-	 * @param paciente
+	/**Deriva al paciente a el patio o sala de espera de acuerdo a su prioridad
+	 * <b> Pre: El parametro paciente debe ser distinto de null.</b>
+	 * <b> Post: Se agrega al paciente al patio o sala de espera segun corresponda.</b>
+	 * 
+	 * 
+	 * @param paciente: Parametro de tipo paciente, que es derivado.
 	 */
 	public void derivarPaciente(Paciente paciente) {
 		nroOrden++;
@@ -80,8 +84,10 @@ public class Clinica {
 			this.salaEspera.ocupaSalaDeEspera(paciente);	
 	}
 	
-	/**
-	 * @param paciente
+	/**Se quita a los pacientes del patio o sala de espera, y los introduce dentro de la lista de atencion.
+	 * <b> Pre: El parametro paciente debe ser distinto de null.</b>
+	 * <b> Post: Se agrega al paciente a la lista de atencion</b>
+	 * @param paciente: Parametro de tipo paciente, que es atendido.
 	 */
 	public void atenderPaciente(Paciente paciente){
 		
@@ -95,9 +101,11 @@ public class Clinica {
         this.listaAtencion.add(paciente);                
     }
 	
-	/**
-	 * @param paciente
-	 * @param factura
+	/**Se toma al primer paciente de la lista de atencion, y se le confecciona la factura correspondiente. Luego , esa factura es mostrada.
+	 * <b> Pre: El parametro paciente y factura debe ser distinto de null.</b>
+	 * <b> Post: Se elimina al paciente de la lista de atencion y se muestra su factura.</b>
+	 * @param paciente: Parametro de tipo paciente.
+	 * @param factura: Parametro de tipo factura.
 	 */
 	public void egreso(Paciente paciente,Factura factura) {
 		if(this.listaAtencion.contains(paciente)) {
@@ -109,10 +117,12 @@ public class Clinica {
 		}
 	}
 	
-	/**
-	 * @param medico
-	 * @param fecha1
-	 * @param fecha2
+	/**Se realiza un reporte de los pacientes atendidos, dentro de un periodo de fechas determinado.
+	 * <b> Pre: El parametro medico y fecha debe ser distinto de null.</b>
+	 * <b> Post:Se muestra el reporte de pacientes del medico introducido.</b>
+	 * @param medico:Parametro de tipo medico.
+	 * @param fecha1: Parametro de tipo GregorianCalendar.
+	 * @param fecha2  Parametro de tipo GregorianCalendar.
 	 */
 	public void reporteMedico(IMedico medico, GregorianCalendar fecha1,GregorianCalendar fecha2) {
 		 double importeTotal = 0;

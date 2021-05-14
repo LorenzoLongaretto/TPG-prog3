@@ -8,6 +8,12 @@ import personas.Paciente;
 
 import modelo.IMedico;
 
+/**
+ * @author Lisandro DAlu
+ * <br>
+ * Clase que corresponde a una factura.
+ *
+ */
 public class Factura implements Comparable{
 	
 	private int nroFactura;
@@ -23,6 +29,11 @@ public class Factura implements Comparable{
 		this.fecha = fecha;
 	}
 
+	/**Se le asigna una prestacion medica a la factura.
+	 * <b> Pre: El medico debe ser distinto de null.</b>
+	 * <b> Post: Se le agrega una prestacion medica a la factura, en base a los honorarios del medico.</b>
+	 * @param medico: Parametro de tipo medico.
+	 */
 	public void asignarMedico(IMedico medico) {
 		Iterator<Prestacion> it = this.prestaciones.iterator();
 		int existe=0;
@@ -44,7 +55,12 @@ public class Factura implements Comparable{
 		this.importeTotal+=medico.getHonorario()*1.2;
 	}
 	 
-	 public void asignarHabitacion(Habitacion habitacion) {
+	 /**Se le asigna una prestacion de tipo internacion a la factura.
+	  * <b> Pre:La habitacion de ser distinto de null.</b>
+	 * <b> Post: Se le agrega una prestacion de internacion a la factura, en base a los costos de la habitacion.</b>
+	 * @param habitacion: Parametro de tipo habitacion.
+	 */
+	public void asignarHabitacion(Habitacion habitacion) {
 		 Prestacion nueva = new Prestacion(habitacion.toString(),habitacion.getCostoAsignacion(),habitacion.getCantDias());
 		 nueva.setSubtotal(habitacion.costoDeHabitacion(habitacion.getCantDias()));	
 		 this.prestaciones.add(nueva);
