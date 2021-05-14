@@ -14,6 +14,12 @@ import infraestructura.Prestacion;
 
 
 
+/**
+ * @author Lisandro DAlu
+ *<br>
+ * Clase que representa una clinica. Contiene la totalidad de los pacientes. Tambien contine un patio, una sala de espera y una lista de facturas correspondientes a los pacientes.
+ *
+ */
 public class Clinica {
 
 	//Atributos
@@ -28,6 +34,9 @@ public class Clinica {
 	
 	
 	//Constructores
+	/**
+	 * 
+	 */
 	private Clinica() {}
 	public static Clinica getInstance() {
 		if(Clinica.instance==null) {
@@ -38,6 +47,11 @@ public class Clinica {
 	
 	//Metodos
 	
+	/**Da de alta a un paciente si no esta dentro de la Base de Datos de la clinica, luego lo deriva al patio o sala de espera de acuerdo a su prioridad.<br>
+	 * <b> Pre: El parametro paciente debe ser distinto de null</b>
+	 * <b> Post : Se  ingresa el paciente a la clinica. </b>
+	 * @param paciente : Parametro de tipo paciente que ingresa a la clinica.
+	 */
 	public void ingresoPaciente(Paciente paciente) {
 		// busca en la lista pacientes y chequea si ya existe para ver si lo agrega 
 		
@@ -46,6 +60,9 @@ public class Clinica {
 	       this.derivarPaciente(paciente);
 	}
 	
+	/**
+	 * @param paciente
+	 */
 	public void derivarPaciente(Paciente paciente) {
 		nroOrden++;
 		paciente.setNroOrden(nroOrden);
@@ -63,6 +80,9 @@ public class Clinica {
 			this.salaEspera.ocupaSalaDeEspera(paciente);	
 	}
 	
+	/**
+	 * @param paciente
+	 */
 	public void atenderPaciente(Paciente paciente){
 		
 		this.listaEspera.remove(paciente);
@@ -75,6 +95,10 @@ public class Clinica {
         this.listaAtencion.add(paciente);                
     }
 	
+	/**
+	 * @param paciente
+	 * @param factura
+	 */
 	public void egreso(Paciente paciente,Factura factura) {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
@@ -85,6 +109,11 @@ public class Clinica {
 		}
 	}
 	
+	/**
+	 * @param medico
+	 * @param fecha1
+	 * @param fecha2
+	 */
 	public void reporteMedico(IMedico medico, GregorianCalendar fecha1,GregorianCalendar fecha2) {
 		 double importeTotal = 0;
           Iterator<Factura> it = this.facturas.iterator();
