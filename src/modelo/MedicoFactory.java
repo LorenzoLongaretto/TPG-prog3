@@ -27,13 +27,7 @@ public class MedicoFactory {
 		
 		if (encapsulado != null)
 		{
-			if (contratacion.equals("Permanente"))
-				respuesta = new DecoratorPermanente(encapsulado);
-			else
-				if(contratacion.equals("Residente") || contratacion.equals("Temporario"))
-					respuesta = new DecoratorPermanente(encapsulado);
-				else
-				    throw new NoExisteContratacionException("No existe Contratacion ",contratacion);
+			
 			if (posgrado.equals("Magister"))
 				respuesta = new DecoratorMagister(respuesta);
 			else
@@ -42,7 +36,13 @@ public class MedicoFactory {
 				else
 					throw new NoExistePosgradoException("No Existe Posgrado ",posgrado);
 			
-			
+			if (contratacion.equals("Permanente"))
+				respuesta = new DecoratorPermanente(encapsulado);
+			else
+				if(contratacion.equals("Residente") || contratacion.equals("Temporario"))
+					respuesta = new DecoratorPermanente(encapsulado);
+				else
+				    throw new NoExisteContratacionException("No existe Contratacion ",contratacion);
 		}
 		return respuesta;
 	}

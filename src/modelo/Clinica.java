@@ -86,7 +86,7 @@ public class Clinica {
 	}
 	
 	public void reporteMedico(IMedico medico, GregorianCalendar fecha1,GregorianCalendar fecha2) {
-		
+		 double importeTotal = 0;
           Iterator<Factura> it = this.facturas.iterator();
 		  
 		   while(it.hasNext()) {
@@ -96,9 +96,11 @@ public class Clinica {
 		    	Prestacion prestacionActual = prestaciones.next(); // nodo de sublista
 		    	if(actual.getFecha().compareTo(fecha1)>=0 && actual.getFecha().compareTo(fecha2)<=0 && prestacionActual.getPrestacion().equals(medico.getNombre()+" "+medico.getMatricula())) {
 		    		System.out.println("Paciente: "+actual.getPaciente().getNombre()+" "+ actual.getPaciente().getApellido()+" -Cantidad: "+prestacionActual.getCantidad()+" -Subtotal: "+prestacionActual.getSubtotal());
+		    		importeTotal+=prestacionActual.getSubtotal();
 		    	}	
 		    }			
-		   }		
+		   }
+		   System.out.println("Importe Total: "+importeTotal);
 	}
 	public SalaDeEspera getSalaEspera() {
 		return salaEspera;

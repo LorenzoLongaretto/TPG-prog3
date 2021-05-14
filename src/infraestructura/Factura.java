@@ -13,7 +13,7 @@ public class Factura implements Comparable{
 	private int nroFactura;
 	private GregorianCalendar fecha;
 	private Paciente paciente;
-	private double importeTotal;
+	private double importeTotal=0;
 	private ArrayList <Prestacion> prestaciones = new ArrayList <Prestacion>();
 	
 	
@@ -40,13 +40,15 @@ public class Factura implements Comparable{
 			nueva.setSubtotal(nueva.getCantidad()*nueva.getValor());
 			this.prestaciones.add(nueva);
 			
-		}		 
+		}
+		this.importeTotal+=medico.getHonorario()*1.2;
 	}
 	 
 	 public void asignarHabitacion(Habitacion habitacion) {
 		 Prestacion nueva = new Prestacion(habitacion.toString(),habitacion.getCostoAsignacion(),habitacion.getCantDias());
 		 nueva.setSubtotal(habitacion.costoDeHabitacion(habitacion.getCantDias()));	
 		 this.prestaciones.add(nueva);
+		 this.importeTotal+=habitacion.costoDeHabitacion(habitacion.getCantDias());
 			
 		}
 
@@ -69,9 +71,12 @@ public class Factura implements Comparable{
 	}
 	
 	public void muestraFactura() {
-		for (Prestacion prestaciones : this.prestaciones) {
-			System.out.println(prestaciones.toString());
-		}
+		
+		for (Prestacion prestaciones : this.prestaciones) 
+		       System.out.println(prestaciones.toString());
+		
+		System.out.println("Importe Total: "+this.importeTotal);
+		
 	
 	}
 

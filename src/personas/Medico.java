@@ -6,7 +6,7 @@ import modelo.IMedico;
 
 public class Medico extends Persona implements IMedico{
 private String matricula,especialidad;	
-private double honorarioBasico=1000;
+private final double honorarioBasico=1000;
 
 	//Constructores
 	public Medico(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio, String matricula, String especialidad) {
