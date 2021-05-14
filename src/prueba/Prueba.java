@@ -7,8 +7,7 @@ import modelo.PacienteFactory;
 
 import java.util.GregorianCalendar;
 
-import excepciones.NoExisteContratacionException;
-import excepciones.NoExisteEspecialidadException;
+import excepciones.ImposibleCrearMedicoException;
 import excepciones.NoExisteRangoEtarioException;
 import infraestructura.Factura;
 import infraestructura.HabitacionCompartida;
@@ -27,8 +26,8 @@ public class Prueba {
 		    paciente3  = PacienteFactory.getPaciente("333", "32", "lop", "fds","fsdf", "fsdfs","Nino");
 		    paciente4  = PacienteFactory.getPaciente("444", "negro", "blanco", "fds","fsdf", "fsdfs","Joven");
 		       
-		} catch (NoExisteRangoEtarioException e1) {
-			System.out.println(e1.getMessage());
+		} catch (NoExisteRangoEtarioException e) {
+			System.out.println(e.getMessage()+e.getRango());
 		}
             
         Clinica.getInstance().ingresoPaciente(paciente); //busca o genera la historia
@@ -40,8 +39,8 @@ public class Prueba {
         IMedico medico =null;
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirujia","Permanente","Magister");
-		} catch (NoExisteEspecialidadException | NoExisteContratacionException e) {
-            System.out.println(e.getMessage());
+		} catch (ImposibleCrearMedicoException e) {
+            System.out.println(e.getMessage()+e.getDato());
         }
         GregorianCalendar fecha1 = new GregorianCalendar(2020,1,1);
         GregorianCalendar fecha2 = new GregorianCalendar(2020,2,1);

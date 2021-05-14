@@ -1,14 +1,9 @@
 package excepciones;
 
-public class NoExisteContratacionException extends Exception{
-private String contratacion;
-	
-   public NoExisteContratacionException(String msj,String contratacion) {
-		this.contratacion=contratacion;
-	}
+public class NoExisteContratacionException extends ImposibleCrearMedicoException{
 
-	public String getContratacion() {
-		return contratacion;
+	public NoExisteContratacionException(String msj, String dato) {
+		super(msj, dato);
 	}
 
    

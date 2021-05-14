@@ -1,14 +1,11 @@
 package excepciones;
 
-public class NoExistePosgradoException extends Exception{
+public class NoExistePosgradoException extends ImposibleCrearMedicoException{
 
-    private String posgrado;
+	public NoExistePosgradoException(String msj, String dato) {
+		super(msj, dato);
+		
+	}
 
-    public NoExistePosgradoException(String msj,String posgrado) {
-        super(msj);
-        this.posgrado=posgrado;
-    }
-    public String getPosgrado() {
-        return posgrado;
-    }
+
 }

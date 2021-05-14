@@ -1,15 +1,12 @@
 package excepciones;
 
-public class NoExisteEspecialidadException extends Exception{
+public class NoExisteEspecialidadException extends ImposibleCrearMedicoException{
 
-	private String especialidad;
+	public NoExisteEspecialidadException(String msj, String dato) {
+		super(msj, dato);
+		
+	}
+
 	
-	public NoExisteEspecialidadException(String msj,String especialidad) {
-		super(msj);
-		this.especialidad=especialidad;
-	}
-	public String getEspecialidad() {
-		return especialidad;
-	}
 
 }
