@@ -15,7 +15,7 @@ import infraestructura.Prestacion;
 
 
 /**
- * 
+ * @author Lisandro DAlu
  *<br>
  * Clase que representa una clinica. Contiene la totalidad de los pacientes. Tambien contine un patio, una sala de espera y una lista de facturas correspondientes a los pacientes.
  *
@@ -73,7 +73,6 @@ public class Clinica {
 	
 	/**Da de alta a un paciente si no esta dentro de la Base de Datos de la clinica, luego lo deriva al patio o sala de espera de acuerdo a su prioridad.<br>
 	 * <b> Pre: El parametro paciente debe ser distinto de null</b>
-	 * <br>
 	 * <b> Post : Se  ingresa el paciente a la clinica. </b>
 	 * @param paciente : Parametro de tipo paciente que ingresa a la clinica.
 	 */
@@ -87,7 +86,6 @@ public class Clinica {
 	
 	/**Deriva al paciente a el patio o sala de espera de acuerdo a su prioridad
 	 * <b> Pre: El parametro paciente debe ser distinto de null.</b>
-	 *  <br>
 	 * <b> Post: Se agrega al paciente al patio o sala de espera segun corresponda.</b>
 	 * 
 	 * 
@@ -112,7 +110,6 @@ public class Clinica {
 	
 	/**Se quita a los pacientes del patio o sala de espera, y los introduce dentro de la lista de atencion.
 	 * <b> Pre: El parametro paciente debe ser distinto de null.</b>
-	 *  <br>
 	 * <b> Post: Se agrega al paciente a la lista de atencion</b>
 	 * @param paciente: Parametro de tipo paciente, que es atendido.
 	 */
@@ -130,7 +127,6 @@ public class Clinica {
 	
 	/**Se toma al primer paciente de la lista de atencion, y se le confecciona la factura correspondiente. Luego , esa factura es mostrada.
 	 * <b> Pre: El parametro paciente y factura debe ser distinto de null.</b>
-	 *  <br>
 	 * <b> Post: Se elimina al paciente de la lista de atencion y se muestra su factura.</b>
 	 * @param paciente: Parametro de tipo paciente.
 	 * @param factura: Parametro de tipo factura.
@@ -147,7 +143,6 @@ public class Clinica {
 	
 	/**Se realiza un reporte de los pacientes atendidos, dentro de un periodo de fechas determinado.
 	 * <b> Pre: El parametro medico y fecha debe ser distinto de null.</b>
-	 *  <br>
 	 * <b> Post:Se muestra el reporte de pacientes del medico introducido.</b>
 	 * @param medico:Parametro de tipo medico.
 	 * @param fecha1: Parametro de tipo GregorianCalendar.

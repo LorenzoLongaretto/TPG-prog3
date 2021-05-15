@@ -9,7 +9,7 @@ import personas.Paciente;
 import modelo.IMedico;
 
 /**
- * 
+ * @author Lisandro DAlu
  * <br>
  * Clase que corresponde a una factura.
  *
@@ -39,7 +39,6 @@ public class Factura implements Comparable{
 
 	/**Se le asigna una prestacion medica a la factura.
 	 * <b> Pre: El medico debe ser distinto de null.</b>
-	 * <br>
 	 * <b> Post: Se le agrega una prestacion medica a la factura, en base a los honorarios del medico.</b>
 	 * @param medico: Parametro de tipo medico.
 	 */
@@ -66,7 +65,6 @@ public class Factura implements Comparable{
 	 
 	 /**Se le asigna una prestacion de tipo internacion a la factura.
 	  * <b> Pre:La habitacion de ser distinto de null.</b>
-	  * <br>
 	 * <b> Post: Se le agrega una prestacion de internacion a la factura, en base a los costos de la habitacion.</b>
 	 * @param habitacion: Parametro de tipo habitacion.
 	 */

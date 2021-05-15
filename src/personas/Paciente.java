@@ -36,7 +36,6 @@ private int numeroHistoria,nroOrden;
 	}
 	/**Devuelve la prioridad que tiene este paciente con respecto al que puede haber dentro de la sala de espera.
 	 * <b> Pre: El paciente debe ser distinto de null.</b>
-	 *  <br>
 	 * <b> Post: Se devuelve la prioridad del paciente con respecto al ingreso a la sala de espera.</b>
 	 * @param paciente: Parametro de tipo paciente.
 	 * @return Devuelve true o false dependiendo la prioridad de los pacientes que se estan comparando para entrar a la sala de espera.
