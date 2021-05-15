@@ -1,2 +1,2 @@
-/*module tpg {
-}*/
+module tpg {
+}
