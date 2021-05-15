@@ -18,9 +18,17 @@ public class Factura implements Comparable{
 	
 	private int nroFactura;
 	private GregorianCalendar fecha;
-	private Paciente paciente;
+
+    /**
+     * @aggregation composite
+     */
+    private Paciente paciente;
 	private double importeTotal=0;
-	private ArrayList <Prestacion> prestaciones = new ArrayList <Prestacion>();
+
+    /**
+     * @aggregation composite
+     */
+    private ArrayList <Prestacion> prestaciones = new ArrayList <Prestacion>();
 	
 	
 	 public Factura(int nroFactura, GregorianCalendar fecha,Paciente paciente) {

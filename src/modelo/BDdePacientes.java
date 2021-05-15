@@ -6,7 +6,11 @@ import personas.Paciente;
 
 public class BDdePacientes {	
 	private int generaNumHist=0;
-	TreeSet<Paciente> pacientesBD= new TreeSet<>();
+
+    /**
+     * @aggregation shared
+     */
+    TreeSet<Paciente> pacientesBD= new TreeSet<>();
 
 	public BDdePacientes() {
 

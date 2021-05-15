@@ -6,7 +6,11 @@ public class SalaDeEspera {
 
 	//Atributos
 	public boolean ocupada;
-	public Paciente paciente;
+
+    /**
+     * @aggregation shared
+     */
+    public Paciente paciente;
 	
 	//Constructores
 	public SalaDeEspera() {

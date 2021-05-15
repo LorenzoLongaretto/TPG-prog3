@@ -24,12 +24,36 @@ public class Clinica {
 
 	//Atributos
 	private static Clinica instance = null;  // aplico patron singleton
-	private SalaDeEspera salaEspera = new SalaDeEspera();       
-	private ArrayList<Paciente> patio= new ArrayList<Paciente>();
-	private Queue<Paciente> listaEspera= new LinkedList<Paciente>();
-	private Queue<Paciente> listaAtencion= new LinkedList<Paciente>();
-	private TreeSet<Factura> facturas= new TreeSet<>();
-	private BDdePacientes pacientes = new BDdePacientes();
+
+    /**
+     * @aggregation composite
+     */
+    private SalaDeEspera salaEspera = new SalaDeEspera();
+
+    /**
+     * @aggregation composite
+     */
+    private ArrayList<Paciente> patio= new ArrayList<Paciente>();
+
+    /**
+     * @aggregation composite
+     */
+    private Queue<Paciente> listaEspera= new LinkedList<Paciente>();
+
+    /**
+     * @aggregation composite
+     */
+    private Queue<Paciente> listaAtencion= new LinkedList<Paciente>();
+
+    /**
+     * @aggregation composite
+     */
+    private TreeSet<Factura> facturas= new TreeSet<>();
+
+    /**
+     * @aggregation composite
+     */
+    private BDdePacientes pacientes = new BDdePacientes();
 	private int nroOrden=0;
 	
 	

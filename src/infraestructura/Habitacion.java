@@ -7,7 +7,11 @@ public abstract class Habitacion {
 	//Atributos
 	private int nroHabitacion, cantDias;//VERIFICAR nroHabitacion
 	private boolean ocupada;
-	private Paciente paciente;
+
+    /**
+     * @aggregation shared
+     */
+    private Paciente paciente;
 	private double costoAsignacion;//El de cada habitacion particular
 
 	
