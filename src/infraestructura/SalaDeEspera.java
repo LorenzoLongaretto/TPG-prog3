@@ -5,12 +5,8 @@ import personas.Paciente;
 public class SalaDeEspera {
 
 	//Atributos
-	public boolean ocupada;
-
-    /**
-     * @aggregation shared
-     */
-    public Paciente paciente;
+	private boolean ocupada;
+    private Paciente paciente;
 	
 	//Constructores
 	public SalaDeEspera() {

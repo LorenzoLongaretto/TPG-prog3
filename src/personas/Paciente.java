@@ -4,7 +4,7 @@ import infraestructura.Habitacion;
 import modelo.IMedico;
 
 /**
- * @author Lisandro DAlu
+ * 
  *Clase que corresponde a los pacientes atendidos dentro de una Clinica.
  */
 public abstract class Paciente extends Persona implements Comparable<Object>{

@@ -15,7 +15,7 @@ import infraestructura.Prestacion;
 
 
 /**
- * @author Lisandro DAlu
+ * 
  *<br>
  * Clase que representa una clinica. Contiene la totalidad de los pacientes. Tambien contine un patio, una sala de espera y una lista de facturas correspondientes a los pacientes.
  *
@@ -97,8 +97,8 @@ public class Clinica {
 		this.listaEspera.add(paciente);
 		
 		if(this.salaEspera.isOcupada()) {
-			if(!this.salaEspera.paciente.prioridad(paciente)) {//si cumple, entonces entra this.salaEspera.paciente.prioridad(paciente)==false
-				this.patio.add(this.salaEspera.paciente);
+			if(!this.salaEspera.getPaciente().prioridad(paciente)) {//si cumple, entonces entra this.salaEspera.paciente.prioridad(paciente)==false
+				this.patio.add(this.salaEspera.getPaciente());
 				this.salaEspera.ocupaSalaDeEspera(paciente);
 			}
 			else
@@ -142,7 +142,7 @@ public class Clinica {
 	}
 	
 	/**Se realiza un reporte de los pacientes atendidos, dentro de un periodo de fechas determinado.
-	 * <b> Pre: El parametro medico y fecha debe ser distinto de null.</b>
+	 * <b> Pre: El parametro medico, fecha1 y fecha2 debe ser distinto de null.</b>
 	 * <b> Post:Se muestra el reporte de pacientes del medico introducido.</b>
 	 * @param medico:Parametro de tipo medico.
 	 * @param fecha1: Parametro de tipo GregorianCalendar.

@@ -9,7 +9,7 @@ import personas.Paciente;
 import modelo.IMedico;
 
 /**
- * @author Lisandro DAlu
+ *
  * <br>
  * Clase que corresponde a una factura.
  *

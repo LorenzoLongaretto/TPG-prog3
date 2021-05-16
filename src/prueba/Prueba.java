@@ -21,35 +21,37 @@ public class Prueba {
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
 		try {
-			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose", "Java", "MDP","2235673421", "San Juan 2140","Nino");
-			paciente2 = PacienteFactory.getPaciente("41822123", "Guillermo", "Lazurri", "MDP","2235673421", "San Juan 2140","Mayor");
-		    paciente3  = PacienteFactory.getPaciente("333", "32", "lop", "fds","fsdf", "fsdfs","Nino");
-		    paciente4  = PacienteFactory.getPaciente("444", "negro", "blanco", "fds","fsdf", "fsdfs","Joven");
+			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose   ", "Java", "MDP    ","2235673421", "San Juan 2140","Nino");
+			paciente2 = PacienteFactory.getPaciente("41822123", "Ximena		", "ConX", "MDP    ","2235673421", "San Juan 2140","Mayor");
+		    paciente3  = PacienteFactory.getPaciente("4444444", "Rigoberto", "Rodriguez", "Miramar","43256321", "Independencia 01","Joven");
 		       
 		} catch (NoExisteRangoEtarioException e) {
 			System.out.println(e.getMessage()+e.getRango());
 		}
             
-        Clinica.getInstance().ingresoPaciente(paciente); //busca o genera la historia
-        Clinica.getInstance().ingresoPaciente(paciente4);
-        Clinica.getInstance().ingresoPaciente(paciente2);
-        Clinica.getInstance().ingresoPaciente(paciente3);
        
         // Creacion de medicos
-        IMedico medico =null;
+        IMedico medico=null, medico2 =null,medico3=null;
         try {
-			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1234","Cirujia","Permanente","Magister");
+			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
+			 medico2 = MedicoFactory.getMedico("25980987","Luis","Montini","MDP","2234565","Independencia","2222","Clinica","Permanente","Doctor");
+			 medico3 = MedicoFactory.getMedico("2565657","Luis","Montini","MDP","2234565","Independencia","3333","Pediatria","Permanente","Magister");
 		} catch (ImposibleCrearMedicoException e) {
             System.out.println(e.getMessage()+e.getDato());
         }
+        
         GregorianCalendar fecha1 = new GregorianCalendar(2020,1,1);
         GregorianCalendar fecha2 = new GregorianCalendar(2020,2,1);
-        
+        //MODULO DE INGRESO
+        Clinica.getInstance().ingresoPaciente(paciente); //busca o genera la historia
+        Clinica.getInstance().ingresoPaciente(paciente2);
+        Clinica.getInstance().ingresoPaciente(paciente3);
+        System.out.println("Pacientes en espera");
+        System.out.println("El paciente en la sala de espera es: "+Clinica.getInstance().getSalaEspera().getPaciente());
+        System.out.println("Los pacientes en el patio son: "+Clinica.getInstance().getPatio());
+        //DERIVACION Y ATENCION
         System.out.println("------------------------");
-        Clinica.getInstance().derivarPaciente(paciente);
         Clinica.getInstance().atenderPaciente(paciente);
-        
-        Clinica.getInstance().derivarPaciente(paciente2);
         Clinica.getInstance().atenderPaciente(paciente2);
         
         Factura factura = new Factura(1,fecha1,paciente);
@@ -60,10 +62,10 @@ public class Prueba {
       
         Factura factura2 = new Factura(2,fecha1,paciente2);
         factura2.asignarMedico(medico);
-        
+        //MODULO DE EGRESO Y FACTURACION
         Clinica.getInstance().egreso(paciente,factura);
         Clinica.getInstance().egreso(paciente2,factura2);
-        
+        //REPORTE MEDICO
         System.out.println("--------------------");
         System.out.println("REPORTE:");
         Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);    
