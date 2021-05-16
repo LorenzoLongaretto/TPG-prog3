@@ -19,9 +19,9 @@ public class BDdePacientes {
 	public boolean buscarPaciente(Paciente paciente) {
 		Iterator<Paciente> it = this.pacientesBD.iterator();
 		boolean existe=false;
-		while(it.hasNext() && existe==false) {
+		while(it.hasNext() && !existe) {
 			Paciente pacienteActual = it.next();
-			if(pacienteActual.getDNI() == paciente.getDNI()) {//haces la busqueda por dni y si no encontras generas un nro de historia
+			if(pacienteActual.getDNI().equals(paciente.getDNI()) ) {//haces la busqueda por dni y si no encontras generas un nro de historia
 				existe=true;
 				paciente.setNumeroHistoria(pacienteActual.getNumeroHistoria());			
 			}
