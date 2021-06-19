@@ -8,7 +8,7 @@ public class HabitacionPrivada extends Habitacion {
 	//Constructores
 	public HabitacionPrivada(int nroHabitacion,int cantDias,double costoAsignacion) {
 		super(nroHabitacion,cantDias,costoAsignacion);
-		// TODO Auto-generated constructor stub
+		this.cantActual=0;
 	}
 
 	//Metodos

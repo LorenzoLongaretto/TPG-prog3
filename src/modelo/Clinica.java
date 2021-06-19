@@ -2,12 +2,14 @@ package modelo;
 
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.TreeSet;
 
 import personas.Paciente;
+import personas.Asociado;
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
 import infraestructura.Prestacion;
@@ -54,6 +56,7 @@ public class Clinica {
      * @aggregation composite
      */
     private BDdePacientes pacientes = new BDdePacientes();
+    private HashMap<Integer,Asociado> asociados = new HashMap<Integer,Asociado>();
 	private int nroOrden=0;
 	
 	
@@ -131,6 +134,8 @@ public class Clinica {
 	 * @param paciente: Parametro de tipo paciente.
 	 * @param factura: Parametro de tipo factura.
 	 */
+	
+	// Mostrar solo la ultima factura con fecha mas reciente
 	public void egreso(Paciente paciente,Factura factura) {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
@@ -139,6 +144,14 @@ public class Clinica {
 			factura.muestraFactura();
 			this.facturas.add(factura);
 		}
+	}
+	// Metodo que agrega el medico elegido por el paciente a la factura 
+	public void asignarMedico(Paciente paciente,String nombre){
+		
+	}
+	
+	public void asignarHabitacion(Paciente paciente) {
+		
 	}
 	
 	/**Se realiza un reporte de los pacientes atendidos, dentro de un periodo de fechas determinado.
@@ -165,6 +178,31 @@ public class Clinica {
 		   }
 		   System.out.println("Importe Total: "+importeTotal);
 	}
+	//dni, nombre y apellido, domicilio, teléfono.
+	public void altaAsociado(Paciente paciente) {
+		Asociado a=null;
+		a = asociados.get(paciente.getDNI());
+		if(a==null) {  // no existe el asociado
+			// Crear asociado 
+			// agregarlo al HashMap
+		}
+		//else
+		       //Lanzar Excepcion de que ya existe
+			
+		
+		
+	}
+	public void eliminarAsociado(int dNi) {
+		Asociado a=null;
+		a = asociados.get(dNi);
+		if(a!=null) {  // estaba en el HashMap
+			
+			
+			
+		}
+		// Lanzar Excepcion ya que no se encontraba en el HashMap
+	}
+	
 	public SalaDeEspera getSalaEspera() {
 		return salaEspera;
 	}

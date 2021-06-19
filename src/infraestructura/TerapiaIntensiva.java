@@ -8,6 +8,7 @@ public class TerapiaIntensiva extends Habitacion {
 	//Constructores
 	public TerapiaIntensiva(int nroHabitacion,int cantDias,double costoAsignacion) {
 		super(nroHabitacion, cantDias,costoAsignacion);
+		this.cantActual=0;
 	}
 
 	//Metodos

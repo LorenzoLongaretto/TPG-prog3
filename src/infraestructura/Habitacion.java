@@ -9,11 +9,12 @@ public abstract class Habitacion {
      * @aggregation shared
      */
 	private double costoAsignacion;//El de cada habitacion particular
-
+    protected int  cantPersonas; // cantidad de personas que entran en la habitacion
+    protected int cantActual; // cantidad de personas que hay actualmente en la habitacion
 	
 	//Constructores
 	public Habitacion(int nroHabitacion,int cantdias,double costoAsignacion) {
-		super();
+		
 		this.nroHabitacion = nroHabitacion;
 		this.cantDias=cantdias;
 		this.costoAsignacion=costoAsignacion;

@@ -7,6 +7,8 @@ public class HabitacionCompartida extends Habitacion {
 	//Constructores
 	public HabitacionCompartida(int nroHabitacion,int cantDias,double costoAsignacion) {
 		super(nroHabitacion,cantDias,costoAsignacion);
+		this.cantPersonas=2; // cantidad de personas en una habitacion
+		this.cantActual=0;
 		
 	}
 
