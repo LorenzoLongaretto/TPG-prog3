@@ -12,6 +12,7 @@ import personas.Paciente;
 import personas.Asociado;
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
+import infraestructura.Habitacion;
 import infraestructura.Prestacion;
 
 
@@ -56,7 +57,12 @@ public class Clinica {
      * @aggregation composite
      */
     private BDdePacientes pacientes = new BDdePacientes();
+    private HashMap<Integer,Habitacion> habitaciones = new HashMap<Integer,Habitacion>();
+    //Clave = Nro de habitacion
+    private HashMap<Integer,IMedico> medicos = new HashMap<Integer,IMedico>();
+    // Clave  = DNI de los medicos
     private HashMap<Integer,Asociado> asociados = new HashMap<Integer,Asociado>();
+    //Clave  = DNI de los Asociados
 	private int nroOrden=0;
 	
 	
