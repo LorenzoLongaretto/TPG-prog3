@@ -22,6 +22,7 @@ private Ambulancia ambulancia;
 
 	@Override
 	public void volverClinica() {
+		
 		this.ambulancia.setEstado(new DisponibleState(this.ambulancia));
 		
 	}
@@ -30,6 +31,11 @@ private Ambulancia ambulancia;
 	public void solicitaReparacion() {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public String actual() {
+		return "Trasladando paciente";
 	}
 
 }

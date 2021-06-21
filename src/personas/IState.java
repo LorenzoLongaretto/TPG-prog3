@@ -6,6 +6,6 @@ public interface IState {
 	void solicitaTraslado();
 	void volverClinica();
 	void solicitaReparacion(); 
-	
+	String actual();
 	
 }

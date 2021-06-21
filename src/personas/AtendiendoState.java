@@ -28,6 +28,13 @@ private Ambulancia ambulancia;
 	public void solicitaReparacion() {
 		System.out.println("No se puede");
 		
+		
+	}
+
+	@Override
+	public String actual() {
+		
+		return "Atendiendo";
 	}
 
 

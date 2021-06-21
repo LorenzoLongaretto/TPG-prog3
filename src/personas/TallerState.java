@@ -31,5 +31,11 @@ private Ambulancia ambulancia;
 		
 	}
 
+	@Override
+	public String actual() {
+		// TODO Auto-generated method stub
+		return "En el Taller";
+	}
+
 
 }

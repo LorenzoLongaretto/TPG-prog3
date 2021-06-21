@@ -17,7 +17,7 @@ public class DisponibleState implements IState{
 
 	@Override
 	public void solicitaTraslado() {
-		this.ambulancia.setEstado(new RegresaTallerState(this.ambulancia));
+		this.ambulancia.setEstado(new RegresaAtencionState(this.ambulancia));
 	}
 
 	@Override
@@ -30,6 +30,11 @@ public class DisponibleState implements IState{
 	public void solicitaReparacion() {
 		this.ambulancia.setEstado(new TallerState(this.ambulancia));
 		
+	}
+
+	@Override
+	public String actual() {
+		return "Disponible";
 	}
 
 

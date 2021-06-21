@@ -33,5 +33,11 @@ public RegresaAtencionState(Ambulancia ambulancia) {
 		
 	}
 
+	@Override
+	public String actual() {
+		
+		return "RegresaAtencion";
+	}
+
 
 }
