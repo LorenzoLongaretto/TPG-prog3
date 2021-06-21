@@ -3,7 +3,7 @@ package persistencia;
 import java.io.IOException;
 import java.io.Serializable;
 
-public interface IPersistencia
+public interface IPersistencia<E>
 {
     void abrirInput(String nombre) throws IOException;
 
@@ -15,5 +15,5 @@ public interface IPersistencia
 
     void escribir(Serializable p) throws IOException;
 
-    Serializable leer() throws IOException, ClassNotFoundException;
+    E leer() throws IOException, ClassNotFoundException;
 }

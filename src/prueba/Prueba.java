@@ -4,7 +4,9 @@ import modelo.Clinica;
 import modelo.IMedico;
 import modelo.MedicoFactory;
 import modelo.PacienteFactory;
+import persistencia.Serializacion;
 
+import java.io.IOException;
 import java.util.GregorianCalendar;
 
 import excepciones.ImposibleCrearMedicoException;
@@ -13,12 +15,13 @@ import infraestructura.Factura;
 import infraestructura.HabitacionCompartida;
 public class Prueba {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		
-		
+		Serializacion archivo = new Serializacion();
    
 		
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
+		
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
 		try {
 			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose   ", "Java", "MDP    ","2235673421", "San Juan 2140","Nino");
@@ -34,14 +37,18 @@ public class Prueba {
         IMedico medico=null, medico2 =null,medico3=null;
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
-			 medico2 = MedicoFactory.getMedico("25980987","Luis","Montini","MDP","2234565","Independencia","2222","Clinica","Permanente","Doctor");
-			 medico3 = MedicoFactory.getMedico("2565657","Luis","Montini","MDP","2234565","Independencia","3333","Pediatria","Permanente","Magister");
+			 Clinica.getInstance().agregarMedico(medico);
+			 medico = MedicoFactory.getMedico("25980987","Luis","Montini","MDP","2234565","Independencia","2222","Clinica","Permanente","Doctor");
+			 Clinica.getInstance().agregarMedico(medico);
+			 medico = MedicoFactory.getMedico("2565657","Luis","Montini","MDP","2234565","Independencia","3333","Pediatria","Permanente","Magister");
+			 Clinica.getInstance().agregarMedico(medico);
 		} catch (ImposibleCrearMedicoException e) {
             System.out.println(e.getMessage()+e.getDato());
         }
         
         GregorianCalendar fecha1 = new GregorianCalendar(2020,1,1);
         GregorianCalendar fecha2 = new GregorianCalendar(2020,2,1);
+        
         //MODULO DE INGRESO
         Clinica.getInstance().ingresoPaciente(paciente); //busca o genera la historia
         Clinica.getInstance().ingresoPaciente(paciente2);
@@ -69,6 +76,8 @@ public class Prueba {
         System.out.println("--------------------");
         System.out.println("REPORTE:");
         Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);    
+        
+        archivo.guardarDatos();
 	}
  
 }

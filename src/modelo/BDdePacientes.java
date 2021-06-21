@@ -1,10 +1,11 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Iterator;
 import java.util.TreeSet;
 import personas.Paciente;
 
-public class BDdePacientes {	
+public class BDdePacientes implements Serializable{	
 	private int generaNumHist=0;
 
     /**

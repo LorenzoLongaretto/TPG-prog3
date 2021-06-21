@@ -28,6 +28,8 @@ public class Clinica {
 	//Atributos
 	private static Clinica instance = null;  // aplico patron singleton
 
+    private String nombre;
+    private String direccion;
     /**
      * @aggregation composite
      */
@@ -152,12 +154,12 @@ public class Clinica {
 		}
 	}
 	// Metodo que agrega el medico elegido por el paciente a la factura 
-	public void asignarMedico(Paciente paciente,String nombre){
-		
+	public void agregarMedico(IMedico medico){
+		this.medicos.put(Integer.parseInt(medico.getMatricula()) , medico);
 	}
 	
-	public void asignarHabitacion(Paciente paciente) {
-		
+	public void asignarHabitacion(Habitacion habitacion) {
+		this.habitaciones.put(habitacion.getNroHabitacion(), habitacion);
 	}
 	
 	/**Se realiza un reporte de los pacientes atendidos, dentro de un periodo de fechas determinado.
@@ -214,6 +216,72 @@ public class Clinica {
 	}
 	public ArrayList<Paciente> getPatio() {
 		return patio;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getDireccion() {
+		return direccion;
+	}
+	public void setDireccion(String direccion) {
+		this.direccion = direccion;
+	}
+	public Queue<Paciente> getListaEspera() {
+		return listaEspera;
+	}
+	public void setListaEspera(Queue<Paciente> listaEspera) {
+		this.listaEspera = listaEspera;
+	}
+	public Queue<Paciente> getListaAtencion() {
+		return listaAtencion;
+	}
+	public void setListaAtencion(Queue<Paciente> listaAtencion) {
+		this.listaAtencion = listaAtencion;
+	}
+	public TreeSet<Factura> getFacturas() {
+		return facturas;
+	}
+	public void setFacturas(TreeSet<Factura> facturas) {
+		this.facturas = facturas;
+	}
+	public BDdePacientes getPacientes() {
+		return pacientes;
+	}
+	public void setPacientes(BDdePacientes pacientes) {
+		this.pacientes = pacientes;
+	}
+	public HashMap<Integer, Habitacion> getHabitaciones() {
+		return habitaciones;
+	}
+	public void setHabitaciones(HashMap<Integer, Habitacion> habitaciones) {
+		this.habitaciones = habitaciones;
+	}
+	public HashMap<Integer, IMedico> getMedicos() {
+		return medicos;
+	}
+	public void setMedicos(HashMap<Integer, IMedico> medicos) {
+		this.medicos = medicos;
+	}
+	public HashMap<Integer, Asociado> getAsociados() {
+		return asociados;
+	}
+	public void setAsociados(HashMap<Integer, Asociado> asociados) {
+		this.asociados = asociados;
+	}
+	public int getNroOrden() {
+		return nroOrden;
+	}
+	public void setNroOrden(int nroOrden) {
+		this.nroOrden = nroOrden;
+	}
+	public void setSalaEspera(SalaDeEspera salaEspera) {
+		this.salaEspera = salaEspera;
+	}
+	public void setPatio(ArrayList<Paciente> patio) {
+		this.patio = patio;
 	}
 	
 					

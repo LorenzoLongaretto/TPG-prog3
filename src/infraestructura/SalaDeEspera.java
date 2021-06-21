@@ -1,8 +1,10 @@
 package infraestructura;
 
+import java.io.Serializable;
+
 import personas.Paciente;
 
-public class SalaDeEspera {
+public class SalaDeEspera implements Serializable{
 
 	//Atributos
 	private boolean ocupada;
