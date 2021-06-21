@@ -74,6 +74,7 @@ public class Factura implements Serializable,Comparable{
 		 nueva.setSubtotal(habitacion.costoDeHabitacion(habitacion.getCantDias()));	
 		 this.prestaciones.add(nueva);
 		 this.importeTotal+=habitacion.costoDeHabitacion(habitacion.getCantDias());
+		 habitacion.setCantPersonas(habitacion.getCantPersonas()-1);
 			
 		}
 

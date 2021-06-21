@@ -37,6 +37,22 @@ public abstract class Habitacion {
 	public String toString() {
 		return "Habitacion nroHabitaci=" + nroHabitacion;
 	}
+
+	public int getCantPersonas() {
+		return cantPersonas;
+	}
+
+	public int getCantActual() {
+		return cantActual;
+	}
+
+	public void setCantPersonas(int cantPersonas) {
+		this.cantPersonas = cantPersonas;
+	}
+
+	public void setCantActual(int cantActual) {
+		this.cantActual = cantActual;
+	}
 	
 	
 }

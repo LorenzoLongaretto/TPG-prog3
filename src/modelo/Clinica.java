@@ -135,7 +135,9 @@ public class Clinica {
         
         this.listaAtencion.add(paciente);                
     }
-	
+	public void facturacion(Factura factura) {
+		this.facturas.add(factura); // agrega la factura a la lista
+	}
 	/**Se toma al primer paciente de la lista de atencion, y se le confecciona la factura correspondiente. Luego , esa factura es mostrada.
 	 * <b> Pre: El parametro paciente y factura debe ser distinto de null.</b>
 	 * <b> Post: Se elimina al paciente de la lista de atencion y se muestra su factura.</b>
@@ -143,7 +145,7 @@ public class Clinica {
 	 * @param factura: Parametro de tipo factura.
 	 */
 	
-	// Mostrar solo la ultima factura con fecha mas reciente
+	//pasar paciente y fecha de la factura
 	public void egreso(Paciente paciente,Factura factura) {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
@@ -160,6 +162,24 @@ public class Clinica {
 	
 	public void asignarHabitacion(Habitacion habitacion) {
 		this.habitaciones.put(habitacion.getNroHabitacion(), habitacion);
+	}
+	// agrega medico a la factura 
+	public void derivarMedico() {
+		
+		
+	}
+	//agrega paciente a la factura
+	public void derivarHabitacion() {
+		
+		
+		
+	}
+	public IMedico buscaMedico(int matricula) {
+		return this.medicos.get(matricula);
+	}
+	
+	public Habitacion buscaHabitacion(int nro) {
+		return this.habitaciones.get(nro);
 	}
 	
 	/**Se realiza un reporte de los pacientes atendidos, dentro de un periodo de fechas determinado.
@@ -200,12 +220,12 @@ public class Clinica {
 		
 		
 	}
-	public void eliminarAsociado(int dNi) {
+	public void eliminarAsociado(int DNI) {
 		Asociado a=null;
-		a = asociados.get(dNi);
+		a = asociados.get(DNI);
 		if(a!=null) {  // estaba en el HashMap
 			
-			
+			asociados.remove(DNI);
 			
 		}
 		// Lanzar Excepcion ya que no se encontraba en el HashMap
