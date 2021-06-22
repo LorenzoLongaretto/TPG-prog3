@@ -14,6 +14,7 @@ private String pedido;
 		
 		if(comando.equalsIgnoreCase("Atencion"))
 		    this.ambulancia.solicitaAtencion();
+		
 		else if (comando.equalsIgnoreCase("Traslado"))
 		    this.ambulancia.solicitaTraslado();
 	//	else throw new ComandoDesconocidoException(comando);
@@ -28,8 +29,10 @@ private String pedido;
 	public void run() {
 		
 		this.PedirAmbulancia(pedido);
-		Util.espera();
-		this.ambulancia.volverClinica();
+		//for(int i=0;i<2;i++) {
+			Util.espera(1000);
+			this.ambulancia.volverClinica();
+	//	}
 	}
 	
 

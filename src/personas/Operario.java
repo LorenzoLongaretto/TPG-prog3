@@ -1,15 +1,28 @@
 package personas;
 
-public class Operario extends Persona implements Runnable{
+import util.Util;
 
-	public Operario(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio) {
-		super(dNI, nombre, apellido, ciudad, telefono, domicilio);
-		
-	}
+public class Operario extends Thread{
+private Ambulancia ambulancia;
+
+	public Operario(Ambulancia ambulancia) {
+	this.ambulancia = ambulancia;
+}
+
+
+
+
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+	//	for(int i=0;i<3;i++) {
+			this.ambulancia.solicitaReparacion();
+		//	for(int j=0;j<2;j++) {
+				Util.espera(1);
+				this.ambulancia.volverClinica();
+		//	}
+	//	}
+			
 		
 	}
 
