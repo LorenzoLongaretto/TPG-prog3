@@ -145,14 +145,13 @@ public class Clinica {
 	 * @param factura: Parametro de tipo factura.
 	 */
 	
-	//pasar paciente y fecha de la factura --> buscar factura y mostrarla
-	public void egreso(Paciente paciente,Factura factura) {
+	//pasar paciente  --> buscar factura y mostrarla
+	public void egreso(Paciente paciente) {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
-			System.out.println(factura.toString());
-			System.out.println("Nombre        Valor       Cantidad      Subtotal");
-			factura.muestraFactura();
-			this.facturas.add(factura);
+		  //Factura factura = this.buscaUltima(paciente);
+			//if(factura!=null)
+			//factura.muestraFactura();
 		}
 	}
 	// Metodo que agrega el medico elegido por el paciente a la factura 
@@ -164,12 +163,14 @@ public class Clinica {
 		this.habitaciones.put(habitacion.getNroHabitacion(), habitacion);
 	}
 	// agrega medico a la factura 
-	public void derivarMedico(Factura factura,IMedico medico) {
+	public void derivarMedico(Paciente paciente,IMedico medico) {
+		Factura factura = this.buscaUltima(paciente);
 		if(medico!=null)
 		factura.asignarMedico(medico);		
 	}
 	//agrega paciente a la factura
-	public void derivarHabitacion(Factura factura,Habitacion habitacion) {
+	public void derivarHabitacion(Paciente paciente,Habitacion habitacion) {
+		Factura factura = this.buscaUltima(paciente);
 		if(habitacion.getCantPersonas()!=0 && habitacion!=null) // si esta en 0 significa que no hay espacio 
 	          factura.asignarHabitacion(habitacion);
 	}
@@ -180,7 +181,20 @@ public class Clinica {
 	public Habitacion buscaHabitacion(int nro) {
 		return this.habitaciones.get(nro);
 	}
-	
+	public Factura buscaUltima(Paciente paciente) {// busca la ultima factura del paciente (la actual)
+		Factura retorno = null;
+		 Iterator<Factura> it = this.facturas.iterator();
+		 while(it.hasNext()) {
+			 Factura factura = it.next();
+			 if((factura.getPaciente().getDNI() == paciente.getDNI()) && ((retorno!=null && factura.getFecha().compareTo(retorno.getFecha())>0) || retorno==null)) {
+				 retorno = factura; 
+			 }
+		 }
+		
+		
+		return retorno;
+		
+	}
 	/**Se realiza un reporte de los pacientes atendidos, dentro de un periodo de fechas determinado.
 	 * <b> Pre: El parametro medico, fecha1 y fecha2 debe ser distinto de null.</b>
 	 * <b> Post:Se muestra el reporte de pacientes del medico introducido.</b>

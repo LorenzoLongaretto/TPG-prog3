@@ -2,6 +2,7 @@ package prueba;
 import personas.Ambulancia;
 import personas.Asociado;
 import personas.Paciente;
+import vista.Ventana;
 import modelo.Clinica;
 import modelo.IMedico;
 import modelo.MedicoFactory;
@@ -11,6 +12,7 @@ import persistencia.Serializacion;
 import java.io.IOException;
 import java.util.GregorianCalendar;
 
+import controlador.Controlador;
 import excepciones.ImposibleCrearMedicoException;
 import excepciones.NoExisteRangoEtarioException;
 import infraestructura.Factura;
@@ -19,7 +21,7 @@ public class Prueba {
 
 	public static void main(String[] args) throws IOException {
 		
-		/*Serializacion archivo = new Serializacion();
+		//Serializacion archivo = new Serializacion();
    
 		
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
@@ -65,22 +67,33 @@ public class Prueba {
         
         Factura factura = new Factura(1,fecha1,paciente);
         factura.asignarMedico(medico);
-        System.out.println("FACTURA:");
         factura.asignarMedico(medico);
-        factura.asignarHabitacion(new HabitacionCompartida(32,21,200));
-      
-        Factura factura2 = new Factura(2,fecha1,paciente2);
-        factura2.asignarMedico(medico);
-        //MODULO DE EGRESO Y FACTURACION
-        Clinica.getInstance().egreso(paciente,factura);
-        Clinica.getInstance().egreso(paciente2,factura2);
-        //REPORTE MEDICO
-        System.out.println("--------------------");
-        System.out.println("REPORTE:");
-        Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);    
+        Clinica.getInstance().asignarHabitacion(new HabitacionCompartida(32,21,200));
+        factura.asignarHabitacion(Clinica.getInstance().buscaHabitacion(32));
+        Clinica.getInstance().facturacion(factura); 
         
-        archivo.guardarDatos();*/
-		Ambulancia amb=new Ambulancia();
+        Factura factura2 = new Factura(2,fecha2,paciente);
+        factura2.asignarMedico(medico);
+        Clinica.getInstance().facturacion(factura2);
+        //MODULO DE EGRESO Y FACTURACION
+        //System.out.println("FACTURA:");
+        //Clinica.getInstance().egreso(paciente);
+        //Clinica.getInstance().egreso(paciente2,factura2);
+        //REPORTE MEDICO
+       // System.out.println("--------------------");
+        //System.out.println("REPORTE:");
+        //Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);
+        
+        
+        
+        //Ambulancia
+        Ventana ventana = new Ventana(); 
+        
+        Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
+        ventana.setActionListener(controlador);
+        //archivo.guardarDatos();
+		/*
+        Ambulancia amb=new Ambulancia();
 		Asociado a1=new Asociado("--", "--", "--", "--", "--", "--",amb);
 		a1.setPedido("Traslado");
 		Asociado a2=new Asociado("--", "--", "--", "--", "--", "--",amb);
@@ -94,7 +107,7 @@ public class Prueba {
 		hilo1.start();
 		hilo2.start();
 		hilo3.start();
-		
+		*/
 	}
  
 }

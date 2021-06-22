@@ -105,6 +105,15 @@ public class Factura implements Serializable,Comparable{
 		
 	
 	}
+	
+
+	public double getImporteTotal() {
+		return importeTotal;
+	}
+
+	public void setImporteTotal(double importeTotal) {
+		this.importeTotal = importeTotal;
+	}
 
 	public ArrayList<Prestacion> getPrestaciones() {
 		return prestaciones;
