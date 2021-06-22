@@ -58,14 +58,15 @@ public class Ambulancia extends Observable{
 		
 		
 	}
+	
 	public synchronized void volverClinica(){
 		
-		Util.espera();
 		this.estado.volverClinica();
 		this.notifyObservers(this.estado.actual());
 		notifyAll();
 		
 	}
+	
 	public synchronized void solicitaReparacion(){
 		
 		while(!this.estado.actual().equals("Disponible"))

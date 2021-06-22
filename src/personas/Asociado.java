@@ -28,7 +28,8 @@ private String pedido;
 	public void run() {
 		
 		this.PedirAmbulancia(pedido);
-		
+		Util.espera();
+		this.ambulancia.volverClinica();
 	}
 	
 
