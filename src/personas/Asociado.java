@@ -12,11 +12,18 @@ private String pedido;
 
 	public void PedirAmbulancia(String comando) {
 		
-		if(comando.equalsIgnoreCase("Atencion"))
+		if(comando.equalsIgnoreCase("Atencion")) {
 		    this.ambulancia.solicitaAtencion();
-		
-		else if (comando.equalsIgnoreCase("Traslado"))
+		    for(int i=0;i<2;i++) {
+				Util.espera();
+				this.ambulancia.volverClinica();
+			}
+		}
+		else if (comando.equalsIgnoreCase("Traslado")) {
 		    this.ambulancia.solicitaTraslado();
+			Util.espera();
+			this.ambulancia.volverClinica();
+		}
 	//	else throw new ComandoDesconocidoException(comando);
 		
 	}
@@ -29,10 +36,10 @@ private String pedido;
 	public void run() {
 		
 		this.PedirAmbulancia(pedido);
-		//for(int i=0;i<2;i++) {
-			Util.espera(1000);
+		/*for(int i=0;i<2;i++) {
+			Util.espera();
 			this.ambulancia.volverClinica();
-	//	}
+		}*/
 	}
 	
 

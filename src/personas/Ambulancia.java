@@ -119,7 +119,7 @@ public class Ambulancia extends Observable{
 		if(this.enTaller) {
 			this.regresandoTaller=true;
 			this.enTaller=false;
-			this.volverClinica();
+		//	this.volverClinica();
 		}
 		else if(this.regresandoTaller) {
 			this.disponible=true;
@@ -131,7 +131,7 @@ public class Ambulancia extends Observable{
 		}else if(this.atendiendoDom) {
 			this.atendiendoDom=false;
 			this.trasladandoP=true;
-			this.volverClinica();
+		//	this.volverClinica();
 			
 		}
 		else if(this.trasladandoP) {

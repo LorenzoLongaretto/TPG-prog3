@@ -1,6 +1,7 @@
 package prueba;
 import personas.Ambulancia;
 import personas.Asociado;
+import personas.Operario;
 import personas.Paciente;
 import vista.Ventana;
 import modelo.Clinica;
@@ -22,8 +23,7 @@ public class Prueba {
 	public static void main(String[] args) throws IOException {
 		
 		//Serializacion archivo = new Serializacion();
-   
-		
+   /*	
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
 		
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
@@ -92,7 +92,7 @@ public class Prueba {
         Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
         ventana.setActionListener(controlador);
         //archivo.guardarDatos();
-		/*
+		*/
         Ambulancia amb=new Ambulancia();
 		Asociado a1=new Asociado("--", "--", "--", "--", "--", "--",amb);
 		a1.setPedido("Traslado");
@@ -100,14 +100,16 @@ public class Prueba {
 		a2.setPedido("Atencion");
 		Asociado a3=new Asociado("--", "--", "--", "--", "--", "--",amb);
 		a3.setPedido("Atencion");
+		Operario op1=new Operario(amb);
 		Thread hilo1 = new Thread(a1);
 		Thread hilo2 = new Thread(a2);
 		Thread hilo3 = new Thread(a3);
 		
-		hilo1.start();
+		op1.start();
+		//hilo1.start();
 		hilo2.start();
 		hilo3.start();
-		*/
+		
 	}
  
 }

@@ -15,13 +15,13 @@ private Ambulancia ambulancia;
 
 	@Override
 	public void run() {
-	//	for(int i=0;i<3;i++) {
+		for(int i=0;i<3;i++) {
 			this.ambulancia.solicitaReparacion();
-		//	for(int j=0;j<2;j++) {
-				Util.espera(1);
+			for(int j=0;j<2;j++) {
+				Util.espera();
 				this.ambulancia.volverClinica();
-		//	}
-	//	}
+			}
+		}
 			
 		
 	}
