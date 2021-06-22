@@ -145,7 +145,7 @@ public class Clinica {
 	 * @param factura: Parametro de tipo factura.
 	 */
 	
-	//pasar paciente y fecha de la factura
+	//pasar paciente y fecha de la factura --> buscar factura y mostrarla
 	public void egreso(Paciente paciente,Factura factura) {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
@@ -164,15 +164,14 @@ public class Clinica {
 		this.habitaciones.put(habitacion.getNroHabitacion(), habitacion);
 	}
 	// agrega medico a la factura 
-	public void derivarMedico() {
-		
-		
+	public void derivarMedico(Factura factura,IMedico medico) {
+		if(medico!=null)
+		factura.asignarMedico(medico);		
 	}
 	//agrega paciente a la factura
-	public void derivarHabitacion() {
-		
-		
-		
+	public void derivarHabitacion(Factura factura,Habitacion habitacion) {
+		if(habitacion.getCantPersonas()!=0 && habitacion!=null) // si esta en 0 significa que no hay espacio 
+	          factura.asignarHabitacion(habitacion);
 	}
 	public IMedico buscaMedico(int matricula) {
 		return this.medicos.get(matricula);
@@ -207,12 +206,12 @@ public class Clinica {
 		   System.out.println("Importe Total: "+importeTotal);
 	}
 	//dni, nombre y apellido, domicilio, teléfono.
-	public void altaAsociado(Paciente paciente) {
+	public void altaAsociado(int DNI,String nombre,String apellido,String domicilio,String telefono) {
 		Asociado a=null;
-		a = asociados.get(paciente.getDNI());
+		a = asociados.get(DNI);
 		if(a==null) {  // no existe el asociado
-			// Crear asociado 
-			// agregarlo al HashMap
+			Asociado a = new Asociado(DNI,nombre,apellido,domicilio,telefono);
+			this.asociados.put(DNI,a);
 		}
 		//else
 		       //Lanzar Excepcion de que ya existe

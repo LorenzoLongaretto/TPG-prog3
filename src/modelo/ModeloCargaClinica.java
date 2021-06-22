@@ -23,7 +23,7 @@ public class ModeloCargaClinica {
 			System.out.println(e.getMessage()+e.getRango());
 		}
 	    // Creacion de medicos
-	    IMedico medico=null, medico2 =null,medico3=null;
+	    IMedico medico=null;
 	    try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
 			 Clinica.getInstance().agregarMedico(medico);
@@ -44,21 +44,26 @@ public class ModeloCargaClinica {
 	
 	    //ATENCION
 	    Clinica.getInstance().atenderPaciente(paciente);
-	    Clinica.getInstance().atenderPaciente(paciente2);
-	    
 	    Factura factura = new Factura(1,fecha1,paciente);
-	    factura.asignarMedico(medico);
-	    Clinica.getInstance().asignarHabitacion(new HabitacionCompartida(32,21,200)); 
 	    
-	    factura.asignarHabitacion(Clinica.getInstance().buscaHabitacion(32));
-	  
+	    Clinica.getInstance().atenderPaciente(paciente2);
 	    Factura factura2 = new Factura(2,fecha1,paciente2);
-	    factura2.asignarMedico(medico);
+	    
+	    // Paciente1
+	    Clinica.getInstance().derivarMedico(factura, Clinica.getInstance().buscaMedico(Integer.parseInt(medico.getMatricula())));
+	    Clinica.getInstance().asignarHabitacion(new HabitacionCompartida(32,21,200)); 
+	    Clinica.getInstance().derivarHabitacion(factura,Clinica.getInstance().buscaHabitacion(32));
+	  
+	    // Paciente2 
+	    Clinica.getInstance().derivarMedico(factura2,Clinica.getInstance().buscaMedico(Integer.parseInt(medico.getMatricula())));
+	    
 	    //MODULO DE EGRESO Y FACTURACION
+	    Clinica.getInstance().facturacion(factura);// se agregan al sistema
+	    Clinica.getInstance().facturacion(factura2);// se agregan al sistema
 	    Clinica.getInstance().egreso(paciente,factura);
 	    Clinica.getInstance().egreso(paciente2,factura2);
 	   
-	    Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);    
+	    Clinica.getInstance().reporteMedico(medico,fecha1,fecha2);    
 	}
 	
 }
