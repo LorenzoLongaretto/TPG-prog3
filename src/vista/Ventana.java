@@ -118,6 +118,9 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel.add(this.scrollPane_3);
 		
 		this.textArea_Factura = new JTextArea();
+		this.textArea_Factura.setColumns(10);
+		this.textArea_Factura.setLineWrap(true);
+		this.textArea_Factura.setWrapStyleWord(true);
 		this.scrollPane_3.setViewportView(this.textArea_Factura);
 		
 		this.panel_Medicos = new JPanel();
@@ -149,7 +152,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.list_habitaciones = new JList();
 		this.scrollPane_2.setViewportView(this.list_habitaciones);
 		this.list_habitaciones.setModel(modeloListaHabitacion);
-		this.textArea_Factura.setLineWrap(true);
+		
 		this.setVisible(true);
 	}
 
@@ -187,9 +190,10 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 
 	@Override
 	public void actualizaFactura(Factura factura) {
-
+        this.textArea_Factura.append(factura.toString()+'\n');
 		for (Prestacion prestaciones : factura.getPrestaciones()) {
-			this.textArea_Factura.append(prestaciones.toString());
+			this.textArea_Factura.append(prestaciones.toString()+'\n');
+			
 			
 		}
 	

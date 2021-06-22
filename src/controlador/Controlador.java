@@ -105,7 +105,7 @@ public class Controlador implements ActionListener{
         		this.vistaPaciente.mensaje("Se agrego la habitacion: "+habitacion.toString()+ " al paciente");
         	}
         	else 
-        		this.vistaPaciente.mensaje("Debe seleccionar una habitacion y un medico");
+        		this.vistaPaciente.mensaje("Debe seleccionar una habitacion y un paciente");
         	
 		}
         if(comando.equalsIgnoreCase("Egreso")) {
