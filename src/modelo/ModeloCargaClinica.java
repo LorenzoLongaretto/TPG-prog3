@@ -50,18 +50,18 @@ public class ModeloCargaClinica {
 	    Factura factura2 = new Factura(2,fecha1,paciente2);
 	    
 	    // Paciente1
-	    Clinica.getInstance().derivarMedico(factura, Clinica.getInstance().buscaMedico(Integer.parseInt(medico.getMatricula())));
+	    ///Clinica.getInstance().derivarMedico(factura, Clinica.getInstance().buscaMedico(Integer.parseInt(medico.getMatricula())));
 	    Clinica.getInstance().asignarHabitacion(new HabitacionCompartida(32,21,200)); 
-	    Clinica.getInstance().derivarHabitacion(factura,Clinica.getInstance().buscaHabitacion(32));
+	    //Clinica.getInstance().derivarHabitacion(factura,Clinica.getInstance().buscaHabitacion(32));
 	  
 	    // Paciente2 
-	    Clinica.getInstance().derivarMedico(factura2,Clinica.getInstance().buscaMedico(Integer.parseInt(medico.getMatricula())));
+	    //Clinica.getInstance().derivarMedico(factura2,Clinica.getInstance().buscaMedico(Integer.parseInt(medico.getMatricula())));
 	    
 	    //MODULO DE EGRESO Y FACTURACION
 	    Clinica.getInstance().facturacion(factura);// se agregan al sistema
 	    Clinica.getInstance().facturacion(factura2);// se agregan al sistema
-	    Clinica.getInstance().egreso(paciente,factura);
-	    Clinica.getInstance().egreso(paciente2,factura2);
+	    //Clinica.getInstance().egreso(paciente,factura);
+	    //Clinica.getInstance().egreso(paciente2,factura2);
 	   
 	    Clinica.getInstance().reporteMedico(medico,fecha1,fecha2);    
 	}

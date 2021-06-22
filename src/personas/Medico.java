@@ -37,7 +37,7 @@ private final double honorarioBasico=1000;
 
 	@Override
 	public String toString() {
-		return " nombre=" + nombre +", apellido=" + apellido+"matricula=" + matricula + ", especialidad=" + especialidad ;
+		return nombre +" "+apellido+" " + matricula + " " + especialidad ;
 				
 	}
 

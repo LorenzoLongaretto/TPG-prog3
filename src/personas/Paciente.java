@@ -78,7 +78,7 @@ private int numeroHistoria,nroOrden;
 
 	@Override
 	public String toString() {
-		return " nombre=" + nombre+", apellido=" + apellido+" nro historia " + numeroHistoria +" es " + rangoEtario+" nro de orden "+nroOrden;
+		return nombre + " " + apellido + " " +DNI ;
 		
 }
 	
