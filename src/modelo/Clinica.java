@@ -206,7 +206,7 @@ public class Clinica {
 		   System.out.println("Importe Total: "+importeTotal);
 	}
 	//dni, nombre y apellido, domicilio, teléfono.
-	public void altaAsociado(int DNI,String nombre,String apellido,String domicilio,String telefono) {
+/*	public void altaAsociado(int DNI,String nombre,String apellido,String domicilio,String telefono) {
 		Asociado a=null;
 		a = asociados.get(DNI);
 		if(a==null) {  // no existe el asociado
@@ -218,7 +218,7 @@ public class Clinica {
 			
 		
 		
-	}
+	}*/
 	public void eliminarAsociado(int DNI) {
 		Asociado a=null;
 		a = asociados.get(DNI);

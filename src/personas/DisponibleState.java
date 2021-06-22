@@ -22,7 +22,7 @@ public class DisponibleState implements IState{
 
 	@Override
 	public void volverClinica() {
-		System.out.println("Ya estoy en la clinica rey");
+	//	System.out.println("Ya estoy en la clinica rey");
 		
 	}
 

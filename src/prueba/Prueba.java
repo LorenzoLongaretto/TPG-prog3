@@ -1,4 +1,6 @@
 package prueba;
+import personas.Ambulancia;
+import personas.Asociado;
 import personas.Paciente;
 import modelo.Clinica;
 import modelo.IMedico;
@@ -17,7 +19,7 @@ public class Prueba {
 
 	public static void main(String[] args) throws IOException {
 		
-		Serializacion archivo = new Serializacion();
+		/*Serializacion archivo = new Serializacion();
    
 		
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
@@ -77,7 +79,25 @@ public class Prueba {
         System.out.println("REPORTE:");
         Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);    
         
-        archivo.guardarDatos();
+        archivo.guardarDatos();*/
+		Ambulancia amb=new Ambulancia();
+		Asociado a1=new Asociado("--", "--", "--", "--", "--", "--",amb);
+		a1.setPedido("Traslado");
+		Asociado a2=new Asociado("--", "--", "--", "--", "--", "--",amb);
+		a2.setPedido("Atencion");
+		Asociado a3=new Asociado("--", "--", "--", "--", "--", "--",amb);
+		a3.setPedido("Atencion");
+		Thread hilo1 = new Thread(a1);
+		Thread hilo2 = new Thread(a2);
+		Thread hilo3 = new Thread(a3);
+		
+		hilo1.start();
+		hilo2.start();
+		hilo3.start();
+		
 	}
  
 }
+
+
+
