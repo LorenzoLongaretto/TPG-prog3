@@ -7,7 +7,7 @@ import personas.Asociado;
 
 public interface IVistaAsociado {
 
-	public void setActionListener(ActionListener actionListener);
+	public void setActionListenerAsociado(ActionListener actionListener);
 	public String getDNI();
 	public String getNombre();
 	public String getApellido();

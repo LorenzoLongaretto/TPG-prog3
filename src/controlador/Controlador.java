@@ -53,27 +53,26 @@ public class Controlador implements ActionListener{
 
 	public void setVistaPaciente(IVistaPaciente vistaPaciente) {
 		this.vistaPaciente = vistaPaciente;
-		//this.vistaPaciente.setActionListener(this);
+		this.vistaPaciente.setActionListenerPaciente(this);
 	}
 
 	public void setVistaMedico(IVistaMedico vistaMedico) {
 		this.vistaMedico = vistaMedico;
-		//this.vistaMedico.setActionListener(this);
+		this.vistaMedico.setActionListenerMedico(this);
 	}
 
 	public void setVistaHabitacion(IVistaHabitacion vistaHabitacion) {
 		this.vistaHabitacion = vistaHabitacion;
-		//this.vistaHabitacion.setActionListener(this);
+		this.vistaHabitacion.setActionListenerHabitacion(this);
 	}
-
 	public void setVistaAsociado(IVistaAsociado vistaAsociado) {
 		this.vistaAsociado = vistaAsociado;
-		//this.vistaAsociado.setActionListener(this);
+	    this.vistaAsociado.setActionListenerAsociado(this);	
 	}
 
 	public void setVistaAmbulancia(IVistaAmbulancia vistaAmbulancia) {
 		this.vistaAmbulancia = vistaAmbulancia;
-		//this.vistaAmbulancia.setActionListener(this);
+		this.vistaAmbulancia.setActionListenerAmbulancia(this);
 	}
 
 	@Override

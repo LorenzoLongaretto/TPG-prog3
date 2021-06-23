@@ -450,17 +450,40 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	}
 
 	@Override
-	public void setActionListener(ActionListener actionListener) {
+	public void setActionListenerAmbulancia(ActionListener actionListener) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setActionListenerAsociado(ActionListener actionListener) {
+		this.btn_AgregarAsociado.addActionListener(actionListener);
+		this.btn_EliminarAsociado.addActionListener(actionListener);
+		this.actionListener = actionListener;
+		
+	}
+
+	@Override
+	public void setActionListenerHabitacion(ActionListener actionListener) {
+		this.actionListener = actionListener;
+		
+	}
+
+	@Override
+	public void setActionListenerMedico(ActionListener actionListener) {
+		this.actionListener = actionListener;
+		
+	}
+
+	@Override
+	public void setActionListenerPaciente(ActionListener actionListener) {
 		this.btn_Cargar.addActionListener(actionListener);//Carga lista de atencion
 		this.btn_Atender.addActionListener(actionListener);//Mueve de lista de espera a lista de atencion
 		this.btn_PrestacionMedica.addActionListener(actionListener);
 		this.btn_PrestacionHabitacion.addActionListener(actionListener);
 		this.btn_Egreso.addActionListener(actionListener);
-		this.btn_AgregarAsociado.addActionListener(actionListener);
-		this.btn_EliminarAsociado.addActionListener(actionListener);
 		this.actionListener = actionListener;
 	}
-
 	@Override
 	public Paciente getPacienteSeleccionado() {
 		
@@ -626,4 +649,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.btn_Atender.setEnabled(true);
 		
 	}
+
+
 }

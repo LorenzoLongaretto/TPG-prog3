@@ -10,7 +10,7 @@ import personas.Paciente;
 public interface IVistaPaciente{
 
 	
-	 void setActionListener(ActionListener actionListener);
+	 void setActionListenerPaciente(ActionListener actionListener);
 	 Paciente getPacienteSeleccionado(); // devuelve el paciente seleccionado
 	 void borraLista();
 	 void actualizaLista(Queue<Paciente> atencion);// actualiza la lista de pacientes en la lista

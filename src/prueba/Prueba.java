@@ -88,9 +88,8 @@ public class Prueba {
         
         //Ambulancia
         Ventana ventana = new Ventana(); 
-        
         Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
-        ventana.setActionListener(controlador);
+       
         //archivo.guardarDatos();
 		
 		/*

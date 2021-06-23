@@ -7,7 +7,7 @@ import modelo.IMedico;
 
 public interface IVistaMedico {
     
-	public void setActionListener(ActionListener actionListener);
+	public void setActionListenerMedico(ActionListener actionListener);
 	public IMedico getMedicoSeleccionado();
 	public void actualizaListaMedicos(HashMap<Integer,IMedico> medicos);
 	public void agregaMedico(IMedico medico);
