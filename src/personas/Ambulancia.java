@@ -7,16 +7,18 @@ import util.Util;
 public class Ambulancia extends Observable{
 	private static Ambulancia instancia = null;
 	private IState estado;
-	private boolean disponible,trasladandoP,atendiendoDom,regresandoSinP,enTaller,regresandoTaller; //regeresando sin paciente
+	private boolean disponible,trasladandoP,atendiendoDom,regresandoSinP,enTaller,regresandoTaller,ocupado,regresandoOcupado; //regeresando sin paciente
 	
 	private Ambulancia() {
 		this.estado = new DisponibleState(this);
 		this.disponible=true;
 		this.regresandoSinP=false;
-		this.enTaller=false;
+		/*this.enTaller=false;
 		this.regresandoTaller=false;
 		this.trasladandoP=false;
-		this.atendiendoDom=false;
+		this.atendiendoDom=false;*/
+		this.ocupado=false;
+		this.regresandoOcupado=false;
 	}
 	public static Ambulancia getInstancia() {
 		if (instancia == null)
@@ -47,7 +49,7 @@ public class Ambulancia extends Observable{
 		}
 		this.disponible=false;
 		this.regresandoSinP=false;
-		this.atendiendoDom=true;
+		this.ocupado=true;
 		
 		System.out.println("estaba  "+this.estado.actual());
 		this.estado.solicitaAtencion();
@@ -91,7 +93,7 @@ public class Ambulancia extends Observable{
 				e.printStackTrace();
 			}
 		this.disponible=false;
-		this.enTaller=true;
+		this.ocupado=true;
 		
 		System.out.println("estaba"+this.estado.actual());
 		this.estado.solicitaReparacion();
@@ -108,6 +110,19 @@ public class Ambulancia extends Observable{
 		System.out.println("ahora esta "+this.estado.actual());
 		this.notifyObservers(this.estado.actual());
 		
+		if(this.ocupado) {
+			this.regresandoOcupado=true;
+			this.ocupado=false;
+			}
+		else if(this.regresandoOcupado) {
+			this.regresandoOcupado=false;
+			this.disponible=true;
+		}
+		else if(this.regresandoSinP) {
+			this.disponible=true;
+			this.regresandoSinP=false;
+		}
+		
 		/*while (this.disponible) {
 			try {
 				wait();
@@ -116,12 +131,12 @@ public class Ambulancia extends Observable{
 			}
 		}*/
 		
-		if(this.enTaller) {
+		/*if(this.enTaller) {
 			this.regresandoTaller=true;
 			this.enTaller=false;
 		//	this.volverClinica();
 		}
-		else if(this.regresandoTaller) {
+		else if(this.regresandoTaller) { //puedo unificar las variables regresandoTaller y trasladoP, tambien enTaller y atendiendoDom
 			this.disponible=true;
 			this.regresandoTaller=false;
 		}
@@ -137,8 +152,9 @@ public class Ambulancia extends Observable{
 		else if(this.trasladandoP) {
 			this.trasladandoP=false;
 			this.disponible=true;
-		}
-			
+		}*/
+		
+		
 		notifyAll();
 		System.out.println("-------------");
 		
