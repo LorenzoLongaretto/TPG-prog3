@@ -7,7 +7,7 @@ import util.Util;
 public class Ambulancia extends Observable{
 	private static Ambulancia instancia = null;
 	private IState estado;
-	private boolean disponible,trasladandoP,atendiendoDom,regresandoSinP,enTaller,regresandoTaller,ocupado,regresandoOcupado; //regeresando sin paciente
+	private boolean disponible,regresandoSinP,ocupado,regresandoOcupado; //regeresando sin paciente
 	
 	private Ambulancia() {
 		this.estado = new DisponibleState(this);
