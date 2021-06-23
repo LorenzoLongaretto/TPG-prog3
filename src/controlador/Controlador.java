@@ -85,6 +85,17 @@ public class Controlador implements ActionListener{
 			this.vistaPaciente.actualizaLista(Clinica.getInstance().getListaAtencion());
 			this.vistaMedico.actualizaListaMedicos(Clinica.getInstance().getMedicos());
 			this.vistaHabitacion.actualizaListaHabitaciones(Clinica.getInstance().getHabitaciones());
+			this.vistaPaciente.habilitarAtencion();
+		}
+		if(comando.equalsIgnoreCase("Atender") ) {
+			Paciente paciente  = Clinica.getInstance().getListaEspera().poll();
+			if(paciente!=null) {
+				Clinica.getInstance().atenderPaciente(paciente);
+				this.vistaPaciente.borraLista();
+				this.vistaPaciente.actualizaLista(Clinica.getInstance().getListaAtencion());
+			}
+			else
+				this.vistaPaciente.mensaje("No hay mas pacientes en la lista de espera");
 		}
 		if(comando.equalsIgnoreCase("Prestacion Medica")) {
 			
