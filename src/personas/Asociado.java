@@ -41,6 +41,13 @@ private String pedido;
 			this.ambulancia.volverClinica();
 		}*/
 	}
+
+	@Override
+	public String toString() {
+		return "Asociado [ambulancia=" + ambulancia + ", pedido=" + pedido + ", DNI=" + DNI + ", nombre=" + nombre
+				+ ", apellido=" + apellido + ", ciudad=" + ciudad + ", telefono=" + telefono + ", domicilio="
+				+ domicilio + "]";
+	}
 	
 
 }

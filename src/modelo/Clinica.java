@@ -9,6 +9,7 @@ import java.util.Queue;
 import java.util.TreeSet;
 
 import personas.Paciente;
+import personas.Ambulancia;
 import personas.Asociado;
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
@@ -220,19 +221,15 @@ public class Clinica {
 		   System.out.println("Importe Total: "+importeTotal);
 	}
 	//dni, nombre y apellido, domicilio, teléfono.
-/*	public void altaAsociado(int DNI,String nombre,String apellido,String domicilio,String telefono) {
+	public void altaAsociado(Asociado asociado) {
 		Asociado a=null;
-		a = asociados.get(DNI);
+		a = asociados.get(Integer.parseInt(asociado.getDNI()));
 		if(a==null) {  // no existe el asociado
-			Asociado a = new Asociado(DNI,nombre,apellido,domicilio,telefono);
-			this.asociados.put(DNI,a);
+			this.asociados.put(Integer.parseInt(asociado.getDNI()),asociado);
 		}
 		//else
 		       //Lanzar Excepcion de que ya existe
-			
-		
-		
-	}*/
+	}
 	public void eliminarAsociado(int DNI) {
 		Asociado a=null;
 		a = asociados.get(DNI);
