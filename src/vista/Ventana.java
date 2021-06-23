@@ -49,14 +49,11 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JPanel panel_2;
 	private JButton btn_PrestacionMedica;
 	private JList list_medicos;
-	private JLabel lbl_medicos;
 	private JScrollPane scrollPane_1;
 	private JPanel panel_Habitaciones;
-	private JLabel lbl_habitaciones;
 	private JList list_habitaciones;
 	private JScrollPane scrollPane_2;
 	private JPanel panel;
-	private JLabel lbl_Factura;
 	private DefaultListModel<Paciente> modeloListaPaciente = new DefaultListModel<Paciente>();
 	private DefaultListModel<IMedico> modeloListaMedico = new DefaultListModel<IMedico>();
 	private DefaultListModel<Habitacion> modeloListaHabitacion = new DefaultListModel<Habitacion>();
@@ -131,6 +128,9 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JPanel panel_36;
 	private JPanel panel_37;
 	private JTextArea textArea;
+	private JLabel lbl_Factura;
+	private JLabel lbl_ListaMedicos;
+	private JLabel lbl_habitaciones;
 
 
    	public Ventana() {
@@ -153,7 +153,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.lbl_listaAtencion = new JLabel("Lista de Atencion");
 		this.panel_1.add(this.lbl_listaAtencion);
-		this.lbl_listaAtencion.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		this.lbl_listaAtencion.setFont(new Font("Tahoma", Font.BOLD, 15));
 		
 		this.btn_Cargar = new JButton("Cargar");
 		this.panel_1.add(this.btn_Cargar);
@@ -179,10 +179,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.panel = new JPanel();
 		this.panel_Pacientes.add(this.panel);
-		this.panel.setLayout(new GridLayout(2, 1, 0, 0));
-		
-		this.lbl_Factura = new JLabel("Factura");
-		this.panel.add(this.lbl_Factura);
+		this.panel.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		this.scrollPane_3 = new JScrollPane();
 		this.panel.add(this.scrollPane_3);
@@ -193,13 +190,13 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.textArea_Factura.setWrapStyleWord(true);
 		this.scrollPane_3.setViewportView(this.textArea_Factura);
 		
+		this.lbl_Factura = new JLabel("Factura");
+		this.lbl_Factura.setFont(new Font("Tahoma", Font.BOLD, 15));
+		this.scrollPane_3.setColumnHeaderView(this.lbl_Factura);
+		
 		this.panel_Medicos = new JPanel();
 		this.tabbedPane.addTab("Medicos", null, this.panel_Medicos, null);
 		this.panel_Medicos.setLayout(new GridLayout(3, 1, 0, 0));
-		
-		this.lbl_medicos = new JLabel("Lista de Medicos");
-		this.lbl_medicos.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		this.panel_Medicos.add(this.lbl_medicos);
 		
 		this.scrollPane_1 = new JScrollPane();
 		this.panel_Medicos.add(this.scrollPane_1);
@@ -208,13 +205,13 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.scrollPane_1.setViewportView(this.list_medicos);
 		this.list_medicos.setModel(modeloListaMedico);
 		
+		this.lbl_ListaMedicos = new JLabel("Lista de Medicos");
+		this.lbl_ListaMedicos.setFont(new Font("Tahoma", Font.BOLD, 15));
+		this.scrollPane_1.setColumnHeaderView(this.lbl_ListaMedicos);
+		
 		this.panel_Habitaciones = new JPanel();
 		this.tabbedPane.addTab("Habitaciones", null, this.panel_Habitaciones, null);
 		this.panel_Habitaciones.setLayout(new GridLayout(3, 1, 0, 0));
-		
-		this.lbl_habitaciones = new JLabel("Lista de Habitaciones");
-		this.lbl_habitaciones.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		this.panel_Habitaciones.add(this.lbl_habitaciones);
 		
 		this.scrollPane_2 = new JScrollPane();
 		this.panel_Habitaciones.add(this.scrollPane_2);
@@ -222,6 +219,10 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.list_habitaciones = new JList();
 		this.scrollPane_2.setViewportView(this.list_habitaciones);
 		this.list_habitaciones.setModel(modeloListaHabitacion);
+		
+		this.lbl_habitaciones = new JLabel("Lista de Habitaciones");
+		this.lbl_habitaciones.setFont(new Font("Tahoma", Font.BOLD, 15));
+		this.scrollPane_2.setColumnHeaderView(this.lbl_habitaciones);
 		
 		this.panel_Asociados = new JPanel();
 		this.tabbedPane.addTab("Asociados", null, this.panel_Asociados, null);
@@ -348,8 +349,8 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.scrollPane_4.setViewportView(this.list_Asociados);
 		this.list_Asociados.setModel(modeloListaAsociado);
 		this.lblNewLabel = new JLabel("Lista Asociados");
-		this.lblNewLabel.setForeground(Color.RED);
-		this.lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		this.lblNewLabel.setForeground(Color.BLACK);
+		this.lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
 		this.scrollPane_4.setColumnHeaderView(this.lblNewLabel);
 		
 		this.panel_23 = new JPanel();
