@@ -34,6 +34,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import java.awt.Color;
+import javax.swing.JComboBox;
 
 public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVistaHabitacion,IVistaAsociado,IVistaAmbulancia,KeyListener {
 
@@ -106,6 +107,30 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JLabel lblNewLabel;
 	private JScrollPane scrollPane_4;
 	private JPanel panel_23;
+	private JPanel panel_Ambulancia;
+	private JPanel panel_24;
+	private JPanel panel_25;
+	private JLabel lbl_cantAsociados;
+	private JPanel panel_26;
+	private JTextField textField_CantAsociados;
+	private JPanel panel_27;
+	private JPanel panel_28;
+	private JPanel panel_29;
+	private JLabel lbl_Solicitudes;
+	private JPanel panel_30;
+	private JLabel lbl_TipoSolicitud;
+	private JPanel panel_31;
+	private JPanel panel_32;
+	private JTextField textField_cantSolicitudes;
+	private JComboBox comboBox_TipoSolicitud;
+	private JPanel panel_33;
+	private JPanel panel_34;
+	private JLabel lblNewLabel_2;
+	private JPanel panel_35;
+	private JButton btn_Simulacion;
+	private JPanel panel_36;
+	private JPanel panel_37;
+	private JTextArea textArea;
 
 
    	public Ventana() {
@@ -333,6 +358,87 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.btn_EliminarAsociado = new JButton("Eliminar");
 		this.btn_EliminarAsociado.setActionCommand("EliminarAsociado");
 		this.panel_23.add(this.btn_EliminarAsociado);
+		
+		this.panel_Ambulancia = new JPanel();
+		this.tabbedPane.addTab("Ambulancia", null, this.panel_Ambulancia, null);
+		this.panel_Ambulancia.setLayout(new GridLayout(2, 0, 0, 0));
+		
+		this.panel_24 = new JPanel();
+		this.panel_Ambulancia.add(this.panel_24);
+		this.panel_24.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		this.panel_26 = new JPanel();
+		this.panel_24.add(this.panel_26);
+		this.panel_26.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		this.panel_27 = new JPanel();
+		this.panel_26.add(this.panel_27);
+		this.panel_27.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.panel_29 = new JPanel();
+		this.panel_27.add(this.panel_29);
+		
+		this.lbl_cantAsociados = new JLabel("Cantidad Asociados");
+		this.panel_29.add(this.lbl_cantAsociados);
+		
+		this.panel_30 = new JPanel();
+		this.panel_27.add(this.panel_30);
+		
+		this.lbl_Solicitudes = new JLabel("Solicitudes");
+		this.panel_30.add(this.lbl_Solicitudes);
+		
+		this.panel_31 = new JPanel();
+		this.panel_27.add(this.panel_31);
+		
+		this.lbl_TipoSolicitud = new JLabel("Tipo");
+		this.panel_31.add(this.lbl_TipoSolicitud);
+		
+		this.panel_35 = new JPanel();
+		this.panel_27.add(this.panel_35);
+		
+		this.lblNewLabel_2 = new JLabel("");
+		this.panel_35.add(this.lblNewLabel_2);
+		
+		this.panel_28 = new JPanel();
+		this.panel_26.add(this.panel_28);
+		this.panel_28.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.panel_32 = new JPanel();
+		this.panel_28.add(this.panel_32);
+		
+		this.textField_CantAsociados = new JTextField();
+		this.panel_32.add(this.textField_CantAsociados);
+		this.textField_CantAsociados.setColumns(10);
+		
+		this.panel_33 = new JPanel();
+		this.panel_28.add(this.panel_33);
+		
+		this.textField_cantSolicitudes = new JTextField();
+		this.panel_33.add(this.textField_cantSolicitudes);
+		this.textField_cantSolicitudes.setColumns(10);
+		
+		this.panel_34 = new JPanel();
+		this.panel_28.add(this.panel_34);
+		
+		this.comboBox_TipoSolicitud = new JComboBox();
+		this.panel_34.add(this.comboBox_TipoSolicitud);
+		this.comboBox_TipoSolicitud.addItem("Atencion");
+		this.comboBox_TipoSolicitud.addItem("Traslado");
+		
+		this.panel_36 = new JPanel();
+		this.panel_28.add(this.panel_36);
+		
+		this.btn_Simulacion = new JButton("Simulacion");
+		this.panel_36.add(this.btn_Simulacion);
+		
+		this.panel_37 = new JPanel();
+		this.panel_24.add(this.panel_37);
+		this.panel_25 = new JPanel();
+		this.panel_Ambulancia.add(this.panel_25);
+		this.panel_25.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.textArea = new JTextArea();
+		this.panel_25.add(this.textArea);
 		
 		this.setVisible(true);
 	}
