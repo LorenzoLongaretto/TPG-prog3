@@ -14,7 +14,7 @@ private String pedido;
 		
 		if(comando.equalsIgnoreCase("Atencion")) {
 		    this.ambulancia.solicitaAtencion();
-		    for(int i=0;i<2;i++) {
+		    for(int i=0;i<2;i++) { //este pedido necesita 2 tiempos para volver a disponible
 				Util.espera();
 				this.ambulancia.volverClinica();
 			}

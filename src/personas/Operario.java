@@ -17,7 +17,7 @@ private Ambulancia ambulancia;
 	public void run() {
 	//	for(int i=0;i<3;i++) {
 			this.ambulancia.solicitaReparacion();
-			for(int j=0;j<2;j++) {
+			for(int j=0;j<2;j++) { //este pedido necesita 2 tiempos para volver a disponible
 				Util.espera();
 				this.ambulancia.volverClinica();
 			}

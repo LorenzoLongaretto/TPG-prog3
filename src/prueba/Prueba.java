@@ -21,7 +21,7 @@ import infraestructura.HabitacionCompartida;
 public class Prueba {
 
 	public static void main(String[] args) throws IOException {
-		
+	/*	
 		//Serializacion archivo = new Serializacion();
    
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
@@ -92,29 +92,27 @@ public class Prueba {
         Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
         ventana.setActionListener(controlador);
         //archivo.guardarDatos();
+		*/
 		
-		/*
-		 * Ambulancia.getInstancia() --> le aplicamos singleton
-        Ambulancia amb=new Ambulancia();
-		Asociado a1=new Asociado("--", "--", "--", "--", "--", "--",amb);
+		// Ambulancia.getInstancia() --> le aplicamos singleton
+       
+		Asociado a1=new Asociado("--", "--", "--", "--", "--", "--",Ambulancia.getInstancia());
 		a1.setPedido("Traslado");
-		Asociado a2=new Asociado("--", "--", "--", "--", "--", "--",amb);
+		Asociado a2=new Asociado("--", "--", "--", "--", "--", "--",Ambulancia.getInstancia());
 		a2.setPedido("Atencion");
-		Asociado a3=new Asociado("--", "--", "--", "--", "--", "--",amb);
+		Asociado a3=new Asociado("--", "--", "--", "--", "--", "--",Ambulancia.getInstancia());
 		a3.setPedido("Atencion");
-		Operario op1=new Operario(amb);
+		Operario op1=new Operario(Ambulancia.getInstancia());
 		Thread hilo1 = new Thread(a1);
 		Thread hilo2 = new Thread(a2);
 		Thread hilo3 = new Thread(a3);
 		
 		op1.start();
-		//hilo1.start();
-		hilo2.start();
+		hilo1.start();
+	//	hilo2.start();
 		hilo3.start();
-		*/
+		
 	}
  
 }
-
-
 
