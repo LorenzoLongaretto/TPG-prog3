@@ -12,6 +12,8 @@ import vista.IVistaAsociado;
 import vista.IVistaHabitacion;
 import vista.IVistaMedico;
 import vista.IVistaPaciente;
+import personas.Ambulancia;
+import personas.Asociado;
 import personas.Paciente;
 
 
@@ -126,6 +128,22 @@ public class Controlador implements ActionListener{
             	this.vistaPaciente.mensaje("Debe seleccionar un paciente de la lista de Atencion");
 			
 		}
+        if(comando.equalsIgnoreCase("AgregarAsociado")) {
+        	Asociado asociado = new Asociado(this.vistaAsociado.getDNI(),this.vistaAsociado.getNombre(),this.vistaAsociado.getApellido(),this.vistaAsociado.getDomicilio(),this.vistaAsociado.getCiudad(),this.vistaAsociado.getTelefono(),Ambulancia.getInstancia());
+        	Clinica.getInstance().altaAsociado(asociado);
+        	this.vistaAsociado.agregarAsociado(asociado);
+        }
+        
+        if(comando.equals("EliminarAsociado")) {
+        	Asociado asociado = this.vistaAsociado.getAsociadoSeleccionado();
+        	if(asociado!=null) {
+        		Clinica.getInstance().eliminarAsociado(Integer.parseInt(asociado.getDNI()));
+            	this.vistaAsociado.borraListaAsociados();
+            	this.vistaAsociado.actualizaAsociados(Clinica.getInstance().getAsociados());
+        	}
+        	else
+        		this.vistaAsociado.mensaje("Debe seleccionar un asociado");
+        }
 		
 		
 	}

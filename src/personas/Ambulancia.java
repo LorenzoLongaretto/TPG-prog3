@@ -9,7 +9,7 @@ public class Ambulancia extends Observable{
 	private IState estado;
 	private boolean disponible,trasladandoP,atendiendoDom,regresandoSinP,enTaller,regresandoTaller; //regeresando sin paciente
 	
-	public Ambulancia() {
+	private Ambulancia() {
 		this.estado = new DisponibleState(this);
 		this.disponible=true;
 		this.regresandoSinP=false;

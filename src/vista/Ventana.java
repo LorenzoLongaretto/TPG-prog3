@@ -11,11 +11,14 @@ import infraestructura.Factura;
 import infraestructura.Habitacion;
 import infraestructura.Prestacion;
 import modelo.IMedico;
+import personas.Asociado;
 import personas.Paciente;
 
 import javax.swing.JTabbedPane;
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -30,8 +33,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.JTextArea;
+import java.awt.Color;
 
-public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVistaHabitacion,IVistaAsociado,IVistaAmbulancia {
+public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVistaHabitacion,IVistaAsociado,IVistaAmbulancia,KeyListener {
 
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
@@ -55,12 +59,53 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private DefaultListModel<Paciente> modeloListaPaciente = new DefaultListModel<Paciente>();
 	private DefaultListModel<IMedico> modeloListaMedico = new DefaultListModel<IMedico>();
 	private DefaultListModel<Habitacion> modeloListaHabitacion = new DefaultListModel<Habitacion>();
+	private DefaultListModel<Asociado> modeloListaAsociado = new DefaultListModel<Asociado>();
 	private ActionListener actionListener;
 	private JPanel panel_1;
 	private JButton btn_Cargar;
 	private JButton btn_PrestacionHabitacion;
 	private JTextArea textArea_Factura;
 	private JScrollPane scrollPane_3;
+	private JPanel panel_Asociados;
+	private JLabel lbl_nombre;
+	private JPanel panel_3;
+	private JPanel panel_17;
+	private JPanel panel_4;
+	private JTextField textField_Nombre;
+	private JPanel panel_5;
+	private JPanel panel_7;
+	private JPanel panel_8;
+	private JPanel panel_9;
+	private JLabel lbl_Apellido;
+	private JTextField textField_Apellido;
+	private JPanel panel_6;
+	private JLabel lbl_DNI;
+	private JTextField textField_DNI;
+	private JPanel panel_10;
+	private JPanel panel_11;
+	private JLabel lbl_Ciudad;
+	private JTextField textField_Ciudad;
+	private JPanel panel_12;
+	private JPanel panel_13;
+	private JLabel lbl_Telefono;
+	private JTextField textField_Telefono;
+	private JPanel panel_14;
+	private JPanel panel_15;
+	private JLabel lbl_Domicilio;
+	private JTextField textField_Domicilio;
+	private JPanel panel_16;
+	private JPanel panel_18;
+	private JLabel lblNewLabel_1;
+	private JPanel panel_19;
+	private JButton btn_AgregarAsociado;
+	private JPanel panel_20;
+	private JPanel panel_21;
+	private JPanel panel_22;
+	private JList list_Asociados;
+	private JButton btn_EliminarAsociado;
+	private JLabel lblNewLabel;
+	private JScrollPane scrollPane_4;
+	private JPanel panel_23;
 
 
    	public Ventana() {
@@ -153,6 +198,142 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.scrollPane_2.setViewportView(this.list_habitaciones);
 		this.list_habitaciones.setModel(modeloListaHabitacion);
 		
+		this.panel_Asociados = new JPanel();
+		this.tabbedPane.addTab("Asociados", null, this.panel_Asociados, null);
+		this.panel_Asociados.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		this.panel_3 = new JPanel();
+		this.panel_Asociados.add(this.panel_3);
+		this.panel_3.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		this.panel_17 = new JPanel();
+		this.panel_3.add(this.panel_17);
+		this.panel_17.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.panel_5 = new JPanel();
+		this.panel_17.add(this.panel_5);
+		this.panel_5.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.panel_7 = new JPanel();
+		this.panel_5.add(this.panel_7);
+		
+		this.lbl_nombre = new JLabel("Nombre");
+		this.panel_7.add(this.lbl_nombre);
+		
+		this.panel_9 = new JPanel();
+		this.panel_5.add(this.panel_9);
+		
+		this.lbl_Apellido = new JLabel("Apellido");
+		this.panel_9.add(this.lbl_Apellido);
+		
+		this.panel_10 = new JPanel();
+		this.panel_5.add(this.panel_10);
+		
+		this.lbl_DNI = new JLabel("DNI");
+		this.panel_10.add(this.lbl_DNI);
+		
+		this.panel_12 = new JPanel();
+		this.panel_5.add(this.panel_12);
+		
+		this.lbl_Ciudad = new JLabel("Ciudad");
+		this.panel_12.add(this.lbl_Ciudad);
+		
+		this.panel_15 = new JPanel();
+		this.panel_5.add(this.panel_15);
+		
+		this.lbl_Telefono = new JLabel("Telefono");
+		this.panel_15.add(this.lbl_Telefono);
+		
+		this.panel_16 = new JPanel();
+		this.panel_5.add(this.panel_16);
+		
+		this.lbl_Domicilio = new JLabel("Domicilio");
+		this.panel_16.add(this.lbl_Domicilio);
+		
+		this.panel_19 = new JPanel();
+		this.panel_5.add(this.panel_19);
+		
+		this.lblNewLabel_1 = new JLabel("");
+		this.panel_19.add(this.lblNewLabel_1);
+		
+		this.panel_4 = new JPanel();
+		this.panel_3.add(this.panel_4);
+		this.panel_4.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.panel_8 = new JPanel();
+		this.panel_4.add(this.panel_8);
+		
+		this.textField_Nombre = new JTextField();
+		this.panel_8.add(this.textField_Nombre);
+		this.textField_Nombre.setColumns(10);
+		this.textField_Nombre.addKeyListener(this);
+		this.panel_6 = new JPanel();
+		this.panel_4.add(this.panel_6);
+		
+		this.textField_Apellido = new JTextField();
+		this.panel_6.add(this.textField_Apellido);
+		this.textField_Apellido.setColumns(10);
+		this.textField_Apellido.addKeyListener(this);
+		this.panel_11 = new JPanel();
+		this.panel_4.add(this.panel_11);
+		
+		this.textField_DNI = new JTextField();
+		this.panel_11.add(this.textField_DNI);
+		this.textField_DNI.setColumns(10);
+		this.textField_DNI.addKeyListener(this);
+		this.panel_13 = new JPanel();
+		this.panel_4.add(this.panel_13);
+		
+		this.textField_Ciudad = new JTextField();
+		this.panel_13.add(this.textField_Ciudad);
+		this.textField_Ciudad.setColumns(10);
+		this.textField_Ciudad.addKeyListener(this);
+		this.panel_14 = new JPanel();
+		this.panel_4.add(this.panel_14);
+		
+		this.textField_Telefono = new JTextField();
+		this.panel_14.add(this.textField_Telefono);
+		this.textField_Telefono.setColumns(10);
+		this.textField_Telefono.addKeyListener(this);
+		this.panel_18 = new JPanel();
+		this.panel_4.add(this.panel_18);
+		
+		this.textField_Domicilio = new JTextField();
+		this.panel_18.add(this.textField_Domicilio);
+		this.textField_Domicilio.setColumns(10);
+		this.textField_Domicilio.addKeyListener(this);
+		this.panel_20 = new JPanel();
+		this.panel_4.add(this.panel_20);
+		
+		this.btn_AgregarAsociado = new JButton("Agregar");
+		this.panel_20.add(this.btn_AgregarAsociado);
+		this.btn_AgregarAsociado.setActionCommand("AgregarAsociado");
+		this.btn_AgregarAsociado.setEnabled(false);
+		this.panel_21 = new JPanel();
+		this.panel_Asociados.add(this.panel_21);
+		this.panel_21.setLayout(new GridLayout(2, 1, 0, 0));
+		
+		this.panel_22 = new JPanel();
+		this.panel_21.add(this.panel_22);
+		
+		this.scrollPane_4 = new JScrollPane();
+		this.panel_22.add(this.scrollPane_4);
+		
+		this.list_Asociados = new JList();
+		this.scrollPane_4.setViewportView(this.list_Asociados);
+		this.list_Asociados.setModel(modeloListaAsociado);
+		this.lblNewLabel = new JLabel("Lista Asociados");
+		this.lblNewLabel.setForeground(Color.RED);
+		this.lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		this.scrollPane_4.setColumnHeaderView(this.lblNewLabel);
+		
+		this.panel_23 = new JPanel();
+		this.panel_21.add(this.panel_23);
+		
+		this.btn_EliminarAsociado = new JButton("Eliminar");
+		this.btn_EliminarAsociado.setActionCommand("EliminarAsociado");
+		this.panel_23.add(this.btn_EliminarAsociado);
+		
 		this.setVisible(true);
 	}
 
@@ -162,6 +343,8 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.btn_PrestacionMedica.addActionListener(actionListener);
 		this.btn_PrestacionHabitacion.addActionListener(actionListener);
 		this.btn_Egreso.addActionListener(actionListener);
+		this.btn_AgregarAsociado.addActionListener(actionListener);
+		this.btn_EliminarAsociado.addActionListener(actionListener);
 		this.actionListener = actionListener;
 	}
 
@@ -234,23 +417,94 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.modeloListaMedico.addElement(medico);
 		
 	}
-
 	@Override
 	public void agregarHabitacion(Habitacion habitacion) {
 		if(habitacion!=null)
 		this.modeloListaHabitacion.addElement(habitacion);
 		
 	}
-
 	@Override
 	public void mensaje(String msj) {
-		JOptionPane.showMessageDialog(this, msj);
+		JOptionPane.showMessageDialog(this, msj);		
+	}
+	@Override
+	public void borraLista() {
+		this.modeloListaPaciente.removeAllElements();
+  }
+
+	@Override
+	public String getDNI() {
+		return this.textField_DNI.getText();
+	}
+
+	@Override
+	public String getNombre() {
+		return this.textField_Nombre.getText();
+	}
+
+	@Override
+	public String getApellido() {
+		return this.textField_Apellido.getText();
+	}
+
+	@Override
+	public String getCiudad() {
+		return this.textField_Ciudad.getText();
+	}
+
+	@Override
+	public String getTelefono() {
+		return this.textField_Telefono.getText();
+	}
+
+	@Override
+	public String getDomicilio() {
+		return this.textField_Domicilio.getText();
+	}
+
+	@Override
+	public Asociado getAsociadoSeleccionado() {
+		return (Asociado) this.list_Asociados.getSelectedValue();
+	}
+
+	@Override
+	public void actualizaAsociados(HashMap<Integer, Asociado> asociados) {
+		for (Integer key : 	asociados.keySet()) {
+			   this.agregarAsociado(asociados.get(key));
+			}
+	}
+
+	@Override
+	public void borraListaAsociados() {
+		this.modeloListaAsociado.removeAllElements();
 		
 	}
 
 	@Override
-	public void borraLista() {
-		this.modeloListaPaciente.removeAllElements();
+	public void agregarAsociado(Asociado asociado) {
+	this.modeloListaAsociado.addElement(asociado);
+		
+	}
+
+	@Override
+	public void keyTyped(KeyEvent e) {}
+
+	@Override
+	public void keyPressed(KeyEvent e) {}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+	String DNI ="",nombre="",apellido="",ciudad="",telefono="",domicilio="";
+	DNI = this.textField_DNI.getText();
+	nombre = this.textField_Nombre.getText();
+	apellido = this.textField_Apellido.getText();
+	ciudad = this.textField_Ciudad.getText();
+	telefono = this.textField_Telefono.getText();
+	domicilio = this.textField_Domicilio.getText();
 	
-  }
+	boolean condicion = (!DNI.equals("") && !nombre.equals("") && !apellido.equals("") && !ciudad.equals("") && !telefono.equals("") && !domicilio.equals(""));
+	
+    this.btn_AgregarAsociado.setEnabled(condicion);
+		
+	}
 }

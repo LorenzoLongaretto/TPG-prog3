@@ -93,6 +93,8 @@ public class Prueba {
         ventana.setActionListener(controlador);
         //archivo.guardarDatos();
 		*/
+		/*
+		 * Ambulancia.getInstancia() --> le aplicamos singleton
         Ambulancia amb=new Ambulancia();
 		Asociado a1=new Asociado("--", "--", "--", "--", "--", "--",amb);
 		a1.setPedido("Traslado");
@@ -109,7 +111,7 @@ public class Prueba {
 		//hilo1.start();
 		hilo2.start();
 		hilo3.start();
-		
+		*/
 	}
  
 }
