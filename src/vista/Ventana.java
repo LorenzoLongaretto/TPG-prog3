@@ -131,6 +131,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JLabel lbl_Factura;
 	private JLabel lbl_ListaMedicos;
 	private JLabel lbl_habitaciones;
+	private JButton btn_Atender;
 
 
    	public Ventana() {
@@ -157,6 +158,9 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.btn_Cargar = new JButton("Cargar");
 		this.panel_1.add(this.btn_Cargar);
+		
+		this.btn_Atender = new JButton("Atender");
+		this.panel_1.add(this.btn_Atender);
 		
 		this.scrollPane = new JScrollPane();
 		this.panel_Pacientes.add(this.scrollPane);
@@ -440,13 +444,15 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.textArea = new JTextArea();
 		this.panel_25.add(this.textArea);
+		this.btn_Atender.setEnabled(false);
 		
 		this.setVisible(true);
 	}
 
 	@Override
 	public void setActionListener(ActionListener actionListener) {
-		this.btn_Cargar.addActionListener(actionListener);
+		this.btn_Cargar.addActionListener(actionListener);//Carga lista de atencion
+		this.btn_Atender.addActionListener(actionListener);//Mueve de lista de espera a lista de atencion
 		this.btn_PrestacionMedica.addActionListener(actionListener);
 		this.btn_PrestacionHabitacion.addActionListener(actionListener);
 		this.btn_Egreso.addActionListener(actionListener);
@@ -612,6 +618,12 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	boolean condicion = (!DNI.equals("") && !nombre.equals("") && !apellido.equals("") && !ciudad.equals("") && !telefono.equals("") && !domicilio.equals(""));
 	
     this.btn_AgregarAsociado.setEnabled(condicion);
+		
+	}
+
+	@Override
+	public void habilitarAtencion() {
+		this.btn_Atender.setEnabled(true);
 		
 	}
 }

@@ -28,8 +28,8 @@ public class Prueba {
 		
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
 		try {
-			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose   ", "Java", "MDP    ","2235673421", "San Juan 2140","Nino");
-			paciente2 = PacienteFactory.getPaciente("41822123", "Ximena		", "ConX", "MDP    ","2235673421", "San Juan 2140","Mayor");
+			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose", "Java", "MDP    ","2235673421", "San Juan 2140","Nino");
+			paciente2 = PacienteFactory.getPaciente("41822123", "Ximena", "ConX", "MDP    ","2235673421", "San Juan 2140","Mayor");
 		    paciente3  = PacienteFactory.getPaciente("4444444", "Rigoberto", "Rodriguez", "Miramar","43256321", "Independencia 01","Joven");
 		       
 		} catch (NoExisteRangoEtarioException e) {
@@ -66,14 +66,14 @@ public class Prueba {
         Clinica.getInstance().atenderPaciente(paciente2);
         
         Factura factura = new Factura(1,fecha1,paciente);
-        factura.asignarMedico(medico);
-        factura.asignarMedico(medico);
+        //factura.asignarMedico(medico);
+        //factura.asignarMedico(medico);
         Clinica.getInstance().asignarHabitacion(new HabitacionCompartida(32,21,200));
-        factura.asignarHabitacion(Clinica.getInstance().buscaHabitacion(32));
+        //factura.asignarHabitacion(Clinica.getInstance().buscaHabitacion(32));
         Clinica.getInstance().facturacion(factura); 
         
-        Factura factura2 = new Factura(2,fecha2,paciente);
-        factura2.asignarMedico(medico);
+        Factura factura2 = new Factura(2,fecha2,paciente2);
+        //factura2.asignarMedico(medico);
         Clinica.getInstance().facturacion(factura2);
         //MODULO DE EGRESO Y FACTURACION
         //System.out.println("FACTURA:");
