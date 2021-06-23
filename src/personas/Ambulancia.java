@@ -13,10 +13,6 @@ public class Ambulancia extends Observable{
 		this.estado = new DisponibleState(this);
 		this.disponible=true;
 		this.regresandoSinP=false;
-		/*this.enTaller=false;
-		this.regresandoTaller=false;
-		this.trasladandoP=false;
-		this.atendiendoDom=false;*/
 		this.ocupado=false;
 		this.regresandoOcupado=false;
 	}
@@ -122,37 +118,7 @@ public class Ambulancia extends Observable{
 			this.disponible=true;
 			this.regresandoSinP=false;
 		}
-		
-		/*while (this.disponible) {
-			try {
-				wait();
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}*/
-		
-		/*if(this.enTaller) {
-			this.regresandoTaller=true;
-			this.enTaller=false;
-		//	this.volverClinica();
-		}
-		else if(this.regresandoTaller) { //puedo unificar las variables regresandoTaller y trasladoP, tambien enTaller y atendiendoDom
-			this.disponible=true;
-			this.regresandoTaller=false;
-		}
-		else if(this.regresandoSinP) {
-			this.regresandoSinP=false;
-			this.disponible=true;
-		}else if(this.atendiendoDom) {
-			this.atendiendoDom=false;
-			this.trasladandoP=true;
-		//	this.volverClinica();
-			
-		}
-		else if(this.trasladandoP) {
-			this.trasladandoP=false;
-			this.disponible=true;
-		}*/
+	
 		
 		
 		notifyAll();
