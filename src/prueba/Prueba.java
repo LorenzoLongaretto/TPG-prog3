@@ -23,7 +23,7 @@ public class Prueba {
 	public static void main(String[] args) throws IOException {
 		
 		//Serializacion archivo = new Serializacion();
-   /*	
+   
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
 		
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
@@ -92,7 +92,7 @@ public class Prueba {
         Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
         ventana.setActionListener(controlador);
         //archivo.guardarDatos();
-		*/
+		
 		/*
 		 * Ambulancia.getInstancia() --> le aplicamos singleton
         Ambulancia amb=new Ambulancia();
