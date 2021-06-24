@@ -3,6 +3,9 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import excepciones.ExisteAsociadoException;
+import excepciones.HabitacionOcupadaException;
+import excepciones.NoExisteAsociadoException;
 import infraestructura.Factura;
 import infraestructura.Habitacion;
 import modelo.Clinica;
@@ -113,8 +116,13 @@ public class Controlador implements ActionListener{
         	Habitacion habitacion = this.vistaHabitacion.getHabitacionSeleccionada();
         	
         	if(habitacion!= null && paciente!=null) {
-        		Clinica.getInstance().derivarHabitacion(paciente, habitacion);
-        		this.vistaPaciente.mensaje("Se agrego la habitacion: "+habitacion.toString()+ " al paciente");
+        		try {
+					Clinica.getInstance().derivarHabitacion(paciente, habitacion);
+					this.vistaPaciente.mensaje("Se agrego la habitacion: "+habitacion.toString()+ " al paciente");
+				} catch (HabitacionOcupadaException e1) {
+				this.vistaPaciente.mensaje(e1.getMessage());
+				}
+        		
         	}
         	else 
         		this.vistaPaciente.mensaje("Debe seleccionar una habitacion y un paciente");
@@ -140,16 +148,26 @@ public class Controlador implements ActionListener{
 		}
         if(comando.equalsIgnoreCase("AgregarAsociado")) {
         	Asociado asociado = new Asociado(this.vistaAsociado.getDNI(),this.vistaAsociado.getNombre(),this.vistaAsociado.getApellido(),this.vistaAsociado.getDomicilio(),this.vistaAsociado.getCiudad(),this.vistaAsociado.getTelefono(),Ambulancia.getInstancia());
-        	Clinica.getInstance().altaAsociado(asociado);
-        	this.vistaAsociado.agregarAsociado(asociado);
+        	try {
+				Clinica.getInstance().altaAsociado(asociado);
+				this.vistaAsociado.agregarAsociado(asociado);
+			} catch (ExisteAsociadoException e1) {
+				this.vistaAsociado.mensaje(e1.getMessage()+ "con DNI: "+e1.getDNI());
+			}
+        	
         }
         
         if(comando.equals("EliminarAsociado")) {
         	Asociado asociado = this.vistaAsociado.getAsociadoSeleccionado();
         	if(asociado!=null) {
-        		Clinica.getInstance().eliminarAsociado(Integer.parseInt(asociado.getDNI()));
-            	this.vistaAsociado.borraListaAsociados();
-            	this.vistaAsociado.actualizaAsociados(Clinica.getInstance().getAsociados());
+        		try {
+					Clinica.getInstance().eliminarAsociado(Integer.parseInt(asociado.getDNI()));
+					this.vistaAsociado.borraListaAsociados();
+	            	this.vistaAsociado.actualizaAsociados(Clinica.getInstance().getAsociados());
+				} catch (NumberFormatException | NoExisteAsociadoException e1) {
+					this.vistaAsociado.mensaje("No existe asociado ");
+				}
+            	
         	}
         	else
         		this.vistaAsociado.mensaje("Debe seleccionar un asociado");

@@ -19,7 +19,7 @@ public class TerapiaIntensiva extends Habitacion {
 
 	@Override
 	public String toString() {
-		return "Terapia Intensiva";
+		return super.toString()+ "---Tipo: Terapia Intensiva";
 	}
 
 }

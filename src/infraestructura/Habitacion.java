@@ -35,7 +35,7 @@ public abstract class Habitacion {
 
 	@Override
 	public String toString() {
-		return "Habitacion nroHabitaci=" + nroHabitacion;
+		return "Habitacion nro " + nroHabitacion;
 	}
 
 	public int getCantPersonas() {

@@ -8,6 +8,9 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.TreeSet;
 
+import excepciones.ExisteAsociadoException;
+import excepciones.HabitacionOcupadaException;
+import excepciones.NoExisteAsociadoException;
 import personas.Paciente;
 import personas.Ambulancia;
 import personas.Asociado;
@@ -170,10 +173,13 @@ public class Clinica {
 		factura.asignarMedico(medico);		
 	}
 	//agrega paciente a la factura
-	public void derivarHabitacion(Paciente paciente,Habitacion habitacion) {
+	public void derivarHabitacion(Paciente paciente,Habitacion habitacion) throws HabitacionOcupadaException {
 		Factura factura = this.buscaUltima(paciente);
-		if(habitacion.getCantPersonas()!=0 && habitacion!=null) // si esta en 0 significa que no hay espacio 
+		if(habitacion.getCantPersonas()!=0) // si esta en 0 significa que no hay espacio 
 	          factura.asignarHabitacion(habitacion);
+		else
+			throw new HabitacionOcupadaException("La habitacion esta ocupada");
+			
 	}
 	public IMedico buscaMedico(int matricula) {
 		return this.medicos.get(matricula);
@@ -221,16 +227,16 @@ public class Clinica {
 		   System.out.println("Importe Total: "+importeTotal);
 	}
 	//dni, nombre y apellido, domicilio, teléfono.
-	public void altaAsociado(Asociado asociado) {
+	public void altaAsociado(Asociado asociado) throws ExisteAsociadoException {
 		Asociado a=null;
 		a = asociados.get(Integer.parseInt(asociado.getDNI()));
 		if(a==null) {  // no existe el asociado
 			this.asociados.put(Integer.parseInt(asociado.getDNI()),asociado);
 		}
-		//else
-		       //Lanzar Excepcion de que ya existe
+		else
+		      throw new ExisteAsociadoException("Ya existe ese asociado",Integer.parseInt(asociado.getDNI()));
 	}
-	public void eliminarAsociado(int DNI) {
+	public void eliminarAsociado(int DNI) throws NoExisteAsociadoException {
 		Asociado a=null;
 		a = asociados.get(DNI);
 		if(a!=null) {  // estaba en el HashMap
@@ -238,7 +244,8 @@ public class Clinica {
 			asociados.remove(DNI);
 			
 		}
-		// Lanzar Excepcion ya que no se encontraba en el HashMap
+		else
+			throw new NoExisteAsociadoException("No existe ese Asociado",DNI);
 	}
 	
 	public SalaDeEspera getSalaEspera() {
