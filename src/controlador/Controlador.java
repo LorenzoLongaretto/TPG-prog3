@@ -87,6 +87,7 @@ public class Controlador implements ActionListener{
 			this.vistaPaciente.actualizaLista(Clinica.getInstance().getListaAtencion());
 			this.vistaMedico.actualizaListaMedicos(Clinica.getInstance().getMedicos());
 			this.vistaHabitacion.actualizaListaHabitaciones(Clinica.getInstance().getHabitaciones());
+			this.vistaAsociado.actualizaAsociados(Clinica.getInstance().getAsociados());
 			this.vistaPaciente.habilitarAtencion();
 		}
 		if(comando.equalsIgnoreCase("Atender") ) {
@@ -149,15 +150,22 @@ public class Controlador implements ActionListener{
         if(comando.equalsIgnoreCase("AgregarAsociado")) {
         	Asociado asociado = new Asociado(this.vistaAsociado.getDNI(),this.vistaAsociado.getNombre(),this.vistaAsociado.getApellido(),this.vistaAsociado.getDomicilio(),this.vistaAsociado.getCiudad(),this.vistaAsociado.getTelefono(),Ambulancia.getInstancia());
         	try {
-				Clinica.getInstance().altaAsociado(asociado);
-				this.vistaAsociado.agregarAsociado(asociado);
-			} catch (ExisteAsociadoException e1) {
-				this.vistaAsociado.mensaje(e1.getMessage()+ "con DNI: "+e1.getDNI());
-			}
+                Integer.parseInt(this.vistaAsociado.getDNI());
+                try {
+    				Clinica.getInstance().altaAsociado(asociado);
+    				this.vistaAsociado.agregarAsociado(asociado);
+    			} catch (ExisteAsociadoException e1) {
+    				this.vistaAsociado.mensaje(e1.getMessage()+ "con DNI: "+e1.getDNI());
+    			}
+                
+            } catch (NumberFormatException excepcion) {
+                this.vistaAsociado.mensaje("El DNI debe ser un numero");
+            }
+        	
         	
         }
         
-        if(comando.equals("EliminarAsociado")) {
+        if(comando.equalsIgnoreCase("EliminarAsociado")) {
         	Asociado asociado = this.vistaAsociado.getAsociadoSeleccionado();
         	if(asociado!=null) {
         		try {
@@ -172,7 +180,9 @@ public class Controlador implements ActionListener{
         	else
         		this.vistaAsociado.mensaje("Debe seleccionar un asociado");
         }
-		
+		if(comando.equalsIgnoreCase("Simulacion")) {
+			
+		}
 		
 	}
  

@@ -11,6 +11,7 @@ import infraestructura.Factura;
 import infraestructura.Habitacion;
 import infraestructura.Prestacion;
 import modelo.IMedico;
+import personas.Ambulancia;
 import personas.Asociado;
 import personas.Paciente;
 
@@ -106,7 +107,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JPanel panel_23;
 	private JPanel panel_Ambulancia;
 	private JPanel panel_24;
-	private JPanel panel_25;
 	private JLabel lbl_cantAsociados;
 	private JPanel panel_26;
 	private JTextField textField_CantAsociados;
@@ -127,7 +127,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JButton btn_Simulacion;
 	private JPanel panel_36;
 	private JPanel panel_37;
-	private JTextArea textArea;
 	private JLabel lbl_Factura;
 	private JLabel lbl_ListaMedicos;
 	private JLabel lbl_habitaciones;
@@ -402,7 +401,9 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel_24 = new JPanel();
 		this.panel_Ambulancia.add(this.panel_24);
 		this.panel_24.setLayout(new GridLayout(0, 2, 0, 0));
-		
+		PanelAmbulancia panel_estadoAmbulancia = new PanelAmbulancia(Ambulancia.getInstancia());
+		this.panel_Ambulancia.add(panel_estadoAmbulancia);
+		panel_estadoAmbulancia.setLayout(new GridLayout(1, 0, 0, 0));
 		this.panel_26 = new JPanel();
 		this.panel_24.add(this.panel_26);
 		this.panel_26.setLayout(new GridLayout(0, 2, 0, 0));
@@ -469,12 +470,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.panel_37 = new JPanel();
 		this.panel_24.add(this.panel_37);
-		this.panel_25 = new JPanel();
-		this.panel_Ambulancia.add(this.panel_25);
-		this.panel_25.setLayout(new GridLayout(0, 1, 0, 0));
 		
-		this.textArea = new JTextArea();
-		this.panel_25.add(this.textArea);
 		this.btn_Atender.setEnabled(false);
 		
 		this.setVisible(true);
@@ -670,7 +666,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	domicilio = this.textField_Domicilio.getText();
 	
 	boolean condicion = (!DNI.equals("") && !nombre.equals("") && !apellido.equals("") && !ciudad.equals("") && !telefono.equals("") && !domicilio.equals(""));
-	
     this.btn_AgregarAsociado.setEnabled(condicion);
 		
 	}
