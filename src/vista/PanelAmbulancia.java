@@ -39,6 +39,7 @@ public class PanelAmbulancia extends JPanel implements Observer{
     this.ambulancia=ambulancia;
     this.ambulancia.addObserver(this);
     }
+	
 	@Override
 	public void update(Observable o, Object arg) {
 		if(o==this.ambulancia) 

@@ -33,7 +33,7 @@ private Ambulancia ambulancia;
 
 	@Override
 	public String actual() {
-		return "RegresaTaller";
+		return "Regresando del Taller";
 	}
 
 }

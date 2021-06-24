@@ -34,7 +34,7 @@ private Ambulancia ambulancia;
 	@Override
 	public String actual() {
 		
-		return "Atendiendo";
+		return "Atendiendo en domicilio";
 	}
 
 

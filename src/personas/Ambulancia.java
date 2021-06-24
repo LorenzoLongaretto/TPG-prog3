@@ -31,12 +31,14 @@ public class Ambulancia extends Observable{
 		this.estado = estado;
 	}
 
-	public synchronized void solicitaAtencion(){ //a domicilio
+	public synchronized void solicitaAtencion(String nombreAsociado){ //a domicilio
 		System.out.println("estimulo de atencion");
 		
 		while ( !(this.disponible || this.regresandoSinP)) {
 			try {
-				System.out.println("solicita atencion y no puede");
+				this.setChanged();
+				this.notifyObservers(nombreAsociado+" solicita atencion y no puede");
+				System.out.println(nombreAsociado+" solicita atencion y no puede"); //poner otro notifyobs para asociados
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -50,17 +52,20 @@ public class Ambulancia extends Observable{
 		System.out.println("estaba  "+this.estado.actual());
 		this.estado.solicitaAtencion();
 		System.out.println("ahora esta "+this.estado.actual());
-		this.notifyObservers(this.estado.actual());
+		this.setChanged();
+		this.notifyObservers("La ambulancia esta "+this.estado.actual());
 		notifyAll();
 		System.out.println("-------------");
 		
 	}
 	
-	public synchronized void solicitaTraslado(){
+	public synchronized void solicitaTraslado(String nombreAsociado){
 		System.out.println("estimulo de traslado");
 		while(!this.disponible) {
 			try {
-				System.out.println("solicita traslado y no puede");
+				this.setChanged();
+				this.notifyObservers(nombreAsociado+" solicita atencion y no puede");
+				System.out.println(nombreAsociado+" solicita traslado y no puede");
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
@@ -73,7 +78,8 @@ public class Ambulancia extends Observable{
 		System.out.println("estaba "+this.estado.actual());
 		this.estado.solicitaTraslado();
 		System.out.println("ahora esta "+this.estado.actual());
-		this.notifyObservers(this.estado.actual());
+		this.setChanged();
+		this.notifyObservers("La ambulancia esta "+this.estado.actual());
 		notifyAll();
 		System.out.println("-------------");
 		
@@ -94,7 +100,8 @@ public class Ambulancia extends Observable{
 		System.out.println("estaba"+this.estado.actual());
 		this.estado.solicitaReparacion();
 		System.out.println("ahora esta "+this.estado.actual());
-		this.notifyObservers(this.estado.actual());
+		this.setChanged();
+		this.notifyObservers("La ambulancia esta "+ this.estado.actual());
 		notifyAll();
 		System.out.println("-------------");
 	
@@ -104,7 +111,8 @@ public class Ambulancia extends Observable{
 		System.out.println("estaba "+this.estado.actual());
 		this.estado.volverClinica();
 		System.out.println("ahora esta "+this.estado.actual());
-		this.notifyObservers(this.estado.actual());
+		this.setChanged();
+		this.notifyObservers("La ambulancia esta "+ this.estado.actual());
 		
 		if(this.ocupado) {
 			this.regresandoOcupado=true;

@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.GregorianCalendar;
 
 import controlador.Controlador;
+import excepciones.ExisteAsociadoException;
 import excepciones.ImposibleCrearMedicoException;
 import excepciones.NoExisteRangoEtarioException;
 import infraestructura.Factura;
@@ -94,13 +95,26 @@ public class Prueba {
 		
 		
 		// Ambulancia.getInstancia() --> le aplicamos singleton
-       /*
-		Asociado a1=new Asociado("--", "--", "--", "--", "--", "--",Ambulancia.getInstancia());
+       
+		Asociado a1=new Asociado("222356", "juan", "fsdfs", "--", "--", "--",Ambulancia.getInstancia());
 		a1.setPedido("Traslado");
-		Asociado a2=new Asociado("--", "--", "--", "--", "--", "--",Ambulancia.getInstancia());
+		Asociado a2=new Asociado("222357", "raul", "falop", "--", "--", "--",Ambulancia.getInstancia());
 		a2.setPedido("Atencion");
-		Asociado a3=new Asociado("--", "--", "--", "--", "--", "--",Ambulancia.getInstancia());
+		Asociado a3=new Asociado("222358", "negro", "gay", "--", "--", "--",Ambulancia.getInstancia());
 		a3.setPedido("Atencion");
+		try {
+			Clinica.getInstance().altaAsociado(a1);
+		} catch (ExisteAsociadoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			Clinica.getInstance().altaAsociado(a3);
+		} catch (ExisteAsociadoException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		Operario op1=new Operario(Ambulancia.getInstancia());
 		Thread hilo1 = new Thread(a1);
 		Thread hilo2 = new Thread(a2);
@@ -110,7 +124,7 @@ public class Prueba {
 		hilo1.start();
 	//	hilo2.start();
 		hilo3.start();
-		*/
+		
 	}
  
 }
