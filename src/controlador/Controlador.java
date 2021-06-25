@@ -148,7 +148,7 @@ public class Controlador implements ActionListener{
 			
 		}
         if(comando.equalsIgnoreCase("AgregarAsociado")) {
-        	Asociado asociado = new Asociado(this.vistaAsociado.getDNI(),this.vistaAsociado.getNombre(),this.vistaAsociado.getApellido(),this.vistaAsociado.getDomicilio(),this.vistaAsociado.getCiudad(),this.vistaAsociado.getTelefono(),Ambulancia.getInstancia());
+        	Asociado asociado = new Asociado(this.vistaAsociado.getDNI(),this.vistaAsociado.getNombre(),this.vistaAsociado.getApellido(),this.vistaAsociado.getDomicilio(),this.vistaAsociado.getTelefono(),Ambulancia.getInstancia());
         	try {
                 Integer.parseInt(this.vistaAsociado.getDNI());
                 try {
@@ -169,7 +169,7 @@ public class Controlador implements ActionListener{
         	Asociado asociado = this.vistaAsociado.getAsociadoSeleccionado();
         	if(asociado!=null) {
         		try {
-					Clinica.getInstance().eliminarAsociado(Integer.parseInt(asociado.getDNI()));
+					Clinica.getInstance().eliminarAsociado(Integer.parseInt(asociado.getdNI()));
 					this.vistaAsociado.borraListaAsociados();
 	            	this.vistaAsociado.actualizaAsociados(Clinica.getInstance().getAsociados());
 				} catch (NumberFormatException | NoExisteAsociadoException e1) {
@@ -180,8 +180,20 @@ public class Controlador implements ActionListener{
         	else
         		this.vistaAsociado.mensaje("Debe seleccionar un asociado");
         }
-		if(comando.equalsIgnoreCase("Simulacion")) {
+        if(comando.equalsIgnoreCase("AgregarSolicitud")) {
+        	System.out.println("Entra");
+    	   Asociado asociado = this.vistaAmbulancia.getAsociadoSeleccionadoSimulacion();
+    	   if(asociado!=null) {
+    		   asociado.setPedido(this.vistaAmbulancia.getTipo());
+    		   asociado.setCantidad(Integer.parseInt(this.vistaAmbulancia.getCantidad()));
+    	   }
+    	   this.vistaAsociado.borraListaAsociados();
+    	   this.vistaAsociado.actualizaAsociados(Clinica.getInstance().getAsociados());
 			
+		}
+		if(comando.equalsIgnoreCase("Simulacion")) {
+			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados());
+			this.vistaAmbulancia.anularSimulacion();
 		}
 		
 	}

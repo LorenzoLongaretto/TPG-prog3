@@ -65,25 +65,6 @@ public class Prueba {
         Clinica.getInstance().atenderPaciente(paciente);
         Clinica.getInstance().atenderPaciente(paciente2);
         
-        Factura factura = new Factura(1,fecha1,paciente);
-        //factura.asignarMedico(medico);
-        //factura.asignarMedico(medico);
-        Clinica.getInstance().asignarHabitacion(new HabitacionCompartida(32,21,200));
-        //factura.asignarHabitacion(Clinica.getInstance().buscaHabitacion(32));
-        Clinica.getInstance().facturacion(factura); 
-        
-        Factura factura2 = new Factura(2,fecha2,paciente2);
-        //factura2.asignarMedico(medico);
-        Clinica.getInstance().facturacion(factura2);
-        //MODULO DE EGRESO Y FACTURACION
-        //System.out.println("FACTURA:");
-        //Clinica.getInstance().egreso(paciente);
-        //Clinica.getInstance().egreso(paciente2,factura2);
-        //REPORTE MEDICO
-       // System.out.println("--------------------");
-        //System.out.println("REPORTE:");
-        //Clinica.getInstance().reporteMedico(medico, fecha1, fecha2);
-        
         
         
         //Ambulancia
@@ -95,12 +76,15 @@ public class Prueba {
 		
 		// Ambulancia.getInstancia() --> le aplicamos singleton
        
-		Asociado a1=new Asociado("222356", "juan", "fsdfs", "--", "--", "--",Ambulancia.getInstancia());
+		Asociado a1=new Asociado("222356", "juan", "fsdfs", "--", "--",Ambulancia.getInstancia());
 		a1.setPedido("Traslado");
-		Asociado a2=new Asociado("222357", "raul", "falop", "--", "--", "--",Ambulancia.getInstancia());
+		a1.setCantidad(0);
+		Asociado a2=new Asociado("222357", "raul", "falop", "--", "--",Ambulancia.getInstancia());
 		a2.setPedido("Atencion");
-		Asociado a3=new Asociado("222358", "negro", "gay", "--", "--", "--",Ambulancia.getInstancia());
+		a2.setCantidad(0);
+		Asociado a3=new Asociado("222358", "negro", "gay", "--", "--",Ambulancia.getInstancia());
 		a3.setPedido("Atencion");
+		a3.setCantidad(0);
 		try {
 			Clinica.getInstance().altaAsociado(a1);
 		} catch (ExisteAsociadoException e) {
@@ -113,16 +97,6 @@ public class Prueba {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		Operario op1=new Operario(Ambulancia.getInstancia());
-		Thread hilo1 = new Thread(a1);
-		Thread hilo2 = new Thread(a2);
-		Thread hilo3 = new Thread(a3);
-		
-		op1.start();
-		hilo1.start();
-	//	hilo2.start();
-		hilo3.start();
 		
 	}
  

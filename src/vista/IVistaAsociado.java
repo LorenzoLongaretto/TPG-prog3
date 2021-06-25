@@ -11,7 +11,6 @@ public interface IVistaAsociado {
 	public String getDNI();
 	public String getNombre();
 	public String getApellido();
-	public String getCiudad();
 	public String getTelefono();
 	public String getDomicilio();
 	public Asociado getAsociadoSeleccionado();

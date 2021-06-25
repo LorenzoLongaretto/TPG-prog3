@@ -64,7 +64,7 @@ public class Ambulancia extends Observable{
 		while(!this.disponible) {
 			try {
 				this.setChanged();
-				this.notifyObservers(nombreAsociado+" solicita atencion y no puede");
+				this.notifyObservers(nombreAsociado+" solicita traslado y no puede");
 				System.out.println(nombreAsociado+" solicita traslado y no puede");
 				wait();
 			} catch (InterruptedException e) {

@@ -29,9 +29,10 @@ import infraestructura.Prestacion;
  */
 public class Clinica {
 
+	private int nroFactura = 0;
 	//Atributos
 	private static Clinica instance = null;  // aplico patron singleton
-
+     
     private String nombre;
     private String direccion;
     /**
@@ -137,11 +138,12 @@ public class Clinica {
         else                                   // esta en la sala privada
             this.salaEspera.desocupar();
         
-        this.listaAtencion.add(paciente);                
+        this.listaAtencion.add(paciente);        
+        this.nroFactura++;
+        Factura factura = new Factura(this.nroFactura,new GregorianCalendar(),paciente);
+        this.facturas.add(factura);
     }
-	public void facturacion(Factura factura) {
-		this.facturas.add(factura); // agrega la factura a la lista
-	}
+	
 	/**Se toma al primer paciente de la lista de atencion, y se le confecciona la factura correspondiente. Luego , esa factura es mostrada.
 	 * <b> Pre: El parametro paciente y factura debe ser distinto de null.</b>
 	 * <b> Post: Se elimina al paciente de la lista de atencion y se muestra su factura.</b>
@@ -229,12 +231,12 @@ public class Clinica {
 	//dni, nombre y apellido, domicilio, teléfono.
 	public void altaAsociado(Asociado asociado) throws ExisteAsociadoException {
 		Asociado a=null;
-		a = asociados.get(Integer.parseInt(asociado.getDNI()));
+		a = asociados.get(Integer.parseInt(asociado.getdNI()));
 		if(a==null) {  // no existe el asociado
-			this.asociados.put(Integer.parseInt(asociado.getDNI()),asociado);
+			this.asociados.put(Integer.parseInt(asociado.getdNI()),asociado);
 		}
 		else
-		      throw new ExisteAsociadoException("Ya existe ese asociado",Integer.parseInt(asociado.getDNI()));
+		      throw new ExisteAsociadoException("Ya existe ese asociado",Integer.parseInt(asociado.getdNI()));
 	}
 	public void eliminarAsociado(int DNI) throws NoExisteAsociadoException {
 		Asociado a=null;

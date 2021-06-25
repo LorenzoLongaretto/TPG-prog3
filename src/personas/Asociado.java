@@ -2,12 +2,17 @@ package personas;
 
 import util.Util;
 
-public class Asociado extends Persona implements Runnable{
+public class Asociado extends Thread{
+	private String dNI,nombre,apellido,domicilio,telefono;
 private Ambulancia ambulancia;
 private String pedido;
 private int cantidad;
-	public Asociado(String dNI, String nombre, String apellido, String ciudad, String telefono, String domicilio,Ambulancia ambulancia) {
-		super(dNI, nombre, apellido, ciudad, telefono, domicilio);
+	public Asociado(String dNI, String nombre, String apellido,String telefono, String domicilio,Ambulancia ambulancia) {
+	    this.dNI=dNI;
+	    this.nombre=nombre;
+	    this.apellido=apellido;
+	    this.domicilio=domicilio;
+	    this.telefono=telefono;
 		this.ambulancia=ambulancia;
 	}
 
@@ -38,16 +43,72 @@ private int cantidad;
 	
 	@Override
 	public void run() {
-		//for (int i=0;i<this.cantidad;i++)
+		for(int i=0;i<this.cantidad;i++)
 			this.PedirAmbulancia(pedido);
 		
 	}
 
+
+
 	@Override
 	public String toString() {
-		return "Asociado [ambulancia=" + ambulancia + ", pedido=" + pedido + ", DNI=" + DNI + ", nombre=" + nombre
-				+ ", apellido=" + apellido + ", ciudad=" + ciudad + ", telefono=" + telefono + ", domicilio="
-				+ domicilio + "]";
+		return "Nombre: "+this.nombre+"--DNI: "+this.dNI+" Pedido: "+this.pedido+"--Cantidad: "+this.cantidad;
+	}
+
+	public String getdNI() {
+		return dNI;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public String getApellido() {
+		return apellido;
+	}
+
+	public String getDomicilio() {
+		return domicilio;
+	}
+
+	public String getTelefono() {
+		return telefono;
+	}
+
+	public Ambulancia getAmbulancia() {
+		return ambulancia;
+	}
+
+	public String getPedido() {
+		return pedido;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setdNI(String dNI) {
+		this.dNI = dNI;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	public void setDomicilio(String domicilio) {
+		this.domicilio = domicilio;
+	}
+
+	public void setTelefono(String telefono) {
+		this.telefono = telefono;
+	}
+
+	public void setAmbulancia(Ambulancia ambulancia) {
+		this.ambulancia = ambulancia;
 	}
 	
 

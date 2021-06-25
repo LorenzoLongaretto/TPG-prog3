@@ -1,7 +1,7 @@
 package vista;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -20,7 +20,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.Collection;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Queue;
@@ -36,8 +36,9 @@ import javax.swing.JTextField;
 import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.JComboBox;
+import java.awt.event.ActionEvent;
 
-public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVistaHabitacion,IVistaAsociado,IVistaAmbulancia,KeyListener {
+public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVistaHabitacion,IVistaAsociado,IVistaAmbulancia,KeyListener, ActionListener {
 
 	private JPanel contentPane;
 	private JTabbedPane tabbedPane;
@@ -59,6 +60,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private DefaultListModel<IMedico> modeloListaMedico = new DefaultListModel<IMedico>();
 	private DefaultListModel<Habitacion> modeloListaHabitacion = new DefaultListModel<Habitacion>();
 	private DefaultListModel<Asociado> modeloListaAsociado = new DefaultListModel<Asociado>();
+	private DefaultListModel<Asociado> modeloListaAsociado2 = new DefaultListModel<Asociado>();
 	private ActionListener actionListener;
 	private JPanel panel_1;
 	private JButton btn_Cargar;
@@ -82,10 +84,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JTextField textField_DNI;
 	private JPanel panel_10;
 	private JPanel panel_11;
-	private JLabel lbl_Ciudad;
-	private JTextField textField_Ciudad;
-	private JPanel panel_12;
-	private JPanel panel_13;
 	private JLabel lbl_Telefono;
 	private JTextField textField_Telefono;
 	private JPanel panel_14;
@@ -107,24 +105,19 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JPanel panel_23;
 	private JPanel panel_Ambulancia;
 	private JPanel panel_24;
-	private JLabel lbl_cantAsociados;
 	private JPanel panel_26;
-	private JTextField textField_CantAsociados;
 	private JPanel panel_27;
 	private JPanel panel_28;
-	private JPanel panel_29;
 	private JLabel lbl_Solicitudes;
 	private JPanel panel_30;
 	private JLabel lbl_TipoSolicitud;
 	private JPanel panel_31;
-	private JPanel panel_32;
 	private JTextField textField_cantSolicitudes;
 	private JComboBox comboBox_TipoSolicitud;
 	private JPanel panel_33;
 	private JPanel panel_34;
 	private JLabel lblNewLabel_2;
 	private JPanel panel_35;
-	private JButton btn_Simulacion;
 	private JPanel panel_36;
 	private JPanel panel_37;
 	private JLabel lbl_Factura;
@@ -138,6 +131,11 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JPanel panel_42;
 	private JPanel panel_43;
 	private JPanel panel_44;
+	private JList list_AsociadosSimulacion;
+	private JScrollPane scrollPane_5;
+	private JLabel lbl_AsociadosSimulacion;
+	private JButton btn_AgregarSolicitud;
+	private JButton btn_Simulacion;
 
 
    	public Ventana() {
@@ -292,12 +290,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.lbl_DNI = new JLabel("DNI");
 		this.panel_10.add(this.lbl_DNI);
 		
-		this.panel_12 = new JPanel();
-		this.panel_5.add(this.panel_12);
-		
-		this.lbl_Ciudad = new JLabel("Ciudad");
-		this.panel_12.add(this.lbl_Ciudad);
-		
 		this.panel_15 = new JPanel();
 		this.panel_5.add(this.panel_15);
 		
@@ -341,13 +333,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel_11.add(this.textField_DNI);
 		this.textField_DNI.setColumns(10);
 		this.textField_DNI.addKeyListener(this);
-		this.panel_13 = new JPanel();
-		this.panel_4.add(this.panel_13);
-		
-		this.textField_Ciudad = new JTextField();
-		this.panel_13.add(this.textField_Ciudad);
-		this.textField_Ciudad.setColumns(10);
-		this.textField_Ciudad.addKeyListener(this);
 		this.panel_14 = new JPanel();
 		this.panel_4.add(this.panel_14);
 		
@@ -375,6 +360,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.panel_22 = new JPanel();
 		this.panel_21.add(this.panel_22);
+		this.panel_22.setLayout(new GridLayout(0, 1, 0, 0));
 		
 		this.scrollPane_4 = new JScrollPane();
 		this.panel_22.add(this.scrollPane_4);
@@ -403,7 +389,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel_24.setLayout(new GridLayout(0, 2, 0, 0));
 		PanelAmbulancia panel_estadoAmbulancia = new PanelAmbulancia(Ambulancia.getInstancia());
 		this.panel_Ambulancia.add(panel_estadoAmbulancia);
-		panel_estadoAmbulancia.setLayout(new GridLayout(1, 0, 0, 0));
+		panel_estadoAmbulancia.setLayout(new GridLayout(0, 1, 0, 0));
 		this.panel_26 = new JPanel();
 		this.panel_24.add(this.panel_26);
 		this.panel_26.setLayout(new GridLayout(0, 2, 0, 0));
@@ -411,12 +397,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel_27 = new JPanel();
 		this.panel_26.add(this.panel_27);
 		this.panel_27.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		this.panel_29 = new JPanel();
-		this.panel_27.add(this.panel_29);
-		
-		this.lbl_cantAsociados = new JLabel("Cantidad Asociados");
-		this.panel_29.add(this.lbl_cantAsociados);
 		
 		this.panel_30 = new JPanel();
 		this.panel_27.add(this.panel_30);
@@ -433,19 +413,15 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel_35 = new JPanel();
 		this.panel_27.add(this.panel_35);
 		
+		this.btn_Simulacion = new JButton("Simulacion");
+		this.panel_35.add(this.btn_Simulacion);
+		
 		this.lblNewLabel_2 = new JLabel("");
 		this.panel_35.add(this.lblNewLabel_2);
 		
 		this.panel_28 = new JPanel();
 		this.panel_26.add(this.panel_28);
 		this.panel_28.setLayout(new GridLayout(0, 1, 0, 0));
-		
-		this.panel_32 = new JPanel();
-		this.panel_28.add(this.panel_32);
-		
-		this.textField_CantAsociados = new JTextField();
-		this.panel_32.add(this.textField_CantAsociados);
-		this.textField_CantAsociados.setColumns(10);
 		
 		this.panel_33 = new JPanel();
 		this.panel_28.add(this.panel_33);
@@ -465,11 +441,23 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel_36 = new JPanel();
 		this.panel_28.add(this.panel_36);
 		
-		this.btn_Simulacion = new JButton("Simulacion");
-		this.panel_36.add(this.btn_Simulacion);
+		this.btn_AgregarSolicitud = new JButton("Agregar Solicitud");
+		this.btn_AgregarSolicitud.setActionCommand("AgregarSolicitud");
+		this.panel_36.add(this.btn_AgregarSolicitud);
 		
 		this.panel_37 = new JPanel();
 		this.panel_24.add(this.panel_37);
+		this.panel_37.setLayout(new GridLayout(1, 0, 0, 0));
+		
+		this.scrollPane_5 = new JScrollPane();
+		this.panel_37.add(this.scrollPane_5);
+		
+		this.list_AsociadosSimulacion = new JList();
+		this.scrollPane_5.setViewportView(this.list_AsociadosSimulacion);
+		this.list_AsociadosSimulacion.setModel(modeloListaAsociado2);
+		this.lbl_AsociadosSimulacion = new JLabel("Asociados");
+		this.lbl_AsociadosSimulacion.setFont(new Font("Verdana", Font.BOLD, 15));
+		this.scrollPane_5.setColumnHeaderView(this.lbl_AsociadosSimulacion);
 		
 		this.btn_Atender.setEnabled(false);
 		
@@ -478,8 +466,9 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 
 	@Override
 	public void setActionListenerAmbulancia(ActionListener actionListener) {
-		// TODO Auto-generated method stub
-		
+		this.btn_AgregarSolicitud.addActionListener(actionListener);
+		this.btn_Simulacion.addActionListener(actionListener);
+		this.actionListener = actionListener;
 	}
 
 	@Override
@@ -609,12 +598,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	public String getApellido() {
 		return this.textField_Apellido.getText();
 	}
-
-	@Override
-	public String getCiudad() {
-		return this.textField_Ciudad.getText();
-	}
-
 	@Override
 	public String getTelefono() {
 		return this.textField_Telefono.getText();
@@ -640,12 +623,14 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	@Override
 	public void borraListaAsociados() {
 		this.modeloListaAsociado.removeAllElements();
+		this.modeloListaAsociado2.removeAllElements();
 		
 	}
 
 	@Override
 	public void agregarAsociado(Asociado asociado) {
 	this.modeloListaAsociado.addElement(asociado);
+	this.modeloListaAsociado2.addElement(asociado);
 		
 	}
 
@@ -661,11 +646,11 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	DNI = this.textField_DNI.getText();
 	nombre = this.textField_Nombre.getText();
 	apellido = this.textField_Apellido.getText();
-	ciudad = this.textField_Ciudad.getText();
+	
 	telefono = this.textField_Telefono.getText();
 	domicilio = this.textField_Domicilio.getText();
 	
-	boolean condicion = (!DNI.equals("") && !nombre.equals("") && !apellido.equals("") && !ciudad.equals("") && !telefono.equals("") && !domicilio.equals(""));
+	boolean condicion = (!DNI.equals("") && !nombre.equals("") && !apellido.equals("")  && !telefono.equals("") && !domicilio.equals(""));
     this.btn_AgregarAsociado.setEnabled(condicion);
 		
 	}
@@ -676,5 +661,45 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 	}
 
+	@Override
+	public String getCantidad() {
+		return this.textField_cantSolicitudes.getText();
+	}
 
+	@Override
+	public String getTipo() {
+		
+		return this.comboBox_TipoSolicitud.getSelectedItem().toString();
+	}
+
+
+	@Override
+	public Asociado getAsociadoSeleccionadoSimulacion() {
+		
+		return (Asociado) this.list_AsociadosSimulacion.getSelectedValue();
+	}
+
+
+
+	@Override
+	public void simulacion(HashMap<Integer, Asociado> asociados) {
+		for (Integer key : 	asociados.keySet()) {
+			if(asociados.get(key)!=null)
+			    asociados.get(key).start();
+			  
+			}		
+	}
+
+	 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void anularSimulacion() {
+		this.btn_Simulacion.setEnabled(false);
+		
+	}
 }
