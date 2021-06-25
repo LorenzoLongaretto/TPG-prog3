@@ -23,7 +23,7 @@ public class Prueba {
 
 	public static void main(String[] args) throws IOException {
 	
-		//Serializacion archivo = new Serializacion();
+		Serializacion archivo = new Serializacion();
    
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
 		
@@ -37,7 +37,6 @@ public class Prueba {
 			System.out.println(e.getMessage()+e.getRango());
 		}
             
-       
         // Creacion de medicos
         IMedico medico=null, medico2 =null,medico3=null;
         try {
@@ -91,7 +90,7 @@ public class Prueba {
         Ventana ventana = new Ventana(); 
         Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
        
-        //archivo.guardarDatos();
+        archivo.guardarDatos();
 		
 		
 		// Ambulancia.getInstancia() --> le aplicamos singleton

@@ -1,6 +1,8 @@
 package modelo;
 
-public interface IMedico {
+import java.io.Serializable;
+
+public interface IMedico extends Serializable{
 	
 	double getHonorario();
 	

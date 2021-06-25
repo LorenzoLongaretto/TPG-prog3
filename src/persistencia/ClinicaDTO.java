@@ -44,7 +44,6 @@ public class ClinicaDTO implements Serializable
 	super();
 	this.nombre = nombre;
 	this.direccion = direccion;
-	
     }
 
     public String getNombre()
@@ -146,7 +145,5 @@ public class ClinicaDTO implements Serializable
 	public void setNroOrden(int nroOrden) {
 		this.nroOrden = nroOrden;
 	}
-
- 
 
 }

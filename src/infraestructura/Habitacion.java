@@ -1,6 +1,8 @@
 package infraestructura;
 
-public abstract class Habitacion {
+import java.io.Serializable;
+
+public abstract class Habitacion implements Serializable{
 //aplicar Factory para las habitaciones
 	
 	//Atributos
