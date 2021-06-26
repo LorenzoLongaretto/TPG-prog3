@@ -10,7 +10,7 @@ import modelo.PacienteFactory;
 import persistencia.ClinicaDTO;
 import persistencia.IPersistencia;
 import persistencia.Persistencia;
-import persistencia.Serializacion;
+
 import util.Util;
 import persistencia.ClinicaDTO;
 import java.io.IOException;

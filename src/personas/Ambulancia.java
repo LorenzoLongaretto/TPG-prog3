@@ -5,7 +5,7 @@ import java.util.Observable;
 
 import util.Util;
 
-public class Ambulancia extends Observable implements Serializable{
+public class Ambulancia extends Observable{
 	private static Ambulancia instancia = null;
 	private IState estado;
 	private boolean disponible,regresandoSinP,ocupado,regresandoOcupado; //regeresando sin paciente

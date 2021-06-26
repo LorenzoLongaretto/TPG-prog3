@@ -30,7 +30,7 @@ public class ClinicaDTO implements Serializable
     private BDdePacientes pacientes = new BDdePacientes();
     private HashMap<Integer,Habitacion> habitaciones = new HashMap<Integer,Habitacion>();
     private HashMap<Integer,IMedico> medicos = new HashMap<Integer,IMedico>();
-    private HashMap<Integer,Asociado> asociados = new HashMap<Integer,Asociado>();
+    //private HashMap<Integer,Asociado> asociados = new HashMap<Integer,Asociado>();
 	private int nroOrden=0;
 	private int nroFactura =0;
 	
@@ -131,7 +131,7 @@ public class ClinicaDTO implements Serializable
 	public void setMedicos(HashMap<Integer, IMedico> medicos) {
 		this.medicos = medicos;
 	}
-
+	/*
 	public HashMap<Integer, Asociado> getAsociados() {
 		return asociados;
 	}
@@ -139,7 +139,7 @@ public class ClinicaDTO implements Serializable
 	public void setAsociados(HashMap<Integer, Asociado> asociados) {
 		this.asociados = asociados;
 	}
-
+*/
 	public int getNroOrden() {
 		return nroOrden;
 	}

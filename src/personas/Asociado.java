@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 import util.Util;
 
-public class Asociado implements Runnable,Serializable{
+public class Asociado implements Runnable{
 	private String dNI,nombre,apellido,domicilio,telefono;
 private Ambulancia ambulancia;
 private String pedido;

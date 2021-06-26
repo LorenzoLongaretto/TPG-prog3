@@ -12,7 +12,7 @@ public class Util
     public static ClinicaDTO clinicaDTOFromCLinica() 
     {
 	ClinicaDTO respuesta=new ClinicaDTO();
-	respuesta.setAsociados(Clinica.getInstance().getAsociados());
+	//respuesta.setAsociados(Clinica.getInstance().getAsociados());
 	respuesta.setDireccion(Clinica.getInstance().getDireccion());
 	respuesta.setFacturas(Clinica.getInstance().getFacturas());
 	respuesta.setHabitaciones(Clinica.getInstance().getHabitaciones());
@@ -31,7 +31,7 @@ public class Util
     
     public static void clinicaFromClinicaDTO(ClinicaDTO clinicaDTO) 
     {
-    	Clinica.getInstance().setAsociados(clinicaDTO.getAsociados());
+    	//Clinica.getInstance().setAsociados(clinicaDTO.getAsociados());
     	Clinica.getInstance().setDireccion(clinicaDTO.getDireccion());
     	Clinica.getInstance().setFacturas(clinicaDTO.getFacturas());
     	Clinica.getInstance().setHabitaciones(clinicaDTO.getHabitaciones());
