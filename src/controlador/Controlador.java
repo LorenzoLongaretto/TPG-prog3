@@ -158,6 +158,7 @@ public class Controlador implements ActionListener,WindowListener{
         	}   	
 		}
         if(comando.equalsIgnoreCase("Egreso")) {
+        	this.vistaPaciente.borrarFactura();
             Paciente paciente  = this.vistaPaciente.getPacienteSeleccionado();
             if(paciente!=null) {
             	Factura factura = Clinica.getInstance().buscaUltima(paciente);
@@ -226,6 +227,7 @@ public class Controlador implements ActionListener,WindowListener{
 			
 		}
 		if(comando.equalsIgnoreCase("Simulacion")) {
+			this.vistaAmbulancia.borrarPanel();
 			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados());
 			//this.vistaAmbulancia.anularSimulacion();
 			

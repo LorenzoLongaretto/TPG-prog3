@@ -22,6 +22,6 @@ public interface IVistaPaciente{
 	
 	void habilitarAtencion();
 	void mensaje(String msj);
-	
+	void borrarFactura();
 	
 }

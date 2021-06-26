@@ -17,6 +17,7 @@ import personas.Paciente;
 
 import javax.swing.JTabbedPane;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -37,6 +38,9 @@ import javax.swing.JTextArea;
 import java.awt.Color;
 import javax.swing.JComboBox;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.Icon;
 
 public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVistaHabitacion,IVistaAsociado,IVistaAmbulancia,KeyListener, ActionListener {
 
@@ -145,9 +149,11 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JPanel panel_32;
 	private JTextField textField_cantDias;
 	private JPanel panel_45;
-
+	private JPanel panel_46;
+	PanelAmbulancia panel_estadoAmbulancia = new PanelAmbulancia(Ambulancia.getInstancia());
 
    	public Ventana() {
+   		setIconImage(Toolkit.getDefaultToolkit().getImage(Ventana.class.getResource("/vista/descarga.png")));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 723, 598);
 		this.contentPane = new JPanel();
@@ -183,9 +189,13 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.btn_Atender.setEnabled(false);
 		
+		this.panel_46 = new JPanel();
+		this.panel_1.add(this.panel_46);
+		
 		this.lbl_listaAtencion = new JLabel("Lista de Atencion");
-		this.panel_1.add(this.lbl_listaAtencion);
+		this.panel_46.add(this.lbl_listaAtencion);
 		this.lbl_listaAtencion.setFont(new Font("Tahoma", Font.BOLD, 15));
+	
 		
 		this.panel_39 = new JPanel();
 		this.panel_Pacientes.add(this.panel_39);
@@ -429,7 +439,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.panel_24 = new JPanel();
 		this.panel_Ambulancia.add(this.panel_24);
 		this.panel_24.setLayout(new GridLayout(0, 2, 0, 0));
-		PanelAmbulancia panel_estadoAmbulancia = new PanelAmbulancia(Ambulancia.getInstancia());
+		
 		this.panel_Ambulancia.add(panel_estadoAmbulancia);
 		panel_estadoAmbulancia.setLayout(new GridLayout(0, 1, 0, 0));
 		this.panel_26 = new JPanel();
@@ -749,6 +759,18 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+	}
+
+	@Override
+	public void borrarPanel() {
+		this.panel_estadoAmbulancia.getTextArea().setText("");
+		
+	}
+
+	@Override
+	public void borrarFactura() {
+		this.textArea_Factura.setText("");
 		
 	}
 

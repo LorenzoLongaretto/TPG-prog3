@@ -51,4 +51,8 @@ public class PanelAmbulancia extends JPanel implements Observer{
 		
 	}
 
+	public JTextArea getTextArea() {
+		return textArea;
+	}
+
 }

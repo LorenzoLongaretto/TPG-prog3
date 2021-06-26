@@ -42,7 +42,7 @@ public class Prueba {
 		}
             
         // Creacion de medicos
-        IMedico medico=null, medico2 =null,medico3=null;
+        IMedico medico=null;
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
 			 Clinica.getInstance().agregarMedico(medico);
@@ -70,13 +70,13 @@ public class Prueba {
         System.out.println("------------------------");
         Clinica.getInstance().atenderPaciente(paciente);
         Clinica.getInstance().atenderPaciente(paciente2);
-    	Asociado a1=new Asociado("41835435", "Juan Rodriguez", "fsdfs", "--", "--",Ambulancia.getInstancia());
+    	Asociado a1=new Asociado("41835435", "Juan", "Rodriguez", "223456789", "San Juan 1234",Ambulancia.getInstancia());
 		a1.setPedido("Traslado");
 		a1.setCantidad(0);
-		Asociado a2=new Asociado("41927911", "Raul", "Chalop", "--", "--",Ambulancia.getInstancia());
+		Asociado a2=new Asociado("41927911", "Raul", "Chalop", "2236789012", "Independecia 2345",Ambulancia.getInstancia());
 		a2.setPedido("Atencion");
 		a2.setCantidad(0);
-		Asociado a3=new Asociado("26789456", "Tomas", "Longaretto", "--", "--",Ambulancia.getInstancia());
+		Asociado a3=new Asociado("26789456", "Tomas", "Longaretto", "223412344", "Almafuerte 1234",Ambulancia.getInstancia());
 		a3.setPedido("Atencion");
 		a3.setCantidad(0);
 		
