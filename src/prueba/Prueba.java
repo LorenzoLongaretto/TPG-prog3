@@ -1,23 +1,25 @@
 package prueba;
 import personas.Ambulancia;
 import personas.Asociado;
-import personas.Operario;
 import personas.Paciente;
 import vista.Ventana;
 import modelo.Clinica;
 import modelo.IMedico;
 import modelo.MedicoFactory;
 import modelo.PacienteFactory;
+import persistencia.ClinicaDTO;
+import persistencia.IPersistencia;
+import persistencia.Persistencia;
 import persistencia.Serializacion;
-
+import util.Util;
+import persistencia.ClinicaDTO;
 import java.io.IOException;
-import java.util.GregorianCalendar;
 
 import controlador.Controlador;
 import excepciones.ExisteAsociadoException;
 import excepciones.ImposibleCrearMedicoException;
 import excepciones.NoExisteRangoEtarioException;
-import infraestructura.Factura;
+
 import infraestructura.HabitacionCompartida;
 import infraestructura.HabitacionPrivada;
 import infraestructura.TerapiaIntensiva;
@@ -25,7 +27,7 @@ public class Prueba {
 
 	public static void main(String[] args) throws IOException {
 	
-		Serializacion archivo = new Serializacion();
+		//Serializacion archivo = new Serializacion();
    
 		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
 		
@@ -68,19 +70,7 @@ public class Prueba {
         System.out.println("------------------------");
         Clinica.getInstance().atenderPaciente(paciente);
         Clinica.getInstance().atenderPaciente(paciente2);
-        
-        
-        
-        //Ambulancia
-        Ventana ventana = new Ventana(); 
-        Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
-       
-        archivo.guardarDatos();
-		
-		
-		// Ambulancia.getInstancia() --> le aplicamos singleton
-       
-		Asociado a1=new Asociado("41835435", "Juan Rodriguez", "fsdfs", "--", "--",Ambulancia.getInstancia());
+    	Asociado a1=new Asociado("41835435", "Juan Rodriguez", "fsdfs", "--", "--",Ambulancia.getInstancia());
 		a1.setPedido("Traslado");
 		a1.setCantidad(0);
 		Asociado a2=new Asociado("41927911", "Raul", "Chalop", "--", "--",Ambulancia.getInstancia());
@@ -89,6 +79,7 @@ public class Prueba {
 		Asociado a3=new Asociado("26789456", "Tomas", "Longaretto", "--", "--",Ambulancia.getInstancia());
 		a3.setPedido("Atencion");
 		a3.setCantidad(0);
+		
 		try {
 			Clinica.getInstance().altaAsociado(a1);
 		} catch (ExisteAsociadoException e) {
@@ -101,6 +92,40 @@ public class Prueba {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+        IPersistencia idao = new Persistencia();
+        
+        
+        
+        //Guardar Datos
+        try {
+        	idao.abrirOutput("Clinica.bin");
+        	System.out.println("Creacion archivo escritura");
+        	ClinicaDTO cdto = Util.clinicaDTOFromCLinica();
+        	idao.escribir(cdto);
+        	System.out.println("Clinica serializada");
+        	idao.cerrarOutput();
+        	System.out.println("Archivo cerrado");
+        	
+        }catch(Exception e) {
+        	System.out.println(e.getMessage());
+        }
+        //Levantar Datos
+        try {
+        	idao.abrirInput("clinica.bin");
+    	    ClinicaDTO clinicaDTO = (ClinicaDTO) idao.leer();
+    	    Util.clinicaFromClinicaDTO(clinicaDTO);
+    	    idao.cerrarInput();
+    	    System.out.println("Clinica recuperada: ");
+    	    System.out.println(Clinica.getInstance());
+        }catch(Exception e) {
+        	System.out.println("Exception " + e.getMessage());
+        }
+        
+        //Ambulancia
+        Ventana ventana = new Ventana(); 
+        Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
+       
+        //archivo.guardarDatos();
 		
 	}
  

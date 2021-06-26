@@ -1,10 +1,11 @@
 package personas;
 
+import java.io.Serializable;
 import java.util.Observable;
 
 import util.Util;
 
-public class Ambulancia extends Observable{
+public class Ambulancia extends Observable implements Serializable{
 	private static Ambulancia instancia = null;
 	private IState estado;
 	private boolean disponible,regresandoSinP,ocupado,regresandoOcupado; //regeresando sin paciente

@@ -32,6 +32,8 @@ public class ClinicaDTO implements Serializable
     private HashMap<Integer,IMedico> medicos = new HashMap<Integer,IMedico>();
     private HashMap<Integer,Asociado> asociados = new HashMap<Integer,Asociado>();
 	private int nroOrden=0;
+	private int nroFactura =0;
+	
 	
 	
 
@@ -144,6 +146,14 @@ public class ClinicaDTO implements Serializable
 
 	public void setNroOrden(int nroOrden) {
 		this.nroOrden = nroOrden;
+	}
+
+	public int getNroFactura() {
+		return nroFactura;
+	}
+
+	public void setNroFactura(int nroFactura) {
+		this.nroFactura = nroFactura;
 	}
 
 }

@@ -205,7 +205,7 @@ public class Controlador implements ActionListener{
 		}
 		if(comando.equalsIgnoreCase("Simulacion")) {
 			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados());
-			this.vistaAmbulancia.anularSimulacion();
+			//this.vistaAmbulancia.anularSimulacion();
 			
 		}
 		

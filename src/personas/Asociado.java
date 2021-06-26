@@ -1,8 +1,10 @@
 package personas;
 
+import java.io.Serializable;
+
 import util.Util;
 
-public class Asociado extends Thread{
+public class Asociado implements Runnable,Serializable{
 	private String dNI,nombre,apellido,domicilio,telefono;
 private Ambulancia ambulancia;
 private String pedido;

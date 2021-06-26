@@ -735,9 +735,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	@Override
 	public void simulacion(HashMap<Integer, Asociado> asociados) {
 		for (Integer key : 	asociados.keySet()) {
-			if(asociados.get(key)!=null)
-			    asociados.get(key).start();
-			  
+			    new Thread(asociados.get(key)).start(); 
 			}		
 	}
 

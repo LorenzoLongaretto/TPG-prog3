@@ -77,7 +77,10 @@ public class Clinica {
 	/**
 	 * 
 	 */
-	private Clinica() {}
+	private Clinica() {
+		this.nombre= "Hospital Favaloro";
+		this.direccion = "Rupestre 223";
+	}
 	public static Clinica getInstance() {
 		if(Clinica.instance==null) {
 			Clinica.instance=new Clinica();		
@@ -321,6 +324,19 @@ public class Clinica {
 	}
 	public void setPatio(ArrayList<Paciente> patio) {
 		this.patio = patio;
+	}
+	public int getNroFactura() {
+		return nroFactura;
+	}
+	public void setNroFactura(int nroFactura) {
+		this.nroFactura = nroFactura;
+	}
+	@Override
+	public String toString() {
+		return "Clinica [nroFactura=" + nroFactura + ", nombre=" + nombre + ", direccion=" + direccion + ", salaEspera="
+				+ salaEspera + ", patio=" + patio + ", listaEspera=" + listaEspera + ", listaAtencion=" + listaAtencion
+				+ ", facturas=" + facturas + ", pacientes=" + pacientes + ", habitaciones=" + habitaciones
+				+ ", medicos=" + medicos + ", asociados=" + asociados + ", nroOrden=" + nroOrden + "]";
 	}
 	
 					

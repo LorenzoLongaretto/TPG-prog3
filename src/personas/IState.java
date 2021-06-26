@@ -1,6 +1,8 @@
 package personas;
 
-public interface IState {
+import java.io.Serializable;
+
+public interface IState extends Serializable{
 
 	void solicitaAtencion();
 	void solicitaTraslado();
