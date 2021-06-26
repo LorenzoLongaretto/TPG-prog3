@@ -2,6 +2,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import excepciones.ExisteAsociadoException;
 import excepciones.HabitacionOcupadaException;
@@ -10,6 +12,9 @@ import infraestructura.Factura;
 import infraestructura.Habitacion;
 import modelo.Clinica;
 import modelo.IMedico;
+import persistencia.ClinicaDTO;
+import persistencia.IPersistencia;
+import persistencia.Persistencia;
 import vista.IVistaAmbulancia;
 import vista.IVistaAsociado;
 import vista.IVistaHabitacion;
@@ -18,9 +23,10 @@ import vista.IVistaPaciente;
 import personas.Ambulancia;
 import personas.Asociado;
 import personas.Paciente;
+import util.Util;
 
 
-public class Controlador implements ActionListener{
+public class Controlador implements ActionListener,WindowListener{
 
 	private IVistaPaciente vistaPaciente;
 	private IVistaMedico vistaMedico;
@@ -57,6 +63,7 @@ public class Controlador implements ActionListener{
 	public void setVistaPaciente(IVistaPaciente vistaPaciente) {
 		this.vistaPaciente = vistaPaciente;
 		this.vistaPaciente.setActionListenerPaciente(this);
+		this.vistaPaciente.addWindowListener(this);
 	}
 
 	public void setVistaMedico(IVistaMedico vistaMedico) {
@@ -99,6 +106,21 @@ public class Controlador implements ActionListener{
 			}
 			else
 				this.vistaPaciente.mensaje("No hay mas pacientes en la lista de espera");
+		}
+		if(comando.equalsIgnoreCase("Serializar")) {
+			IPersistencia idao = new Persistencia();
+			try {
+	        	idao.abrirOutput("Clinica.bin");
+	        	System.out.println("Creacion archivo escritura");
+	        	ClinicaDTO cdto = Util.clinicaDTOFromCLinica();
+	        	idao.escribir(cdto);
+	        	System.out.println("Clinica serializada al apretar boton");
+	        	idao.cerrarOutput();
+	        	System.out.println("Archivo cerrado");
+	        	
+	        }catch(Exception e1) {
+	        	System.out.println(e1.getMessage());
+	        }
 		}
 		if(comando.equalsIgnoreCase("Prestacion Medica")) {
 			
@@ -208,6 +230,53 @@ public class Controlador implements ActionListener{
 			//this.vistaAmbulancia.anularSimulacion();
 			
 		}
+		
+	}
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowClosing(WindowEvent e) {
+		IPersistencia idao = new Persistencia();
+		try {
+        	idao.abrirOutput("Clinica.bin");
+        	System.out.println("Creacion archivo escritura");
+        	ClinicaDTO cdto = Util.clinicaDTOFromCLinica();
+        	idao.escribir(cdto);
+        	System.out.println("Clinica serializada al cerrar");
+        	idao.cerrarOutput();
+        	System.out.println("Archivo cerrado");
+        	
+        }catch(Exception e1) {
+        	System.out.println(e1.getMessage());
+        }
+		
+	}
+	@Override
+	public void windowClosed(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowActivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
  

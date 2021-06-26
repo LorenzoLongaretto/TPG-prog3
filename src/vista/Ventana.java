@@ -539,6 +539,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.btn_PrestacionMedica.addActionListener(actionListener);
 		this.btn_PrestacionHabitacion.addActionListener(actionListener);
 		this.btn_Egreso.addActionListener(actionListener);
+		this.btn_Serializar.addActionListener(actionListener);
 		this.actionListener = actionListener;
 	}
 	@Override

@@ -1,5 +1,6 @@
 package vista;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowListener;
 import java.util.Queue;
 
 import infraestructura.Factura;
@@ -11,6 +12,7 @@ public interface IVistaPaciente{
 
 	
 	 void setActionListenerPaciente(ActionListener actionListener);
+	 void addWindowListener(WindowListener windowListener);
 	 Paciente getPacienteSeleccionado(); // devuelve el paciente seleccionado
 	 void borraLista();
 	 void actualizaLista(Queue<Paciente> atencion);// actualiza la lista de pacientes en la lista
@@ -20,5 +22,6 @@ public interface IVistaPaciente{
 	
 	void habilitarAtencion();
 	void mensaje(String msj);
+	
 	
 }
