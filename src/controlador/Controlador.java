@@ -114,12 +114,14 @@ public class Controlador implements ActionListener{
 		}
         if(comando.equalsIgnoreCase("Prestacion Habitacion")) {
         	try {
+        		Integer.parseInt(this.vistaHabitacion.getCantidadDias());
         		Paciente paciente  = this.vistaPaciente.getPacienteSeleccionado();
             	Habitacion habitacion = this.vistaHabitacion.getHabitacionSeleccionada();
-            	habitacion.setCantDias(Integer.parseInt(this.vistaHabitacion.getCantidadDias()));
+            	
             	
             	if(habitacion!= null && paciente!=null) {
             		try {
+            			habitacion.setCantDias(Integer.parseInt(this.vistaHabitacion.getCantidadDias()));
     					Clinica.getInstance().derivarHabitacion(paciente, habitacion);
     					this.vistaPaciente.mensaje("Se agrego la habitacion: "+habitacion.toString()+ " al paciente");
     				} catch (HabitacionOcupadaException e1) {
@@ -131,9 +133,7 @@ public class Controlador implements ActionListener{
             		this.vistaPaciente.mensaje("Debe seleccionar una habitacion y un paciente");
         	}catch(NumberFormatException e1) {
         		this.vistaPaciente.mensaje("Debe ingresar una cantidad numerica de dias");
-        	}
-        	
-        	
+        	}   	
 		}
         if(comando.equalsIgnoreCase("Egreso")) {
             Paciente paciente  = this.vistaPaciente.getPacienteSeleccionado();
