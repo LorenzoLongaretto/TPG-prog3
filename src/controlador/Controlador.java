@@ -113,20 +113,26 @@ public class Controlador implements ActionListener{
 				this.vistaPaciente.mensaje("Debe seleccionar un paciente y un medico");
 		}
         if(comando.equalsIgnoreCase("Prestacion Habitacion")) {
-        	Paciente paciente  = this.vistaPaciente.getPacienteSeleccionado();
-        	Habitacion habitacion = this.vistaHabitacion.getHabitacionSeleccionada();
-        	
-        	if(habitacion!= null && paciente!=null) {
-        		try {
-					Clinica.getInstance().derivarHabitacion(paciente, habitacion);
-					this.vistaPaciente.mensaje("Se agrego la habitacion: "+habitacion.toString()+ " al paciente");
-				} catch (HabitacionOcupadaException e1) {
-				this.vistaPaciente.mensaje(e1.getMessage());
-				}
-        		
+        	try {
+        		Paciente paciente  = this.vistaPaciente.getPacienteSeleccionado();
+            	Habitacion habitacion = this.vistaHabitacion.getHabitacionSeleccionada();
+            	habitacion.setCantDias(Integer.parseInt(this.vistaHabitacion.getCantidadDias()));
+            	
+            	if(habitacion!= null && paciente!=null) {
+            		try {
+    					Clinica.getInstance().derivarHabitacion(paciente, habitacion);
+    					this.vistaPaciente.mensaje("Se agrego la habitacion: "+habitacion.toString()+ " al paciente");
+    				} catch (HabitacionOcupadaException e1) {
+    				this.vistaPaciente.mensaje(e1.getMessage());
+    				}
+            		
+            	}
+            	else 
+            		this.vistaPaciente.mensaje("Debe seleccionar una habitacion y un paciente");
+        	}catch(NumberFormatException e1) {
+        		this.vistaPaciente.mensaje("Debe ingresar una cantidad numerica de dias");
         	}
-        	else 
-        		this.vistaPaciente.mensaje("Debe seleccionar una habitacion y un paciente");
+        	
         	
 		}
         if(comando.equalsIgnoreCase("Egreso")) {
@@ -181,12 +187,18 @@ public class Controlador implements ActionListener{
         		this.vistaAsociado.mensaje("Debe seleccionar un asociado");
         }
         if(comando.equalsIgnoreCase("AgregarSolicitud")) {
-        	System.out.println("Entra");
-    	   Asociado asociado = this.vistaAmbulancia.getAsociadoSeleccionadoSimulacion();
-    	   if(asociado!=null) {
-    		   asociado.setPedido(this.vistaAmbulancia.getTipo());
-    		   asociado.setCantidad(Integer.parseInt(this.vistaAmbulancia.getCantidad()));
-    	   }
+        	try {
+        		Integer.parseInt(this.vistaAmbulancia.getCantidad());
+        		  Asociado asociado = this.vistaAmbulancia.getAsociadoSeleccionadoSimulacion();
+           	   if(asociado!=null) {
+           		   asociado.setPedido(this.vistaAmbulancia.getTipo());
+           		   asociado.setCantidad(Integer.parseInt(this.vistaAmbulancia.getCantidad()));
+           	   }
+           	   else
+           		   this.vistaAmbulancia.mensaje("Debe seleccionar un asociado");
+        	}catch(NumberFormatException e1) {
+        		this.vistaAmbulancia.mensaje("La cantidad debe ser un numero");
+        	}   
     	   this.vistaAsociado.borraListaAsociados();
     	   this.vistaAsociado.actualizaAsociados(Clinica.getInstance().getAsociados());
 			
@@ -194,6 +206,7 @@ public class Controlador implements ActionListener{
 		if(comando.equalsIgnoreCase("Simulacion")) {
 			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados());
 			this.vistaAmbulancia.anularSimulacion();
+			
 		}
 		
 	}

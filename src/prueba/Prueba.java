@@ -19,6 +19,8 @@ import excepciones.ImposibleCrearMedicoException;
 import excepciones.NoExisteRangoEtarioException;
 import infraestructura.Factura;
 import infraestructura.HabitacionCompartida;
+import infraestructura.HabitacionPrivada;
+import infraestructura.TerapiaIntensiva;
 public class Prueba {
 
 	public static void main(String[] args) throws IOException {
@@ -29,8 +31,8 @@ public class Prueba {
 		
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
 		try {
-			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose", "Java", "MDP    ","2235673421", "San Juan 2140","Nino");
-			paciente2 = PacienteFactory.getPaciente("41822123", "Ximena", "ConX", "MDP    ","2235673421", "San Juan 2140","Mayor");
+			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose", "Java", "MDP","2235673421", "San Juan 2140","Nino");
+			paciente2 = PacienteFactory.getPaciente("41822123", "Ximena", "ConX", "MDP","2235673421", "San Juan 2140","Mayor");
 		    paciente3  = PacienteFactory.getPaciente("4444444", "Rigoberto", "Rodriguez", "Miramar","43256321", "Independencia 01","Joven");
 		       
 		} catch (NoExisteRangoEtarioException e) {
@@ -42,16 +44,18 @@ public class Prueba {
         try {
 			 medico = MedicoFactory.getMedico("25900987","Luis","Montini","MDP","2234565","Independencia","1111","Cirujia","Permanente","Magister");
 			 Clinica.getInstance().agregarMedico(medico);
-			 medico = MedicoFactory.getMedico("25980987","Luis","Montini","MDP","2234565","Independencia","2222","Clinica","Permanente","Doctor");
+			 medico = MedicoFactory.getMedico("25980987","Guillermo","Copolla","MDP","2234565","Independencia","2222","Clinica","Permanente","Doctor");
 			 Clinica.getInstance().agregarMedico(medico);
-			 medico = MedicoFactory.getMedico("2565657","Luis","Montini","MDP","2234565","Independencia","3333","Pediatria","Permanente","Magister");
+			 medico = MedicoFactory.getMedico("2565657","Marcelo","Gallardo","MDP","2234565","Independencia","3333","Pediatria","Permanente","Magister");
 			 Clinica.getInstance().agregarMedico(medico);
 		} catch (ImposibleCrearMedicoException e) {
             System.out.println(e.getMessage()+e.getDato());
         }
-        
-        GregorianCalendar fecha1 = new GregorianCalendar(2020,1,1);
-        GregorianCalendar fecha2 = new GregorianCalendar(2020,2,1);
+       Clinica.getInstance().asignarHabitacion(new HabitacionCompartida(1,2000));
+       Clinica.getInstance().asignarHabitacion(new HabitacionPrivada(2,2000));
+       Clinica.getInstance().asignarHabitacion(new TerapiaIntensiva(3,2000));
+       Clinica.getInstance().asignarHabitacion(new HabitacionPrivada(4,2000));
+       Clinica.getInstance().asignarHabitacion(new TerapiaIntensiva(5,2000));
         
         //MODULO DE INGRESO
         Clinica.getInstance().ingresoPaciente(paciente); //busca o genera la historia
@@ -76,13 +80,13 @@ public class Prueba {
 		
 		// Ambulancia.getInstancia() --> le aplicamos singleton
        
-		Asociado a1=new Asociado("222356", "juan", "fsdfs", "--", "--",Ambulancia.getInstancia());
+		Asociado a1=new Asociado("41835435", "Juan Rodriguez", "fsdfs", "--", "--",Ambulancia.getInstancia());
 		a1.setPedido("Traslado");
 		a1.setCantidad(0);
-		Asociado a2=new Asociado("222357", "raul", "falop", "--", "--",Ambulancia.getInstancia());
+		Asociado a2=new Asociado("41927911", "Raul", "Chalop", "--", "--",Ambulancia.getInstancia());
 		a2.setPedido("Atencion");
 		a2.setCantidad(0);
-		Asociado a3=new Asociado("222358", "negro", "gay", "--", "--",Ambulancia.getInstancia());
+		Asociado a3=new Asociado("26789456", "Tomas", "Longaretto", "--", "--",Ambulancia.getInstancia());
 		a3.setPedido("Atencion");
 		a3.setCantidad(0);
 		try {

@@ -11,14 +11,14 @@ public abstract class Habitacion implements Serializable{
      * @aggregation shared
      */
 	private double costoAsignacion;//El de cada habitacion particular
-    protected int  cantPersonas; // cantidad de personas que entran en la habitacion
-    protected int cantActual; // cantidad de personas que hay actualmente en la habitacion
+    protected int  cantPersonas=1; // cantidad de personas que entran en la habitacion
+   
 	
 	//Constructores
-	public Habitacion(int nroHabitacion,int cantdias,double costoAsignacion) {
+	public Habitacion(int nroHabitacion,double costoAsignacion) {
 		
 		this.nroHabitacion = nroHabitacion;
-		this.cantDias=cantdias;
+		
 		this.costoAsignacion=costoAsignacion;
 	}
 
@@ -44,17 +44,16 @@ public abstract class Habitacion implements Serializable{
 		return cantPersonas;
 	}
 
-	public int getCantActual() {
-		return cantActual;
-	}
 
 	public void setCantPersonas(int cantPersonas) {
 		this.cantPersonas = cantPersonas;
 	}
 
-	public void setCantActual(int cantActual) {
-		this.cantActual = cantActual;
+	public void setCantDias(int cantDias) {
+		this.cantDias = cantDias;
 	}
+
+	
 	
 	
 }

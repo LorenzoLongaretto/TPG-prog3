@@ -6,9 +6,8 @@ public class HabitacionPrivada extends Habitacion {
 	private static double costoExtra=100;
 	
 	//Constructores
-	public HabitacionPrivada(int nroHabitacion,int cantDias,double costoAsignacion) {
-		super(nroHabitacion,cantDias,costoAsignacion);
-		this.cantActual=0;
+	public HabitacionPrivada(int nroHabitacion,double costoAsignacion) {
+		super(nroHabitacion,costoAsignacion);
 	}
 
 	//Metodos

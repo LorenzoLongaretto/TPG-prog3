@@ -136,6 +136,15 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	private JLabel lbl_AsociadosSimulacion;
 	private JButton btn_AgregarSolicitud;
 	private JButton btn_Simulacion;
+	private JPanel panel_12;
+	private JPanel panel_13;
+	private JButton btn_Serializar;
+	private JLabel lbl_cantDias;
+	private JPanel panel_25;
+	private JPanel panel_29;
+	private JPanel panel_32;
+	private JTextField textField_cantDias;
+	private JPanel panel_45;
 
 
    	public Ventana() {
@@ -147,7 +156,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		setContentPane(this.contentPane);
 		this.setTitle("Clinica");
 		this.tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		this.contentPane.add(this.tabbedPane, BorderLayout.NORTH);
+		this.contentPane.add(this.tabbedPane, BorderLayout.CENTER);
 		
 		this.panel_Pacientes = new JPanel();
 		this.tabbedPane.addTab("Pacientes", null, this.panel_Pacientes, null);
@@ -155,16 +164,28 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.panel_1 = new JPanel();
 		this.panel_Pacientes.add(this.panel_1);
+		this.panel_1.setLayout(new GridLayout(0, 1, 0, 0));
+		
+		this.panel_12 = new JPanel();
+		this.panel_1.add(this.panel_12);
+		
+		this.btn_Cargar = new JButton("Cargar");
+		this.panel_12.add(this.btn_Cargar);
+		
+		this.btn_Serializar = new JButton("Serializar");
+		this.panel_12.add(this.btn_Serializar);
+		
+		this.panel_13 = new JPanel();
+		this.panel_1.add(this.panel_13);
+		
+		this.btn_Atender = new JButton("Atender");
+		this.panel_13.add(this.btn_Atender);
+		
+		this.btn_Atender.setEnabled(false);
 		
 		this.lbl_listaAtencion = new JLabel("Lista de Atencion");
 		this.panel_1.add(this.lbl_listaAtencion);
 		this.lbl_listaAtencion.setFont(new Font("Tahoma", Font.BOLD, 15));
-		
-		this.btn_Cargar = new JButton("Cargar");
-		this.panel_1.add(this.btn_Cargar);
-		
-		this.btn_Atender = new JButton("Atender");
-		this.panel_1.add(this.btn_Atender);
 		
 		this.panel_39 = new JPanel();
 		this.panel_Pacientes.add(this.panel_39);
@@ -252,6 +273,27 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		
 		this.panel_41 = new JPanel();
 		this.panel_Habitaciones.add(this.panel_41);
+		this.panel_41.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		this.panel_25 = new JPanel();
+		this.panel_41.add(this.panel_25);
+		this.panel_25.setLayout(new GridLayout(0, 2, 0, 0));
+		
+		this.panel_32 = new JPanel();
+		this.panel_25.add(this.panel_32);
+		
+		this.lbl_cantDias = new JLabel("Cantidad de Dias");
+		this.panel_32.add(this.lbl_cantDias);
+		
+		this.panel_45 = new JPanel();
+		this.panel_25.add(this.panel_45);
+		
+		this.textField_cantDias = new JTextField();
+		this.panel_45.add(this.textField_cantDias);
+		this.textField_cantDias.setColumns(10);
+		
+		this.panel_29 = new JPanel();
+		this.panel_41.add(this.panel_29);
 		
 		this.panel_42 = new JPanel();
 		this.panel_Habitaciones.add(this.panel_42);
@@ -429,7 +471,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.textField_cantSolicitudes = new JTextField();
 		this.panel_33.add(this.textField_cantSolicitudes);
 		this.textField_cantSolicitudes.setColumns(10);
-		
+		this.textField_cantSolicitudes.addKeyListener(this);
 		this.panel_34 = new JPanel();
 		this.panel_28.add(this.panel_34);
 		
@@ -445,6 +487,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.btn_AgregarSolicitud.setActionCommand("AgregarSolicitud");
 		this.panel_36.add(this.btn_AgregarSolicitud);
 		
+		this.btn_AgregarSolicitud.setEnabled(false);
 		this.panel_37 = new JPanel();
 		this.panel_24.add(this.panel_37);
 		this.panel_37.setLayout(new GridLayout(1, 0, 0, 0));
@@ -458,8 +501,6 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		this.lbl_AsociadosSimulacion = new JLabel("Asociados");
 		this.lbl_AsociadosSimulacion.setFont(new Font("Verdana", Font.BOLD, 15));
 		this.scrollPane_5.setColumnHeaderView(this.lbl_AsociadosSimulacion);
-		
-		this.btn_Atender.setEnabled(false);
 		
 		this.setVisible(true);
 	}
@@ -536,6 +577,10 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	
 	}
 
+	@Override
+	public String getCantidadDias() {
+		return this.textField_cantDias.getText();
+	}
 
 	@Override
 	public Habitacion getHabitacionSeleccionada() {
@@ -652,6 +697,12 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	
 	boolean condicion = (!DNI.equals("") && !nombre.equals("") && !apellido.equals("")  && !telefono.equals("") && !domicilio.equals(""));
     this.btn_AgregarAsociado.setEnabled(condicion);
+    
+    
+    String cantidad = "";
+    cantidad = this.textField_cantSolicitudes.getText();
+    boolean condicion2 = !cantidad.equals("");
+    this.btn_AgregarSolicitud.setEnabled(condicion2);
 		
 	}
 
@@ -690,16 +741,20 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 			}		
 	}
 
-	 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	@Override
 	public void anularSimulacion() {
 		this.btn_Simulacion.setEnabled(false);
 		
 	}
+
+	 
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+
+
+
+
+
 }

@@ -9,9 +9,10 @@ import infraestructura.Habitacion;
 
 public interface IVistaHabitacion {
 
-	public void setActionListenerHabitacion(ActionListener actionListener);
-	public Habitacion getHabitacionSeleccionada();
-	public void actualizaListaHabitaciones(HashMap<Integer,Habitacion> habitaciones);
-	public void agregarHabitacion(Habitacion habitacion);
+	 void setActionListenerHabitacion(ActionListener actionListener);
+	 Habitacion getHabitacionSeleccionada();
+	 void actualizaListaHabitaciones(HashMap<Integer,Habitacion> habitaciones);
+	 void agregarHabitacion(Habitacion habitacion);
+	 String getCantidadDias();
 	
 }
