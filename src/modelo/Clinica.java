@@ -25,7 +25,7 @@ import infraestructura.Prestacion;
 /**
  * 
  *<br>
- * Clase que representa una clinica. Contiene la totalidad de los pacientes. Tambien contine un patio, una sala de espera y una lista de facturas correspondientes a los pacientes.
+ * Clase que representa una clinica. Contiene la totalidad de los pacientes. Tambien contine un patio, una sala de espera, una lista de medicos, asociados ,habitaciones y una lista de facturas correspondientes a los pacientes.
  *
  */
 public class Clinica {
@@ -131,7 +131,7 @@ public class Clinica {
 	
 	/**Se quita a los pacientes del patio o sala de espera, y los introduce dentro de la lista de atencion.
 	 * <b> Pre: El parametro paciente debe ser distinto de null.</b>
-	 * <b> Post: Se agrega al paciente a la lista de atencion</b>
+	 * <b> Post: Se agrega al paciente a la lista de atencion,y se le crea una factura correspondiente</b>
 	 * @param paciente: Parametro de tipo paciente, que es atendido.
 	 */
 	public void atenderPaciente(Paciente paciente){
@@ -149,9 +149,9 @@ public class Clinica {
         this.facturas.add(factura);
     }
 	
-	/**Se toma al primer paciente de la lista de atencion, y se le confecciona la factura correspondiente. Luego , esa factura es mostrada.
-	 * <b> Pre: El parametro paciente y factura debe ser distinto de null.</b>
-	 * <b> Post: Se elimina al paciente de la lista de atencion y se muestra su factura.</b>
+	/**Se elimina a un paciente de la lista de atencion para realizar su egreso de la clinica, primero se verifica si lo contiene.
+	 * <b> Pre: El parametro paciente  debe ser distinto de null.</b>
+	 * <b> Post: Se elimina al paciente de la lista de atencion</b>
 	 * @param paciente: Parametro de tipo paciente.
 	 * @param factura: Parametro de tipo factura.
 	 */
@@ -166,21 +166,43 @@ public class Clinica {
 			
 		}
 	}
-	// Metodo que agrega el medico elegido por el paciente a la factura 
+	
+	/**Metodo que agrega un medico a la clinica.
+	 * <b>Pre: El parametro IMedico debe ser distinto de null</b>
+	 * <b>Post: Se agrega al medico a la lista de medicos</b>
+	 * @param medico: Parametro de tipo medico.
+	 */
 	public void agregarMedico(IMedico medico){
 		this.medicos.put(Integer.parseInt(medico.getMatricula()) , medico);
 	}
 	
+	/**Metodo que agrega una habitacion a la clinica.
+	 * <b>Pre: El parametro de tipo Habitacion debe ser distinto de null</b>
+	 * <b>Post: Se agrega una habitacion a la clinica</b>
+	 * @param habitacion:  Parametro de tipo habitacion.
+	 */
 	public void asignarHabitacion(Habitacion habitacion) {
 		this.habitaciones.put(habitacion.getNroHabitacion(), habitacion);
 	}
-	// agrega medico a la factura 
+	
+	/**Metodo que agrega un medico a la factura del paciente.
+	 * <b>Pre: Los parametros de tipo Paciente e IMedico deben ser distintos de null</b>
+	 * <b>Post: Se agrega una prestacion de tipo medico a la factura</b>
+	 * @param paciente: Parametro de tipo Paciente.
+	 * @param medico: Parametro de tipo IMedico.
+	 */
 	public void derivarMedico(Paciente paciente,IMedico medico) {
 		Factura factura = this.buscaUltima(paciente);
-		if(medico!=null)
 		factura.asignarMedico(medico);		
 	}
-	//agrega paciente a la factura
+	
+	/**Metodo que agrega una habitacion a la factura del paciente.
+	 * <b>Pre: Los parametros de tipo Paciente y Habitacion deben ser distintos de null</b>
+	 * <b>Post: Se agrega una una prestacion de tipo habitacion a la factura</b>
+	 * @param paciente: Parametro de tipo Paciente.
+	 * @param habitacion:  Parametro de tipo Habitacion.
+	 * @throws HabitacionOcupadaException: Excepcion que se lanza si la habitacion esta ocupada.
+	 */
 	public void derivarHabitacion(Paciente paciente,Habitacion habitacion) throws HabitacionOcupadaException {
 		Factura factura = this.buscaUltima(paciente);
 		if(habitacion.getCantPersonas()!=0) // si esta en 0 significa que no hay espacio 
@@ -189,13 +211,27 @@ public class Clinica {
 			throw new HabitacionOcupadaException("La habitacion esta ocupada");
 			
 	}
+	/**Metodo que busca y devuelve un medico segun su numero de matricula.
+	 * @param matricula:Parametro de tipo entero que representa la matricula de algun medico.
+	 * @return: Medico buscado en la lista de medicos o null.
+	 */
 	public IMedico buscaMedico(int matricula) {
 		return this.medicos.get(matricula);
 	}
 	
+	/**Metodo que busca y devuelve una habitacion segun su numero.
+	 * @param nro:Parametro de tipo entero que representa el numero de habitacion.
+	 * @return: Habitacion buscada en la lista de medicos o null.
+	 */
 	public Habitacion buscaHabitacion(int nro) {
 		return this.habitaciones.get(nro);
 	}
+	/**Metodo que busca en la lista de facturas, la ultima factura de un paciente (la mas actual).
+	 * <b>Pre: El paciente debe ser distinto de null</b>
+	 * <b>Post: Devuelve la factura del paciente</b>
+	 * @param paciente: Parametro de tipo Paciente.
+	 * @return: Factura mas actual del paciente.
+	 */
 	public Factura buscaUltima(Paciente paciente) {// busca la ultima factura del paciente (la actual)
 		Factura retorno = null;
 		 Iterator<Factura> it = this.facturas.iterator();
@@ -234,7 +270,13 @@ public class Clinica {
 		   }
 		   System.out.println("Importe Total: "+importeTotal);
 	}
-	//dni, nombre y apellido, domicilio, teléfono.
+	
+	/**Metodo que da de alta a un asociado en la clinica.
+	 * <b>Pre: El asociado debe ser distinto de null.</b>
+	 * <b>Post: Se da de alta al asociado, si es que no existia</b>
+	 * @param asociado:Parametro de tipo Asociado.
+	 * @throws ExisteAsociadoException: Excepcion lanzada si el asociado ya existe dentro de la clinica.
+	 */
 	public void altaAsociado(Asociado asociado) throws ExisteAsociadoException {
 		Asociado a=null;
 		a = asociados.get(Integer.parseInt(asociado.getdNI()));
@@ -244,6 +286,11 @@ public class Clinica {
 		else
 		      throw new ExisteAsociadoException("Ya existe ese asociado",Integer.parseInt(asociado.getdNI()));
 	}
+	/**Metodo que da de baja a un asociado en la clinica.
+	 * <b>Post: Se da de baja al asociado, si es que el mismo existe dentro de la clinica</b>
+	 * @param DNI: Parametro de tipo entero que representa el DNI de un paciente.
+	 * @throws NoExisteAsociadoException: Excepcion lanzada si el paciente a eliminar no existia dentro de la clinica.
+	 */
 	public void eliminarAsociado(int DNI) throws NoExisteAsociadoException {
 		Asociado a=null;
 		a = asociados.get(DNI);

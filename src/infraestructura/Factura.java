@@ -78,6 +78,9 @@ public class Factura implements Serializable,Comparable{
 			
 		}
 
+    /**Metodo que libera las habitaciones ocupadas por la factura, para que luego las mismas puedan ser utilizadas.
+     * 
+     */
     public void liberarHabitaciones() {
     	Iterator<Prestacion> it = this.prestaciones.iterator();
     	String nro="";

@@ -2,10 +2,19 @@ package infraestructura;
 
 import java.io.Serializable;
 
+/**
+ * Clase que representa una habitacion de la clinica.
+ *
+ */
 public abstract class Habitacion implements Serializable{
-//aplicar Factory para las habitaciones
-	
+
 	//Atributos
+	/**
+	 * nroHabitacion: Corresponde al nro de la habitacion.
+	 * cantDias: Corresponde la cantidad de dias que la habitacion es utilizada.
+	 * costoAsignacion: Corresponde al costo base de la habitacion.
+	 * cantPersonas: Corresponde a la cantidad de personas que entran actualmente en la habitacion.
+	 */
 	private int nroHabitacion, cantDias;//VERIFICAR nroHabitacion
     /**
      * @aggregation shared
