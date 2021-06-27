@@ -20,7 +20,8 @@ private Ambulancia ambulancia;
 
 	@Override
 	public void volverClinica() {
-		this.ambulancia.setEstado(new TrasladandoState(this.ambulancia));
+		this.ambulancia.setEstado(new RegresaAtencionState(this.ambulancia));
+		//this.ambulancia.setEstado(new TrasladandoState(this.ambulancia));
 		
 	}
 

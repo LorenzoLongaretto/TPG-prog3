@@ -8,13 +8,14 @@ import util.Util;
 public class Ambulancia extends Observable{
 	private static Ambulancia instancia = null;
 	private IState estado;
-	private boolean disponible,regresandoSinP,ocupado,regresandoOcupado; //regeresando sin paciente
+	private boolean disponible,regresandoSinP,ocupadoTaller,ocupadoDom,regresandoOcupado; //regeresando sin paciente
 	
 	private Ambulancia() {
 		this.estado = new DisponibleState(this);
 		this.disponible=true;
 		this.regresandoSinP=false;
-		this.ocupado=false;
+		this.ocupadoTaller=false;
+		this.ocupadoDom=false;
 		this.regresandoOcupado=false;
 	}
 	public static Ambulancia getInstancia() {
@@ -48,13 +49,13 @@ public class Ambulancia extends Observable{
 		}
 		this.disponible=false;
 		this.regresandoSinP=false;
-		this.ocupado=true;
+		this.ocupadoDom=true;
 		
 		System.out.println("estaba  "+this.estado.actual());
 		this.estado.solicitaAtencion();
 		System.out.println("ahora esta "+this.estado.actual());
 		this.setChanged();
-		this.notifyObservers("La ambulancia esta "+this.estado.actual());
+		this.notifyObservers("La ambulancia esta "+this.estado.actual()+" a "+ nombreAsociado);
 		notifyAll();
 		System.out.println("-------------");
 		
@@ -72,7 +73,7 @@ public class Ambulancia extends Observable{
 				e.printStackTrace();
 			}
 		}
-		this.regresandoSinP=true;
+		this.regresandoOcupado=true;
 		this.disponible=false;
 		
 		
@@ -80,7 +81,7 @@ public class Ambulancia extends Observable{
 		this.estado.solicitaTraslado();
 		System.out.println("ahora esta "+this.estado.actual());
 		this.setChanged();
-		this.notifyObservers("La ambulancia esta "+this.estado.actual());
+		this.notifyObservers("La ambulancia esta "+this.estado.actual()+" a"+ nombreAsociado);
 		notifyAll();
 		System.out.println("-------------");
 		
@@ -96,7 +97,7 @@ public class Ambulancia extends Observable{
 				e.printStackTrace();
 			}
 		this.disponible=false;
-		this.ocupado=true;
+		this.ocupadoTaller=true;
 		
 		System.out.println("estaba"+this.estado.actual());
 		this.estado.solicitaReparacion();
@@ -115,9 +116,14 @@ public class Ambulancia extends Observable{
 		this.setChanged();
 		this.notifyObservers("La ambulancia esta "+ this.estado.actual());
 		
-		if(this.ocupado) {
+		
+		if(this.ocupadoDom) {
+			this.ocupadoDom=false;
+			this.regresandoSinP=true;
+		}
+		else if(this.ocupadoTaller) {
 			this.regresandoOcupado=true;
-			this.ocupado=false;
+			this.ocupadoTaller=false;
 			}
 		else if(this.regresandoOcupado) {
 			this.regresandoOcupado=false;
@@ -127,18 +133,11 @@ public class Ambulancia extends Observable{
 			this.disponible=true;
 			this.regresandoSinP=false;
 		}
+
 	
-		
-		
 		notifyAll();
 		System.out.println("-------------");
 		
 	}
-	
-
-
-	
-
-	
 	
 }
