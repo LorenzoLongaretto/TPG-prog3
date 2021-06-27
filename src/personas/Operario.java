@@ -3,17 +3,16 @@ package personas;
 import java.io.Serializable;
 
 import util.Util;
-
+/**
+ * Clase que representa a un operario de la clinica.
+ *
+ */
 public class Operario extends Thread implements Serializable{
 private Ambulancia ambulancia;
 
 	public Operario(Ambulancia ambulancia) {
 	this.ambulancia = ambulancia;
 }
-
-
-
-
 
 	@Override
 	public void run() {

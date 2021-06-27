@@ -4,7 +4,9 @@ import java.io.Serializable;
 import java.util.Observable;
 
 import util.Util;
-
+/** Clase que representa a una Ambulancia.
+ *
+ */
 public class Ambulancia extends Observable{
 	private static Ambulancia instancia = null;
 	private IState estado;
@@ -35,7 +37,7 @@ public class Ambulancia extends Observable{
 
 	/**
 	 * <b> Pre: El parametro nombreAsociado debe ser distinto de null</b>
-	 * <b> Post : Se  ejecuta la peticion o se pone a "dormir" hasta que pueda ejecutarse. </b>
+	 * <b> Post : Se  ejecuta la peticion o se pone a "dormir" hasta que pueda ejecutarse, y cambia el estado de la ambulancia. </b>
 	 * @param nombreAsociado nombre del asociado que solicita atencion a domicilio.
 	 * 
 	 */
@@ -67,7 +69,7 @@ public class Ambulancia extends Observable{
 	
 	/**
 	 * <b> Pre: El parametro nombreAsociado debe ser distinto de null</b>
-	 * <b> Post : Se  ejecuta la peticion o se pone a "dormir" hasta que pueda ejecutarse. </b>
+	 * <b> Post : Se  ejecuta la peticion o se pone a "dormir" hasta que pueda ejecutarse, y cambia el estado de la ambulancia. </b>
 	 * @param nombreAsociado nombre del asociado que solicita traslado.
 	 * 
 	 */
@@ -90,7 +92,11 @@ public class Ambulancia extends Observable{
 		notifyAll();
 		
 	}
-	
+	/**
+	 * Metodo que reprenta el pedido de un operario a la ambulancia.
+	 * <b> Post : Cambia de estado a la ambulancia. </b>
+	 *
+	 */
 		public synchronized void solicitaReparacion(){
 		System.out.println("estimulo de reparacion");
 		while(!this.disponible)

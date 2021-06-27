@@ -3,12 +3,14 @@ package personas;
 import java.io.Serializable;
 
 import util.Util;
-
+/** Clase que representa a un asociado.
+ */
 public class Asociado implements Runnable{
 	private String dNI,nombre,apellido,domicilio,telefono;
 private Ambulancia ambulancia;
 private String pedido;
 private int cantidad;
+
 	public Asociado(String dNI, String nombre, String apellido,String telefono, String domicilio,Ambulancia ambulancia) {
 	    this.dNI=dNI;
 	    this.nombre=nombre;
@@ -17,7 +19,13 @@ private int cantidad;
 	    this.telefono=telefono;
 		this.ambulancia=ambulancia;
 	}
-
+	/**
+	 * Metodo que simula el pedido de la ambulancia por parte de un asociado.
+	 * <b> Pre: El parametro comando debe ser distinto de null.</b>
+	 * <b> Post : Se  ejecuta la peticion a la ambulancia. </b>
+	 * @param comando es el pedido que quiere realizar el asociado.
+	 *
+	 */
 	public void PedirAmbulancia(String comando) {
 		
 		if(comando.equalsIgnoreCase("Atencion")) {
@@ -32,9 +40,8 @@ private int cantidad;
 			Util.espera();
 			this.ambulancia.volverClinica();
 		}
-	//	else throw new ComandoDesconocidoException(comando);
-		
 	}
+
 	public void setPedido(String pedido) { //aca se setea el pedido de la interfaz grafica
 		this.pedido=pedido;
 		
@@ -42,7 +49,7 @@ private int cantidad;
 	public void setCantidad(int cantidad) {
 		this.cantidad=cantidad;
 	}
-	
+
 	@Override
 	public void run() {
 		for(int i=0;i<this.cantidad;i++)
