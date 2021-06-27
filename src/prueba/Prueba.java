@@ -81,7 +81,7 @@ public class Prueba {
 		a3.setPedido("Atencion");
 		a3.setCantidad(0);
 		Operario operario=new Operario(Ambulancia.getInstancia());
-		
+		Clinica.getInstance().setOperario(operario);
 		try {
 			Clinica.getInstance().altaAsociado(a1);
 		} catch (ExisteAsociadoException e) {

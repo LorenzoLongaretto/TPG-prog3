@@ -230,7 +230,7 @@ public class Controlador implements ActionListener,WindowListener{
 		if(comando.equalsIgnoreCase("Simulacion")) {
 			Operario operario=new Operario(Ambulancia.getInstancia());
 			this.vistaAmbulancia.borrarPanel();
-			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados());
+			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados(),Clinica.getInstance().getOperario());
 			//operario.start();
 		}
 		

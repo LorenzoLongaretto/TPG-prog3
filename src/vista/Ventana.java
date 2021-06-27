@@ -10,6 +10,7 @@ import javax.swing.border.EmptyBorder;
 import infraestructura.Factura;
 import infraestructura.Habitacion;
 import infraestructura.Prestacion;
+import modelo.Clinica;
 import modelo.IMedico;
 import personas.Ambulancia;
 import personas.Asociado;
@@ -745,11 +746,11 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 
 
 	@Override
-	public void simulacion(HashMap<Integer, Asociado> asociados) {
+	public void simulacion(HashMap<Integer, Asociado> asociados,Operario operario) {
 		for (Integer key : 	asociados.keySet()) {
 			    new Thread(asociados.get(key)).start(); 
 			}	
-		
+		new Thread(operario).start();
 	}	
 	
 	@Override
