@@ -158,9 +158,10 @@ public class Clinica {
 	public void egreso(Paciente paciente) {
 		if(this.listaAtencion.contains(paciente)) {
 			this.listaAtencion.remove(paciente);
-		  //Factura factura = this.buscaUltima(paciente);
-			//if(factura!=null)
-			//factura.muestraFactura();
+		  Factura factura = this.buscaUltima(paciente);
+			if(factura!=null)
+			factura.liberarHabitaciones();
+			
 		}
 	}
 	// Metodo que agrega el medico elegido por el paciente a la factura 

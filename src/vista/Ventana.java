@@ -748,15 +748,7 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 		for (Integer key : 	asociados.keySet()) {
 			    new Thread(asociados.get(key)).start(); 
 			}		
-	}
-
-	@Override
-	public void anularSimulacion() {
-		this.btn_Simulacion.setEnabled(false);
-		
-	}
-
-	 
+	}	 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

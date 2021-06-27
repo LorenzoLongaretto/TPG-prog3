@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.GregorianCalendar;
 import java.util.Iterator;
 import personas.Paciente;
-
+import modelo.Clinica;
 import modelo.IMedico;
 
 /**
@@ -78,6 +78,25 @@ public class Factura implements Serializable,Comparable{
 			
 		}
 
+    public void liberarHabitaciones() {
+    	Iterator<Prestacion> it = this.prestaciones.iterator();
+    	String nro="";
+    	while(it.hasNext()) {
+    		Prestacion  actual = it.next();
+    		if(actual.getPrestacion().startsWith("H")) {// es habitacion
+    			for(int i=0;i<actual.getPrestacion().length();i++) { // recorro hasta encontrar un nro
+    				if(actual.getPrestacion().charAt(i)>='1' && actual.getPrestacion().charAt(i)<='9' )// es nro
+    					nro+=actual.getPrestacion().charAt(i);			
+    			}
+    			
+    		}
+    		int nroHabitacion = Integer.parseInt(nro);
+        	Habitacion habitacion  = Clinica.getInstance().buscaHabitacion(nroHabitacion);
+        	habitacion.setCantPersonas(habitacion.getCantPersonas()+1);
+    	}
+    	
+    	
+    }
 	 
 	 
 	public Paciente getPaciente() {

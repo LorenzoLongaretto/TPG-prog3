@@ -229,8 +229,6 @@ public class Controlador implements ActionListener,WindowListener{
 		if(comando.equalsIgnoreCase("Simulacion")) {
 			this.vistaAmbulancia.borrarPanel();
 			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados());
-			//this.vistaAmbulancia.anularSimulacion();
-			
 		}
 		
 	}

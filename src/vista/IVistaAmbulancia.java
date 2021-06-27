@@ -11,7 +11,6 @@ public interface IVistaAmbulancia {
 	String getCantidad();
 	String getTipo();
 	void simulacion(HashMap<Integer, Asociado> asociados);
-	void anularSimulacion();
 	void mensaje(String msj);
     void borrarPanel();
 	
