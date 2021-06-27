@@ -22,6 +22,7 @@ import vista.IVistaMedico;
 import vista.IVistaPaciente;
 import personas.Ambulancia;
 import personas.Asociado;
+import personas.Operario;
 import personas.Paciente;
 import util.Util;
 
@@ -227,8 +228,10 @@ public class Controlador implements ActionListener,WindowListener{
 			
 		}
 		if(comando.equalsIgnoreCase("Simulacion")) {
+			Operario operario=new Operario(Ambulancia.getInstancia());
 			this.vistaAmbulancia.borrarPanel();
 			this.vistaAmbulancia.simulacion(Clinica.getInstance().getAsociados());
+			//operario.start();
 		}
 		
 	}

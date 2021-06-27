@@ -13,6 +13,7 @@ import infraestructura.Prestacion;
 import modelo.IMedico;
 import personas.Ambulancia;
 import personas.Asociado;
+import personas.Operario;
 import personas.Paciente;
 
 import javax.swing.JTabbedPane;
@@ -747,8 +748,10 @@ public class Ventana extends JFrame implements IVistaPaciente,IVistaMedico,IVist
 	public void simulacion(HashMap<Integer, Asociado> asociados) {
 		for (Integer key : 	asociados.keySet()) {
 			    new Thread(asociados.get(key)).start(); 
-			}		
-	}	 
+			}	
+		
+	}	
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		

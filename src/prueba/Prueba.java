@@ -1,6 +1,7 @@
 package prueba;
 import personas.Ambulancia;
 import personas.Asociado;
+import personas.Operario;
 import personas.Paciente;
 import vista.Ventana;
 import modelo.Clinica;
@@ -79,6 +80,7 @@ public class Prueba {
 		Asociado a3=new Asociado("26789456", "Tomas", "Longaretto", "223412344", "Almafuerte 1234",Ambulancia.getInstancia());
 		a3.setPedido("Atencion");
 		a3.setCantidad(0);
+		Operario operario=new Operario(Ambulancia.getInstancia());
 		
 		try {
 			Clinica.getInstance().altaAsociado(a1);

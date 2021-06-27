@@ -113,8 +113,10 @@ public class Ambulancia extends Observable{
 		System.out.println("estaba "+this.estado.actual());
 		this.estado.volverClinica();
 		System.out.println("ahora esta "+this.estado.actual());
-		this.setChanged();
-		this.notifyObservers("La ambulancia esta "+ this.estado.actual());
+		if(!this.disponible) { //para que no notifique disponible 2 veces seguidas
+			this.setChanged();
+			this.notifyObservers("La ambulancia esta "+ this.estado.actual());
+		}
 		
 		
 		if(this.ocupadoDom) {
