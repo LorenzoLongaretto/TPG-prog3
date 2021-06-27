@@ -33,6 +33,12 @@ public class Ambulancia extends Observable{
 		this.estado = estado;
 	}
 
+	/**
+	 * <b> Pre: El parametro nombreAsociado debe ser distinto de null</b>
+	 * <b> Post : Se  ejecuta la peticion o se pone a "dormir" hasta que pueda ejecutarse. </b>
+	 * @param nombreAsociado nombre del asociado que solicita atencion a domicilio.
+	 * 
+	 */
 	public synchronized void solicitaAtencion(String nombreAsociado){ //a domicilio
 		System.out.println("estimulo de atencion");
 		
@@ -51,9 +57,7 @@ public class Ambulancia extends Observable{
 		this.regresandoSinP=false;
 		this.ocupadoDom=true;
 		
-		System.out.println("estaba  "+this.estado.actual());
 		this.estado.solicitaAtencion();
-		System.out.println("ahora esta "+this.estado.actual());
 		this.setChanged();
 		this.notifyObservers("La ambulancia esta "+this.estado.actual()+" a "+ nombreAsociado);
 		notifyAll();
@@ -61,29 +65,29 @@ public class Ambulancia extends Observable{
 		
 	}
 	
+	/**
+	 * <b> Pre: El parametro nombreAsociado debe ser distinto de null</b>
+	 * <b> Post : Se  ejecuta la peticion o se pone a "dormir" hasta que pueda ejecutarse. </b>
+	 * @param nombreAsociado nombre del asociado que solicita traslado.
+	 * 
+	 */
 	public synchronized void solicitaTraslado(String nombreAsociado){
 		System.out.println("estimulo de traslado");
 		while(!this.disponible) {
 			try {
 				this.setChanged();
 				this.notifyObservers(nombreAsociado+" solicita traslado y no puede");
-				System.out.println(nombreAsociado+" solicita traslado y no puede");
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+		this.estado.solicitaTraslado();
 		this.regresandoOcupado=true;
 		this.disponible=false;
-		
-		
-		System.out.println("estaba "+this.estado.actual());
-		this.estado.solicitaTraslado();
-		System.out.println("ahora esta "+this.estado.actual());
 		this.setChanged();
-		this.notifyObservers("La ambulancia esta "+this.estado.actual()+" a"+ nombreAsociado);
+		this.notifyObservers("La ambulancia esta "+this.estado.actual()+" a "+ nombreAsociado);
 		notifyAll();
-		System.out.println("-------------");
 		
 	}
 	
@@ -91,33 +95,34 @@ public class Ambulancia extends Observable{
 		System.out.println("estimulo de reparacion");
 		while(!this.disponible)
 			try {
-				System.out.println("solicita reparacion y no puede");
+				this.setChanged();
+				this.notifyObservers("El operario solicita reparacion y no puede");
 				wait();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		this.disponible=false;
 		this.ocupadoTaller=true;
-		
-		System.out.println("estaba"+this.estado.actual());
 		this.estado.solicitaReparacion();
-		System.out.println("ahora esta "+this.estado.actual());
 		this.setChanged();
 		this.notifyObservers("La ambulancia esta "+ this.estado.actual());
 		notifyAll();
-		System.out.println("-------------");
 	
 	}
 		
+		
+	/**
+	 * Luego de un tiempo,que simboliza lo que la ambulancia tardo en llevar a cabo una peticion, se ejecuta este metodo
+	 * que cambia de estado a la ambulancia.
+	 * <b> Post : Cambia de estado a la ambulancia. </b>
+	 * 
+	 */
 	public synchronized void volverClinica(){
-		System.out.println("estaba "+this.estado.actual());
 		this.estado.volverClinica();
-		System.out.println("ahora esta "+this.estado.actual());
 		if(!this.disponible) { //para que no notifique disponible 2 veces seguidas
 			this.setChanged();
 			this.notifyObservers("La ambulancia esta "+ this.estado.actual());
 		}
-		
 		
 		if(this.ocupadoDom) {
 			this.ocupadoDom=false;
@@ -135,10 +140,7 @@ public class Ambulancia extends Observable{
 			this.disponible=true;
 			this.regresandoSinP=false;
 		}
-
-	
 		notifyAll();
-		System.out.println("-------------");
 		
 	}
 	
