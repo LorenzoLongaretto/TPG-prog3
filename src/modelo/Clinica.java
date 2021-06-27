@@ -14,6 +14,7 @@ import excepciones.NoExisteAsociadoException;
 import personas.Paciente;
 import personas.Ambulancia;
 import personas.Asociado;
+import personas.Operario;
 import infraestructura.SalaDeEspera;
 import infraestructura.Factura;
 import infraestructura.Habitacion;
@@ -70,6 +71,7 @@ public class Clinica {
     // Clave  = DNI de los medicos
     private HashMap<Integer,Asociado> asociados = new HashMap<Integer,Asociado>();
     //Clave  = DNI de los Asociados
+    private Operario operario;
 	private int nroOrden=0;
 	
 	
@@ -331,6 +333,13 @@ public class Clinica {
 	}
 	public void setNroFactura(int nroFactura) {
 		this.nroFactura = nroFactura;
+	}
+	
+	public Operario getOperario() {
+		return operario;
+	}
+	public void setOperario(Operario operario) {
+		this.operario = operario;
 	}
 	@Override
 	public String toString() {
