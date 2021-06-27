@@ -27,16 +27,16 @@ import infraestructura.TerapiaIntensiva;
 public class Prueba {
 
 	public static void main(String[] args) throws IOException {
-	
-		//Serializacion archivo = new Serializacion();
-   
-		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null;
+
+		Paciente paciente=null,paciente2=null,paciente3=null,paciente4=null,paciente5=null;
 		
 		//cuando copien y pegen para hacer mas pacientes recuerden cambiarles el DNI
 		try {
 			paciente = PacienteFactory.getPaciente("41927911", "Juan Jose", "Java", "MDP","2235673421", "San Juan 2140","Nino");
 			paciente2 = PacienteFactory.getPaciente("41822123", "Ximena", "ConX", "MDP","2235673421", "San Juan 2140","Mayor");
-		    paciente3  = PacienteFactory.getPaciente("4444444", "Rigoberto", "Rodriguez", "Miramar","43256321", "Independencia 01","Joven");
+		    paciente3  = PacienteFactory.getPaciente("4656556", "Maestro", "Yoda", "Miramar","43256321", "Independencia 01","Joven");
+			paciente4  = PacienteFactory.getPaciente("987456", "Rigoberto", "Rodriguez", "Tandil","2236545454", "Independencia 01","Nino");
+			paciente5 = PacienteFactory.getPaciente("4123465", "Norberto", "Diaz", "Mar del sur", "4711569", "Independencia 01", "Joven");
 		       
 		} catch (NoExisteRangoEtarioException e) {
 			System.out.println(e.getMessage()+e.getRango());
@@ -64,11 +64,10 @@ public class Prueba {
         Clinica.getInstance().ingresoPaciente(paciente); //busca o genera la historia
         Clinica.getInstance().ingresoPaciente(paciente2);
         Clinica.getInstance().ingresoPaciente(paciente3);
-        System.out.println("Pacientes en espera");
-        System.out.println("El paciente en la sala de espera es: "+Clinica.getInstance().getSalaEspera().getPaciente());
-        System.out.println("Los pacientes en el patio son: "+Clinica.getInstance().getPatio());
+		Clinica.getInstance().ingresoPaciente(paciente4);
+		Clinica.getInstance().ingresoPaciente(paciente5);
+
         //DERIVACION Y ATENCION
-        System.out.println("------------------------");
         Clinica.getInstance().atenderPaciente(paciente);
         Clinica.getInstance().atenderPaciente(paciente2);
     	Asociado a1=new Asociado("41835435", "Juan", "Rodriguez", "223456789", "San Juan 1234",Ambulancia.getInstancia());
@@ -126,8 +125,7 @@ public class Prueba {
         //Ambulancia
         Ventana ventana = new Ventana(); 
         Controlador  controlador = new Controlador(ventana,ventana,ventana,ventana,ventana);
-       
-        //archivo.guardarDatos();
+
 		
 	}
  

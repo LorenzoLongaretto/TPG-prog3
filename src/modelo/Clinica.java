@@ -12,7 +12,6 @@ import excepciones.ExisteAsociadoException;
 import excepciones.HabitacionOcupadaException;
 import excepciones.NoExisteAsociadoException;
 import personas.Paciente;
-import personas.Ambulancia;
 import personas.Asociado;
 import personas.Operario;
 import infraestructura.SalaDeEspera;
@@ -153,7 +152,6 @@ public class Clinica {
 	 * <b> Pre: El parametro paciente  debe ser distinto de null.</b>
 	 * <b> Post: Se elimina al paciente de la lista de atencion</b>
 	 * @param paciente: Parametro de tipo paciente.
-	 * @param factura: Parametro de tipo factura.
 	 */
 	
 	//pasar paciente  --> buscar factura y mostrarla
@@ -213,7 +211,7 @@ public class Clinica {
 	}
 	/**Metodo que busca y devuelve un medico segun su numero de matricula.
 	 * @param matricula:Parametro de tipo entero que representa la matricula de algun medico.
-	 * @return: Medico buscado en la lista de medicos o null.
+	 * @return Medico buscado en la lista de medicos o null.
 	 */
 	public IMedico buscaMedico(int matricula) {
 		return this.medicos.get(matricula);
@@ -221,7 +219,7 @@ public class Clinica {
 	
 	/**Metodo que busca y devuelve una habitacion segun su numero.
 	 * @param nro:Parametro de tipo entero que representa el numero de habitacion.
-	 * @return: Habitacion buscada en la lista de medicos o null.
+	 * @return Habitacion buscada en la lista de medicos o null.
 	 */
 	public Habitacion buscaHabitacion(int nro) {
 		return this.habitaciones.get(nro);
@@ -230,15 +228,15 @@ public class Clinica {
 	 * <b>Pre: El paciente debe ser distinto de null</b>
 	 * <b>Post: Devuelve la factura del paciente</b>
 	 * @param paciente: Parametro de tipo Paciente.
-	 * @return: Factura mas actual del paciente.
+	 * @return Factura mas actual del paciente.
 	 */
 	public Factura buscaUltima(Paciente paciente) {// busca la ultima factura del paciente (la actual)
 		Factura retorno = null;
 		 Iterator<Factura> it = this.facturas.iterator();
 		 while(it.hasNext()) {
 			 Factura factura = it.next();
-			 if((factura.getPaciente().getDNI() == paciente.getDNI()) && ((retorno!=null && factura.getFecha().compareTo(retorno.getFecha())>0) || retorno==null)) {
-				 retorno = factura; 
+			 if((factura.getPaciente().getDNI().equals(paciente.getDNI())) && ((retorno!=null && factura.getFecha().compareTo(retorno.getFecha())>0) || retorno==null)) {
+				 retorno = factura;
 			 }
 		 }
 		

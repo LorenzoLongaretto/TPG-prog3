@@ -93,9 +93,11 @@ public class Factura implements Serializable,Comparable{
     			}
     			
     		}
-    		int nroHabitacion = Integer.parseInt(nro);
-        	Habitacion habitacion  = Clinica.getInstance().buscaHabitacion(nroHabitacion);
-        	habitacion.setCantPersonas(habitacion.getCantPersonas()+1);
+    		if(!nro.equals("")) {
+				int nroHabitacion = Integer.parseInt(nro);
+				Habitacion habitacion = Clinica.getInstance().buscaHabitacion(nroHabitacion);
+				habitacion.setCantPersonas(habitacion.getCantPersonas() + 1);
+			}
     	}
     	
     	
@@ -118,7 +120,7 @@ public class Factura implements Serializable,Comparable{
 	 
 	}
 	
-	public void muestraFactura() {
+	/*public void muestraFactura() {
 		
 		for (Prestacion prestaciones : this.prestaciones) 
 		       System.out.println(prestaciones.toString());
@@ -126,7 +128,7 @@ public class Factura implements Serializable,Comparable{
 		System.out.println("Importe Total: "+this.importeTotal);
 		
 	
-	}
+	}*/
 	
 
 	public double getImporteTotal() {
