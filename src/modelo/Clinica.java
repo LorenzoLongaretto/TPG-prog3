@@ -80,7 +80,7 @@ public class Clinica {
 	 */
 	private Clinica() {
 		this.nombre= "Hospital Favaloro";
-		this.direccion = "Rupestre 223";
+		this.direccion = "Bypass 290700";
 	}
 	public static Clinica getInstance() {
 		if(Clinica.instance==null) {

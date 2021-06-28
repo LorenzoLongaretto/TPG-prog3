@@ -42,7 +42,6 @@ public class Ambulancia extends Observable{
 	 * 
 	 */
 	public synchronized void solicitaAtencion(String nombreAsociado){ //a domicilio
-		System.out.println("estimulo de atencion");
 		
 		while ( !(this.disponible || this.regresandoSinP)) {
 			try {
@@ -63,7 +62,6 @@ public class Ambulancia extends Observable{
 		this.setChanged();
 		this.notifyObservers("La ambulancia esta "+this.estado.actual()+" a "+ nombreAsociado);
 		notifyAll();
-		System.out.println("-------------");
 		
 	}
 	
@@ -74,7 +72,6 @@ public class Ambulancia extends Observable{
 	 * 
 	 */
 	public synchronized void solicitaTraslado(String nombreAsociado){
-		System.out.println("estimulo de traslado");
 		while(!this.disponible) {
 			try {
 				this.setChanged();
@@ -98,7 +95,6 @@ public class Ambulancia extends Observable{
 	 *
 	 */
 		public synchronized void solicitaReparacion(){
-		System.out.println("estimulo de reparacion");
 		while(!this.disponible)
 			try {
 				this.setChanged();
